@@ -33,7 +33,11 @@ sm.print_mean( mval )
 
 print 'Emailing...'
 
-sm.send_mean( mval )
+to = ['info@goodspeedparking.com',
+      '3474005261@tmomail.net',
+      '3102452197@mms.att.net']
+
+sm.send_mean( mval, to )
 
 print 'Complete'
 
