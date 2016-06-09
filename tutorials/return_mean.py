@@ -14,12 +14,11 @@ import ipdb
 import sys
 
 # emailing
-sys.path.append('/home/acp/Projects/ggp/viper')
 import send_mean as sm
 
 
-#im_loc = '/home/ftpsecure/imgs/00626E489E82()_test.jpg'
-im_loc = '/home/ftpsecure/imgs/test_1.jpg'
+im_loc = '/home/ftpsecure/imgs/00626E489E82()_test.jpg'
+#im_loc = '/home/ftpsecure/imgs/test_1.jpg'
 
 im = mh.imread(im_loc)
 
