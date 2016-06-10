@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import os, sys
 #sys.path.append('/home/project')
 import send_mean as sm
 
@@ -72,4 +72,6 @@ fido.write(pageHtml)
 fido.close()
 
 
+
+os.rename("table.html","/var/www/html/table/index.html")
 
