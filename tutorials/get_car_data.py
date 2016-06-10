@@ -25,7 +25,7 @@ if N_paid_cars != check:
 
     sm.send_msg( err )
 
-nSpots = 5
+nSpots = 20
 
 spots = {prop:{'pd':0,'occ':0} for prop in range(1,nSpots+1)}
 
@@ -60,7 +60,7 @@ for spot in spots:
 
 tabHtml += '</table>'
 
-headHtml = '<head><meta http-equiv="refresh" content="30" />'
+headHtml = '<head><meta http-equiv="refresh" content="3" />'
 headHtml += '<title>Lot Status</title></head>'
 
 pageHtml = '<html>'
