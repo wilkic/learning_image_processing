@@ -24,7 +24,6 @@ def setup_server():
     pwd = getpass.getpass()
 
     #Next, log in to the server
-    #server.login("info@goodspeedparking.com", "Pass1word")
     server.login( sender, pwd )
     
     srvDict = {'server':server,
