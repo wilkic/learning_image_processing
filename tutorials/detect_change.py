@@ -22,7 +22,9 @@ camera1 = {
                          (  0,425),
                          (400,425),
                          (400,  0)],
-            'base_means': [119,120,118],
+#            'base_means': [119,120,118],
+#            'base_means': [94,95,94],
+            'base_means': [94.422767857142858, 94.507968750000003, 93.452845982142861],
             'means': [0,0,0],
             'mean': 0,
             'tol': 10,
@@ -33,10 +35,12 @@ camera1 = {
     ]
 }
 
+#to = ['info@goodspeedparking.com',
+#      '3474005261@tmomail.net',
+#      '3102452197@mms.att.net']
+#to = ['info@goodspeedparking.com']
 to = ['info@goodspeedparking.com',
-      '3474005261@tmomail.net',
-      '3102452197@mms.att.net']
-
+      '3474005261@tmomail.net']
 
 cameras = {1: camera1}
 
@@ -109,7 +113,10 @@ while 1:
             if spot['occupied']:
                 notify.print_mean(spot['mean'])
                 print "Present %d times" % spot['times_present']
-                notify.send_msg_with_jpg( "Spot taken!", fname, to )
+                message = """
+                Spot taken !
+                means = %s """ % spot['means']
+                notify.send_msg_with_jpg( message, fname, to )
 
             # When spot is vacated, notify too
             if leaving:
