@@ -12,9 +12,16 @@ import ipdb
 
 import notifications as notify
 
+import datetime as dt
+
+import pprint as pp
+
+from PIL import Image, ImageDraw
+
 camera1 = {
     'number': 1,
     'im_dir': '/home/acp/Projects/camera_testing/hosafe/new_closet/',
+    'im_ts': dt.datetime(2016,06,26,00,00,00),
     'spots': [
         {
             'number': 1,
@@ -28,7 +35,7 @@ camera1 = {
             'means': [0,0,0],
             'mean': 0,
             'tol': 10,
-            'times_present': 0,
+            'time_present': 0,
             'occupied': 0,
             'persistence_threshold': 5
         }
@@ -44,7 +51,6 @@ to = ['info@goodspeedparking.com',
 
 cameras = {1: camera1}
 
-from PIL import Image, ImageDraw
 
 #for index in range(0,100):
 while 1:
@@ -57,6 +63,23 @@ while 1:
         files.sort(key=lambda x: os.path.getmtime(x))
         fname = files[-1]
         ts = fname[-18:-4]
+        
+        
+        f_datetime =      dt.datetime( int(ts[0:4]),
+                                       int(ts[4:6]),
+                                       int(ts[6:8]),
+                                       int(ts[8:10]),
+                                       int(ts[10:12]),
+                                       int(ts[12:14]) )
+
+        delta_time_obj = f_datetime - camera['im_ts']
+        delta_time = delta_time_obj.total_seconds()
+
+        camera['im_ts'] = f_datetime
+# TODO : don't do anything if snapshot hasn't been taken
+# TODO : check for how stale snapshot is... notify if LONG
+#        if delta_time > 0:
+#            camera['im_ts'] = f_datetime
 
         im = mh.imread(fname)
         
@@ -96,18 +119,14 @@ while 1:
             # otherwise reset counter
             leaving = 0
             if present > 1:
-                spot['times_present'] += 1
+                spot['time_present'] += delta_time
             else:
-                if spot['times_present'] >= spot['persistence_threshold']:
+                if spot['time_present'] >= spot['persistence_threshold']:
                     leaving = 1
-                spot['times_present'] = 0
+                spot['time_present'] = 0
             
-            # Mark as occupied once spot has been taken N times
-            spot['occupied'] = spot['times_present'] == spot['persistence_threshold']
-            
-            # Don't allow taken to go up forever
-            spot['times_present'] = min( spot['times_present'],
-                                       spot['persistence_threshold'] + 10 )
+            # Mark as occupied once spot has been taken for time past threshold
+            spot['occupied'] = spot['time_present'] >= spot['persistence_threshold']
             
             # When spot is flagged as occupied, notify 
             if spot['occupied']:
@@ -115,10 +134,17 @@ while 1:
                 print "Present %d times" % spot['times_present']
                 message = """
                 Spot taken !
-                means = %s """ % spot['means']
+                %s """ % pp.pprint( camera )
                 notify.send_msg_with_jpg( message, fname, to )
 
             # When spot is vacated, notify too
             if leaving:
-                print "Car has left"
+                message = """
+                Car has left !
+                means = %s """ % spot['means']
+                notify.send_msg_with_jpg( message, fname, to )
+    
+    with open('camera.json','wt') as out:
+        pp.pprint( camera, stream=out )
+
 
