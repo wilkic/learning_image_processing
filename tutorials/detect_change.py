@@ -16,6 +16,8 @@ import datetime as dt
 
 import pprint as pp
 
+from shutil import copyfile
+
 from PIL import Image, ImageDraw
 
 camera1 = {
@@ -51,6 +53,11 @@ to = ['info@goodspeedparking.com',
 
 cameras = {1: camera1}
 
+# When getting the latest image, move it to a directory
+# for processing... then delete it when done.
+wd = os.path.join( os.getcwd(), 'images_being_processed' )
+if not os.path.exists(wd):
+    os.makedirs(wd)
 
 #for index in range(0,100):
 while 1:
@@ -61,7 +68,11 @@ while 1:
         files = [os.path.join(d, f) for f in os.listdir(d)]
         files = filter(os.path.isfile, files)
         files.sort(key=lambda x: os.path.getmtime(x))
-        fname = files[-1]
+        src_name = files[-1]
+        ft = os.path.split(src_name)
+        fname = os.path.join( wd, ft[1] )
+        copyfile( src_name, fname )
+
         ts = fname[-18:-4]
         
         
@@ -144,6 +155,13 @@ while 1:
                 means = %s """ % spot['means']
                 notify.send_msg_with_jpg( message, fname, to )
     
+    # cleanup:
+    ipdb.set_trace()
+
+    # delete the 'local' copy of image you processed
+    os.remove(fname)
+
+    # store the current state of the camera
     with open('camera.json','wt') as out:
         pp.pprint( camera, stream=out )
 
