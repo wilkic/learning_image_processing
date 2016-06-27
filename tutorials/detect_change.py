@@ -156,7 +156,6 @@ while 1:
                 notify.send_msg_with_jpg( message, fname, to )
     
     # cleanup:
-    ipdb.set_trace()
 
     # delete the 'local' copy of image you processed
     os.remove(fname)
