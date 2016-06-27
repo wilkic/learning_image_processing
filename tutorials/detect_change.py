@@ -115,6 +115,9 @@ while 1:
             
             # count of spectra in which car is present
             present = 0
+            
+            # set the mean to zero (it gets incremented)
+            spot['mean'] = 0
 
             for color in range(0,3):
             
