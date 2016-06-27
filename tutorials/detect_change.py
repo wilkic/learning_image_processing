@@ -14,6 +14,8 @@ import notifications as notify
 
 import datetime as dt
 
+import sys
+
 import pprint as pp
 
 from shutil import copyfile
@@ -22,7 +24,7 @@ from PIL import Image, ImageDraw
 
 camera1 = {
     'number': 1,
-    'im_dir': '/home/acp/Projects/camera_testing/hosafe/new_closet/',
+    'im_dir': '/home/cam1/current/',
     'im_ts': dt.datetime(2016,06,26,00,00,00),
     'spots': [
         {
@@ -44,12 +46,10 @@ camera1 = {
     ]
 }
 
-#to = ['info@goodspeedparking.com',
-#      '3474005261@tmomail.net',
-#      '3102452197@mms.att.net']
-#to = ['info@goodspeedparking.com']
 to = ['info@goodspeedparking.com',
-      '3474005261@tmomail.net']
+      '3474005261@tmomail.net',
+      '3102452197@mms.att.net']
+#to = ['info@goodspeedparking.com']
 
 cameras = {1: camera1}
 
@@ -65,13 +65,27 @@ while 1:
     for c, camera in cameras.iteritems():
         
         d = camera['im_dir']
-        files = [os.path.join(d, f) for f in os.listdir(d)]
-        files = filter(os.path.isfile, files)
-        files.sort(key=lambda x: os.path.getmtime(x))
-        src_name = files[-1]
-        ft = os.path.split(src_name)
-        fname = os.path.join( wd, ft[1] )
-        copyfile( src_name, fname )
+
+        cnt_fail = 0
+        while True:
+            try:
+                files = [os.path.join(d, f) for f in os.listdir(d)]
+                files = filter(os.path.isfile, files)
+                files.sort(key=lambda x: os.path.getmtime(x))
+                src_name = files[-1]
+                ft = os.path.split(src_name)
+                fname = os.path.join( wd, ft[1] )
+                copyfile( src_name, fname )
+                cnt_fail = 0
+                break
+            except Exception:
+                cnt_fail += 1
+                if cnt_fail > 100:
+                    msg = """
+                    Viper is quitting !
+                    I'm having file access issues."""
+                    notify.send_msg(msg,to)
+                    sys.exit()
 
         ts = fname[-18:-4]
         
