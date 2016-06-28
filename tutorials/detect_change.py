@@ -77,6 +77,8 @@ while True:
             url = 'http://' + ip + ':' + str(camera['port'])
             url += '/cgi-bin/getsnapshot.cgi'
             call = 'wget ' + url + ' -O ' + fname + ' >/dev/null 2>&1'
+            # Verbose
+            #call = 'wget ' + url + ' -O ' + fname
             
             tries = 0
             while True:
@@ -91,7 +93,8 @@ while True:
 
                 tries += 1
                 os.system(call)
-                if os.stat(fname).st_size < 12000:
+                if os.stat(fname).st_size < 16000:
+                    copyfile(fname, wd+'/failed_snap_'+str(tries)+'.jpg')
                     continue
                 else:
                     break
