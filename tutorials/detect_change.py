@@ -186,10 +186,12 @@ while True:
 		with open('camera.json','wt') as out:
 		    pp.pprint( camera, stream=out )
 
-	except Exception:
+	except Exception, e:
 		msg = """
 		Viper is going offline due to user error !
-		Check my error logs for details..."""
+		Check my error logs for details...
+                %s """ % str(e)
 		notify.send_msg(msg,to)
+                print str(e)
 		sys.exit()
 
