@@ -22,6 +22,8 @@ from shutil import copyfile
 
 from PIL import Image, ImageDraw
 
+import traceback
+
 camera1 = {
     'number': 1,
     'im_dir': '/home/cam1/current/',
