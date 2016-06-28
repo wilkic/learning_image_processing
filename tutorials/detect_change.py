@@ -24,10 +24,11 @@ from PIL import Image, ImageDraw
 
 import traceback
 
+ip = "108.45.109.111"
+
 camera1 = {
     'number': 1,
-    'im_dir': '/home/cam1/current/',
-#    'im_dir': '/home/acp/Projects/camera_testing/hosafe/closet/',
+    'port': 8091,
     'im_ts': dt.datetime(2016,06,26,00,00,00),
     'spots': [
         {
@@ -65,136 +66,133 @@ if not os.path.exists(wd):
 #for index in range(0,100):
 while True:
     
-	try:
-		for c, camera in cameras.iteritems():
-		    
-		    d = camera['im_dir']
+    try:
+        for c, camera in cameras.iteritems():
+            
+            # filename of image
+            fname = wd + '/snap.jpg'
 
-		    cnt_fail = 0
-		    while True:
-		        try:
-		            files = [os.path.join(d, f) for f in os.listdir(d)]
-		            files = filter(os.path.isfile, files)
-		            files.sort(key=lambda x: os.path.getmtime(x))
-		            src_name = files[-1]
-		            ft = os.path.split(src_name)
-		            fname = os.path.join( wd, ft[1] )
-		            copyfile( src_name, fname )
-		            cnt_fail = 0
-		            break
-		        except Exception:
-		            cnt_fail += 1
-		            if cnt_fail > 100:
-		                msg = """
-		                Viper is quitting !
-		                I'm having file access issues."""
-		                notify.send_msg(msg,to)
-		                sys.exit()
+            # store snapshot to processing dir (wd)
+            # using wget cuz otherwise I can't open the file (urllib etc)
+            url = 'http://' + ip + ':' + str(camera['port'])
+            url += '/cgi-bin/getsnapshot.cgi'
+            call = 'wget ' + url + ' -O ' + fname + ' >/dev/null 2>&1'
+            
+            tries = 0
+            while True:
+                if tries>10:
+                    msg = """
+                    %s
+                    Camera %d is not producing images !
+                    """ % (str(dt.datetime.now()),c)
+                    #notify.send_msg(msg,to)
+                    print msg   
+                    sys.exit()
 
-		    ts = fname[-18:-4]
-		    
-		    
-		    f_datetime =      dt.datetime( int(ts[0:4]),
-		                                   int(ts[4:6]),
-		                                   int(ts[6:8]),
-		                                   int(ts[8:10]),
-		                                   int(ts[10:12]),
-		                                   int(ts[12:14]) )
+                tries += 1
+                os.system(call)
+                if os.stat(fname).st_size < 12000:
+                    continue
+                else:
+                    break
 
-		    delta_time_obj = f_datetime - camera['im_ts']
-		    delta_time = delta_time_obj.total_seconds()
+            
+            # get timestamp
+            ts = dt.datetime.now()
+            
+            # get time since last image
+            delta_time_obj = ts - camera['im_ts']
+            delta_time = delta_time_obj.total_seconds()
+            
+            # set timestamp for current image
+            camera['im_ts'] = ts
+            
+            # read image
+            im = mh.imread(fname)
+            
+            for spot in camera['spots']:
+                
+                # get the polygon vertices for the spot
+                shp_verts = spot['vertices']
+                
+                # count of spectra in which car is present
+                present = 0
+                
+                # set the mean to zero (it gets incremented)
+                spot['mean'] = 0
 
-		    camera['im_ts'] = f_datetime
-	# TODO : don't do anything if snapshot hasn't been taken
-	# TODO : check for how stale snapshot is... notify if LONG
-	#        if delta_time > 0:
-	#            camera['im_ts'] = f_datetime
+                for color in range(0,3):
+                
+                    imc = im[:,:,color]
+                    
+                    shp = Image.new( 'L', imc.shape, 0 )
+                    
+                    ImageDraw.Draw(shp).polygon( shp_verts, outline=1, fill=1 )
+                    
+                    shp_mask = np.array(shp).transpose().astype(bool)
+                    
+                    imct = np.copy(imc)
+                    imct[np.invert(shp_mask)] = 0
+                    
+                    spot['means'][color] = imc[shp_mask].mean()
+                    
+                    mdiff = spot['means'][color] - spot['base_means'][color]
 
-		    im = mh.imread(fname)
-		    
-		    for spot in camera['spots']:
-		        
-		        # get the polygon vertices for the spot
-		        shp_verts = spot['vertices']
-		        
-		        # count of spectra in which car is present
-		        present = 0
-		        
-		        # set the mean to zero (it gets incremented)
-		        spot['mean'] = 0
+                    if abs( mdiff ) > spot['tol']:
+                        present += 1
+                    
+                    spot['mean'] += spot['means'][color]
 
-		        for color in range(0,3):
-		        
-		            imc = im[:,:,color]
-		            
-		            shp = Image.new( 'L', imc.shape, 0 )
-		            
-		            ImageDraw.Draw(shp).polygon( shp_verts, outline=1, fill=1 )
-		            
-		            shp_mask = np.array(shp).transpose().astype(bool)
-		            
-		            imct = np.copy(imc)
-		            imct[np.invert(shp_mask)] = 0
-		            
-		            spot['means'][color] = imc[shp_mask].mean()
-		            
-		            mdiff = spot['means'][color] - spot['base_means'][color]
+                spot['mean'] /= 3
+                
+                # If car is present, mark as taken
+                # otherwise reset counter
+                leaving = 0
+                if present > 1:
+                    spot['time_present'] += delta_time
+                else:
+                    if spot['time_present'] >= spot['persistence_threshold']:
+                        leaving = 1
+                    spot['time_present'] = 0
+                
+                # if wasn't occupied, occupance will be new
+                newly_occupied = not spot['occupied']
+                
+                # Mark as occupied once spot has been taken for time past threshold
+                spot['occupied'] = spot['time_present'] >= spot['persistence_threshold']
+                
+                # When spot is flagged as occupied, notify 
+                if spot['occupied'] and newly_occupied:
+                    notify.print_mean(spot['mean'])
+                    print "Present %f seconds" % spot['time_present']
+                    message = """
+                    Spot taken !
+                    %s """ % pp.pprint( camera )
+                    notify.send_msg_with_jpg( message, fname, to )
 
-		            if abs( mdiff ) > spot['tol']:
-		                present += 1
-		            
-		            spot['mean'] += spot['means'][color]
+                # When spot is vacated, notify too
+                if leaving:
+                    message = """
+                    Car has left !
+                    means = %s """ % spot['means']
+                    notify.send_msg_with_jpg( message, fname, to )
+        
+        # cleanup:
 
-		        spot['mean'] /= 3
-		        
-		        # If car is present, mark as taken
-		        # otherwise reset counter
-		        leaving = 0
-		        if present > 1:
-		            spot['time_present'] += delta_time
-		        else:
-		            if spot['time_present'] >= spot['persistence_threshold']:
-		                leaving = 1
-		            spot['time_present'] = 0
-		        
-		        # if wasn't occupied, occupance will be new
-		        newly_occupied = not spot['occupied']
-		        
-		        # Mark as occupied once spot has been taken for time past threshold
-		        spot['occupied'] = spot['time_present'] >= spot['persistence_threshold']
-		        
-		        # When spot is flagged as occupied, notify 
-		        if spot['occupied'] and newly_occupied:
-		            notify.print_mean(spot['mean'])
-		            print "Present %f seconds" % spot['time_present']
-		            message = """
-		            Spot taken !
-		            %s """ % pp.pprint( camera )
-		            notify.send_msg_with_jpg( message, fname, to )
+        # delete the image that has been processed
+        os.remove(fname)
 
-		        # When spot is vacated, notify too
-		        if leaving:
-		            message = """
-		            Car has left !
-		            means = %s """ % spot['means']
-		            notify.send_msg_with_jpg( message, fname, to )
-		
-		# cleanup:
+        # store the current state of the camera
+        with open('camera.json','wt') as out:
+            pp.pprint( camera, stream=out )
 
-		# delete the 'local' copy of image you processed
-		os.remove(fname)
-
-		# store the current state of the camera
-		with open('camera.json','wt') as out:
-		    pp.pprint( camera, stream=out )
-
-	except Exception, e:
-                traceback.print_exc()
-		msg = """
-		Viper is going offline due to user error !
-		Check my error logs for details...
-                %s """ % str(e)
-		notify.send_msg(msg,to)
-                print str(e)
-		sys.exit()
+    except Exception, e:
+            traceback.print_exc()
+            msg = """
+            Viper is going offline due to user error !
+            Check my error logs for details...
+            %s """ % str(e)
+            notify.send_msg(msg,to)
+            print str(e)
+            sys.exit()
 
