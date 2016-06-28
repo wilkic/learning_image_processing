@@ -187,6 +187,7 @@ while True:
 		    pp.pprint( camera, stream=out )
 
 	except Exception, e:
+                traceback.print_exc()
 		msg = """
 		Viper is going offline due to user error !
 		Check my error logs for details...
