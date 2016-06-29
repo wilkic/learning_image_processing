@@ -1,22 +1,24 @@
 #!/usr/bin/env python
 
+import ipdb
+
 import os, sys
 #sys.path.append('/home/project')
 import send_mean as sm
 
-#import requests
-#url = 'https://api.parkmobile.us/nforceapi/parkingrights/zones/1/99999?format=json'
-#usr = 'ws_cobbgoodspeed'
-#pwd = 'P@rkmobile1'
-#resp = requests.get(url, auth=(usr,pwd), verify=True)
-#
-#data = resp.json()
+import requests
+url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
+usr = 'ws_goodspeedcapi'
+pwd = 'x2warEya'
+resp = requests.get(url, auth=(usr,pwd), verify=True)
 
-resp = {"resultTimeStampLocal":"\"2016-06-07T18:26:07.7759835\"","parkingRights":[{"parkingRightId":65528390,"signageZoneCode":"9911","internalZoneCode":"9911","supplierId":993099,"lpn":"PMTEST","lpnState":"GA","startDateLocal":"2016-06-07T18:18:01.4230000","endDateLocal":"2016-06-07T20:18:01.4230000","productDescription":"Cashless Parking","spaceNumber":"","timeZone":"Eastern Standard Time","permit":"","modifiedDate":"2016-06-07T18:18:04.9400000","payedMinutes":120,"purchaseAmount":2.00,"productTypeId":1}],"totalCount":1,"resultCount":1}
+data = resp.json()
 
-N_paid_cars = resp['totalCount']
+#data = {"resultTimeStampLocal":"\"2016-06-07T18:26:07.7759835\"","parkingRights":[{"parkingRightId":65528390,"signageZoneCode":"9911","internalZoneCode":"9911","supplierId":993099,"lpn":"PMTEST","lpnState":"GA","startDateLocal":"2016-06-07T18:18:01.4230000","endDateLocal":"2016-06-07T20:18:01.4230000","productDescription":"Cashless Parking","spaceNumber":"","timeZone":"Eastern Standard Time","permit":"","modifiedDate":"2016-06-07T18:18:04.9400000","payedMinutes":120,"purchaseAmount":2.00,"productTypeId":1}],"totalCount":1,"resultCount":1}
 
-check = len( resp['parkingRights'] )
+N_paid_cars = data['totalCount']
+
+check = len( data['parkingRights'] )
 
 if N_paid_cars != check:
     err = 'API result not self consistent:\n'\
@@ -25,14 +27,28 @@ if N_paid_cars != check:
 
     sm.send_msg( err )
 
-nSpots = 20
+nSpots = 49
 
-spots = {prop:{'pd':0,'occ':0} for prop in range(1,nSpots+1)}
+defaultProperties = {
+    'paid': 0,
+    'occupied': 0,
+    'startTime': '',
+    'endTime': '',
+    'lps': '',
+    'lpn': ''
+}
 
-for i in resp['parkingRights']:
-    if i['spaceNumber']:
-        sn = int( i['spaceNumber'] )
-        spots[ sn ]['pd'] = 1
+spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
+
+for i in data['parkingRights']:
+    ipdb.set_trace()
+    sn = int( i['spaceNumber'] )
+    spots[ sn ]['paid'] = 1
+    spots[ sn ]['startTime'] = str(i['startDateLocal'])
+    spots[ sn ]['endTime'] = str(i['endDateLocal'])
+    spots[ sn ]['lpn'] = str(i['lpn'])
+    spots[ sn ]['lps'] = str(i['lpnState'])
+
 
 # TODO:
 # * Call VIPER to get the occupied status
@@ -46,15 +62,26 @@ tabHtml = '<table border="1">'
 tabHtml += ("<tr><td>Space Number</td>"
                 "<td>Occupied</td>"
                 "<td>Paid</td>"
+                "<td>Paid Start Time</td>"
+                "<td>Paid End Time</td>"
+                "<td>License Number</td>"
+                "<td>License State</td>"
             "</tr>")
 
               
 for spot in spots:
     row = '<tr>'
     spaceCell = '<td>Space ' + str(spot) + '</td>'
-    occCell = '<td> ' + str(spots[spot]['occ']) + '</td>'
-    paidCell = '<td> ' + str(spots[spot]['pd']) + '</td>'
-    row = row + spaceCell + occCell + paidCell
+    occCell = '<td> ' + str(spots[spot]['occupied']) + '</td>'
+    paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
+    pstCell = '<td> ' + str(spots[spot]['startTime']) + '</td>'
+    petCell = '<td> ' + str(spots[spot]['endTime']) + '</td>'
+    lpnCell = '<td> ' + str(spots[spot]['lpn']) + '</td>'
+    lpsCell = '<td> ' + str(spots[spot]['lps']) + '</td>'
+    row += spaceCell 
+    row = row + occCell + paidCell
+    row = row + pstCell + petCell
+    row = row + lpnCell + lpsCell
     row += '</tr>'
     tabHtml += row
 
