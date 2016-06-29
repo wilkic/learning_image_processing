@@ -37,9 +37,29 @@ camera1 = {
                          (  0,425),
                          (400,425),
                          (400,  0)],
-#            'base_means': [119,120,118],
-#            'base_means': [94,95,94],
-            'base_means': [94.422767857142858, 94.507968750000003, 93.452845982142861],
+            'base_means': [94,95,94],
+            'means': [0,0,0],
+            'mean': 0,
+            'tol': 10,
+            'time_present': 0,
+            'occupied': 0,
+            'persistence_threshold': 5
+        }
+    ]
+}
+
+camera2 = {
+    'number': 2,
+    'port': 8092,
+    'im_ts': dt.datetime(2016,06,26,00,00,00),
+    'spots': [
+        {
+            'number': 2,
+            'vertices': [(  0,  0),
+                         (  0,425),
+                         (400,425),
+                         (400,  0)],
+            'base_means': [110, 110, 110],
             'means': [0,0,0],
             'mean': 0,
             'tol': 10,
@@ -55,7 +75,8 @@ to = ['info@goodspeedparking.com',
       '3102452197@mms.att.net']
 #to = ['info@goodspeedparking.com']
 
-cameras = {1: camera1}
+cameras = {1: camera1,
+           2: camera2}
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
@@ -169,15 +190,19 @@ while True:
                     notify.print_mean(spot['mean'])
                     print "Present %f seconds" % spot['time_present']
                     message = """
+                    %s
                     Spot taken !
-                    %s """ % pp.pprint( camera )
+                    %s """ % ( dt.datetime.now(),
+                               pp.pformat( camera ) )
                     notify.send_msg_with_jpg( message, fname, to )
 
                 # When spot is vacated, notify too
                 if leaving:
                     message = """
+                    %s
                     Car has left !
-                    means = %s """ % spot['means']
+                    %s """ % ( dt.datetime.now(),
+                               pp.pformat( camera ) )
                     notify.send_msg_with_jpg( message, fname, to )
         
         # cleanup:
@@ -190,12 +215,13 @@ while True:
             pp.pprint( camera, stream=out )
 
     except Exception, e:
-            traceback.print_exc()
-            msg = """
-            Viper is going offline due to user error !
-            Check my error logs for details...
-            %s """ % str(e)
-            notify.send_msg(msg,to)
-            print str(e)
-            sys.exit()
+        traceback.print_exc()
+        msg = """
+        %s
+        Viper is going offline due to user error !
+        Check my error logs for details...
+        %s """ % (str(dt.datetime.now()),str(e))
+        notify.send_msg(msg,to)
+        print str(e)
+        sys.exit()
 
