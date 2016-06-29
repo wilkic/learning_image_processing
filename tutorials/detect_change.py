@@ -84,7 +84,7 @@ wd = os.path.join( os.getcwd(), 'images_being_processed' )
 if not os.path.exists(wd):
     os.makedirs(wd)
 
-#for index in range(0,100):
+#for index in range(0,1):
 while True:
     
     try:
@@ -205,14 +205,15 @@ while True:
                                pp.pformat( camera ) )
                     notify.send_msg_with_jpg( message, fname, to )
         
-        # cleanup:
+            # cleanup:
 
-        # delete the image that has been processed
-        os.remove(fname)
+            # delete the image that has been processed
+            os.remove(fname)
 
-        # store the current state of the camera
-        with open('camera.json','wt') as out:
-            pp.pprint( camera, stream=out )
+            # store the current state of the camera
+            json_fname = 'camera' + str(c) + '.json'
+            with open(json_fname,'w') as out:
+                pp.pprint( camera, stream=out )
 
     except Exception, e:
         traceback.print_exc()
