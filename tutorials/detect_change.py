@@ -88,6 +88,9 @@ wd = os.path.join( os.getcwd(), 'images_being_processed' )
 if not os.path.exists(wd):
     os.makedirs(wd)
 
+# File name of image in working dir while processing
+fname = wd + '/snap.jpg'
+
 #for index in range(0,1):
 while True:
     
@@ -96,7 +99,7 @@ while True:
             
             # Write jpeg to image dir and
             # populate camera dict with time info
-            fname = gi.get_image( ip, camera, wd, to )
+            delta_time = gi.get_image( ip, camera, fname, wd, to )
             
             # read image
             im = mh.imread(fname)

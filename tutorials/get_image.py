@@ -5,9 +5,8 @@ import datetime as dt
 import notifications as notify
 from shutil import copyfile
 
-def get_image( ip, cam, wd, to ):
+def get_image( ip, cam, fname, wd, to ):
     
-    fname = wd + '/snap.jpg'
 
     # store snapshot to processing dir (wd)
     # using wget cuz otherwise I can't open the file (urllib etc)
@@ -47,5 +46,5 @@ def get_image( ip, cam, wd, to ):
     # set timestamp for current image
     cam['im_ts'] = ts
 
-    return fname
+    return delta_time
 
