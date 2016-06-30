@@ -17,8 +17,6 @@ import sys
 
 import pprint as pp
 
-from shutil import copyfile
-
 from PIL import Image, ImageDraw
 
 import traceback

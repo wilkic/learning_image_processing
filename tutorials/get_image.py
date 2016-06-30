@@ -3,6 +3,7 @@ import os
 import sys
 import datetime as dt
 import notifications as notify
+from shutil import copyfile
 
 def get_image( ip, cam, wd, to ):
     
