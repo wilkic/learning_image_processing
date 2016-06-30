@@ -181,7 +181,7 @@ while True:
                 msg = """
                 %s
                 Camera %d is not producing images !
-                """ % (str(dt.datetime.now()),cam['number'])
+                """ % (str(dt.datetime.now()),camera['number'])
                 notify.send_msg(msg,to)
                 print msg
 
