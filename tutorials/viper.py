@@ -4,49 +4,22 @@ import os
 import numpy as np
 import pylab
 import mahotas as mh
-
 import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw
+
+import json
 
 import ipdb
 
+
+
 plt.close("all")
 
-camera1 = {
-    'number': 1,
-    'im_dir': '/home/acp/Projects/camera_testing/hosafe/garage_testing_062216/',
-    'spots': [
-        {
-            'number': 1,
-            'vertices': [(125,325),
-                         (100,400),
-                         (100,500),
-                         (150,650),
-                         (200,650),
-                         (200,325)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        },
-        {
-            'number': 2,
-            'vertices': [(200,700),(100,900),(100,1296),(400,1296),(400,750)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        },
-        {
-            'number': 3,
-            'vertices': [(500,850),(380,1296),(600,1296)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        }
-    ]
-}
 
-camera2 = {
+
+camera = {
     'number': 2,
-    'im_dir': '/home/acp/Projects/camera_testing/hosafe/garage_testing_062216/',
+    'im_full_path': '/home/acp/Projects/camera_testing/hosafe/garage_testing_062216/cam1_20160622121838.jpg',
     'spots': [
         {
             'number': 30,
@@ -112,69 +85,56 @@ camera2 = {
     ]
 }
 
-cameras = {1: camera1, 2: camera2}
 
-from PIL import Image, ImageDraw
+fname = camera['im_full_path']
 
-for c, camera in cameras.iteritems():
+im = mh.imread(fname)
+
+#pylab.ion()
+#pylab.figure(figsize=(10,6))
+#pylab.imshow(im)
+#pylab.colorbar()
+#pylab.show()
+#break
+
+for color in range(0,3):
+#for color in range(0,1):
     
-    if c == 1:
-        continue
-    
-    d = camera['im_dir']
-    files = [os.path.join(d, f) for f in os.listdir(d)]
-    files = filter(os.path.isfile, files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    fname = files[-1]
-    ts = fname[-18:-4]
+    imc = im[:,:,color]
+    imm = np.zeros(imc.shape)
 
-    im = mh.imread(fname)
-    
-    #pylab.ion()
-    #pylab.figure(figsize=(10,6))
-    #pylab.imshow(im)
-    #pylab.colorbar()
-    #pylab.show()
-    #break
-
-    for color in range(0,3):
-    #for color in range(0,1):
+    for spot in camera['spots']:
         
-        imc = im[:,:,color]
-        imm = np.zeros(imc.shape)
+        shp_verts = spot['vertices']
 
-        for spot in camera['spots']:
-            
-            shp_verts = spot['vertices']
+        shp = Image.new( 'L', imc.shape, 0 )
+        
+        ImageDraw.Draw(shp).polygon( shp_verts, outline=1, fill=1 )
+        
+        shp_mask = np.array(shp).transpose().astype(bool)
+        
+        imct = np.copy(imc)
+        imct[np.invert(shp_mask)] = 0
+        
+        #pylab.figure(figsize=(10,6))
+        #pylab.imshow(imct)
+        #pylab.colorbar()
+        #pylab.show()
+        
+        imm[shp_mask] = imc[shp_mask]
 
-            shp = Image.new( 'L', imc.shape, 0 )
-            
-            ImageDraw.Draw(shp).polygon( shp_verts, outline=1, fill=1 )
-            
-            shp_mask = np.array(shp).transpose().astype(bool)
-            
-            imct = np.copy(imc)
-            imct[np.invert(shp_mask)] = 0
-            
-            #pylab.figure(figsize=(10,6))
-            #pylab.imshow(imct)
-            #pylab.colorbar()
-            #pylab.show()
-            
-            imm[shp_mask] = imc[shp_mask]
+        spot['means'][color] = imc[shp_mask].mean()
 
-            spot['means'][color] = imc[shp_mask].mean()
+    pylab.ion()
+    pylab.figure(figsize=(10,6))
+    pylab.imshow(imc)
+    pylab.colorbar()
+    pylab.show()
 
-        pylab.ion()
-        pylab.figure(figsize=(10,6))
-        pylab.imshow(imc)
-        pylab.colorbar()
-        pylab.show()
-
-        pylab.ion()
-        pylab.figure(figsize=(10,6))
-        pylab.imshow(imm)
-        pylab.colorbar()
-        pylab.show()
+    pylab.ion()
+    pylab.figure(figsize=(10,6))
+    pylab.imshow(imm)
+    pylab.colorbar()
+    pylab.show()
 
 

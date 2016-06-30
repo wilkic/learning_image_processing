@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 
 import ipdb
 
-import notifications as notify
 
 import datetime as dt
 
@@ -23,6 +22,13 @@ from shutil import copyfile
 from PIL import Image, ImageDraw
 
 import traceback
+
+sys.path.append(os.getcwd())
+
+import notifications as notify
+import get_image as gi
+
+
 
 ip = "108.45.109.111"
 
@@ -90,46 +96,9 @@ while True:
     try:
         for c, camera in cameras.iteritems():
             
-            # filename of image
-            fname = wd + '/snap.jpg'
-
-            # store snapshot to processing dir (wd)
-            # using wget cuz otherwise I can't open the file (urllib etc)
-            url = 'http://' + ip + ':' + str(camera['port'])
-            url += '/cgi-bin/getsnapshot.cgi'
-            call = 'wget ' + url + ' -O ' + fname + ' >/dev/null 2>&1'
-            # Verbose
-            #call = 'wget ' + url + ' -O ' + fname
-            
-            tries = 0
-            while True:
-                if tries>10:
-                    msg = """
-                    %s
-                    Camera %d is not producing images !
-                    """ % (str(dt.datetime.now()),c)
-                    #notify.send_msg(msg,to)
-                    print msg   
-                    sys.exit()
-
-                tries += 1
-                os.system(call)
-                if os.stat(fname).st_size < 16000:
-                    copyfile(fname, wd+'/failed_snap_'+str(tries)+'.jpg')
-                    continue
-                else:
-                    break
-
-            
-            # get timestamp
-            ts = dt.datetime.now()
-            
-            # get time since last image
-            delta_time_obj = ts - camera['im_ts']
-            delta_time = delta_time_obj.total_seconds()
-            
-            # set timestamp for current image
-            camera['im_ts'] = ts
+            # Write jpeg to image dir and
+            # populate camera dict with time info
+            fname = gi.get_image( ip, camera, wd, to )
             
             # read image
             im = mh.imread(fname)

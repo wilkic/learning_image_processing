@@ -3,7 +3,8 @@
 import ipdb
 
 import os, sys
-#sys.path.append('/home/project')
+
+sys.path.append(os.getcwd())
 import send_mean as sm
 
 import pprint as pp
@@ -11,6 +12,9 @@ import pprint as pp
 import datetime as dt
 
 import requests
+
+import html_ops as ho
+
 
 # Set up the spots dictionary
 nSpots = 49
@@ -33,6 +37,7 @@ spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
 # Assign the monthlies
 for i in monthlies:
     spots[i]['monthly'] = 1
+    spots[i]['paid'] = 1
 
 
 # Get the PM API response
@@ -77,8 +82,15 @@ tabHtml += ("<tr><td>Space Number</td>"
                 "<td>Monthly</td>"
             "</tr>")
 
-              
+
+n_remaining = nSpots
+
 for spot in spots:
+
+    # For now, update remaining number of
+    # spots based on the number paid
+    n_remaining -= spots[spot]['paid']
+
     row = '<tr>'
     spaceCell = '<td>Space ' + str(spot) + '</td>'
     occCell = '<td> ' + str(spots[spot]['occupied']) + '</td>'
@@ -98,18 +110,18 @@ for spot in spots:
 
 tabHtml += '</table>'
 
-headHtml = '<head><meta http-equiv="refresh" content="3" />'
-headHtml += '<title>Lot Status</title></head>'
-
-pageHtml = '<html>'
-pageHtml += headHtml
-pageHtml += tabHtml + '</html>'
-
-fido = open('table.html','w')
-fido.write(pageHtml)
-fido.close()
-
-
-
+ho.write_page( 'table.html', 'Lot Status', 3, tabHtml )
 os.rename("table.html","/var/www/html/table/index.html")
+
+nHtml = """\
+        <div>
+          <font size="7">
+          %d
+          </font>
+        </div>
+        """ % n_remaining 
+
+ho.write_page( 'n_avail.html', 'Available Spots', 3, nHtml )
+os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+
 
