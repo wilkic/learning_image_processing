@@ -37,13 +37,13 @@ camera1 = {
                          (  0,425),
                          (400,425),
                          (400,  0)],
-            'base_means': [94,95,94],
+            'base_means': [100,100,100],
             'means': [0,0,0],
             'mean': 0,
-            'tol': 10,
+            'tol': 15,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 5
+            'persistence_threshold': 20
         }
     ]
 }
@@ -65,7 +65,7 @@ camera2 = {
             'tol': 10,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 5
+            'persistence_threshold': 20
         }
     ]
 }
