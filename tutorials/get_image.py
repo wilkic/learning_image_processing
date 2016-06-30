@@ -2,11 +2,12 @@
 import os
 import sys
 import datetime as dt
-import notifications as notify
 from shutil import copyfile
 
-def get_image( ip, cam, fname, wd, to ):
+def get_image( ip, cam, wd, to ):
     
+    # File name of image in working dir while processing
+    fname = wd + '/snap.jpg'
 
     # store snapshot to processing dir (wd)
     # using wget cuz otherwise I can't open the file (urllib etc)
@@ -17,15 +18,11 @@ def get_image( ip, cam, fname, wd, to ):
     #call = 'wget ' + url + ' -O ' + fname
     
     tries = 0
+    success = True
     while True:
         if tries>10:
-            msg = """
-            %s
-            Camera %d is not producing images !
-            """ % (str(dt.datetime.now()),cam['number'])
-            notify.send_msg(msg,to)
-            print msg   
-            sys.exit()
+            success = False
+            break
 
         tries += 1
         os.system(call)
@@ -45,6 +42,10 @@ def get_image( ip, cam, fname, wd, to ):
     
     # set timestamp for current image
     cam['im_ts'] = ts
-
-    return delta_time
+    
+    result = {'success': success,
+              'fname': fname,
+              'delta_time': delta_time}
+    
+    return result
 
