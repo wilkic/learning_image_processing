@@ -33,7 +33,7 @@ import get_image as gi
 ##########################################
 
 
-sleepytime = 60
+sleepytime = 30
 
 ip = "108.45.109.111"
 
@@ -54,7 +54,7 @@ camera1 = {
             'tol': 15,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 60
+            'persistence_threshold': 145
         },
         {
             'number': 2,
@@ -68,7 +68,7 @@ camera1 = {
             'tol': 15,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 60
+            'persistence_threshold': 145
         },
         {
             'number': 3,
@@ -82,7 +82,7 @@ camera1 = {
             'tol': 15,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 60
+            'persistence_threshold': 145
         }
     ]
 }
@@ -105,7 +105,7 @@ camera2 = {
             'tol': 10,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 60
+            'persistence_threshold': 145
         },
         {
             'number': 5,
@@ -120,7 +120,7 @@ camera2 = {
             'tol': 10,
             'time_present': 0,
             'occupied': 0,
-            'persistence_threshold': 60
+            'persistence_threshold': 145
         }
     ]
 }
