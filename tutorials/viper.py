@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 
 import json
+import pprint as pp
 
 import ipdb
 
@@ -17,74 +18,63 @@ plt.close("all")
 
 
 
-camera = {
-    'number': 2,
-    'im_full_path': '/home/acp/Projects/camera_testing/hosafe/garage_testing_062216/cam1_20160622121838.jpg',
+camera1 = {
+    'number': 1,
+    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera1/snap20160705224323.jpg',
     'spots': [
         {
-            'number': 30,
-            'vertices': [( 350,   0),
-                         ( 350, 380),
-                         ( 720, 250),
-                         ( 720,   0)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
+            'number': 1,
+            'vertices': [(   0,   0),
+                         (   0,  30),
+                         ( 150,  60),
+                         ( 150,   0)],
+            'base_means': [118,123,127],
         },
         {
-            'number': 31,
-            'vertices': [( 350, 420),
-                         ( 350, 850),
-                         ( 720,1000),
-                         ( 720, 300)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
+            'number': 2,
+            'vertices': [(   0, 90),
+                         (   0, 290),
+                         ( 224, 230),
+                         ( 224, 110)],
+            'base_means': [117,117,115],
         },
         {
-            'number': 32,
-            'vertices': [( 350, 900),
-                         ( 350,1200),
-                         ( 420,1280),
-                         ( 720,1280),
-                         ( 720,1050)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        },
-        {
-            'number': 47,
-            'vertices': [(  25, 820),
-                         (  25,1010),
-                         ( 100,1100),
-                         ( 100, 920)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        },
-        {
-            'number': 48,
-            'vertices': [(  20, 690),
-                         (  25, 810),
-                         ( 100, 910),
-                         ( 100, 710)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
-        },
-        {
-            'number': 49,
-            'vertices': [(  20, 510),
-                         (  20, 680),
-                         ( 100, 700),
-                         ( 100, 460)],
-            'means': [0,0,0],
-            'mean': 0,
-            'taken': 0
+            'number': 3,
+            'vertices': [(   0, 310),
+                         (   0, 400),
+                         ( 224, 400),
+                         ( 224, 250)],
+            'base_means': [119,119,117],
         }
     ]
 }
 
+camera2 = {
+    'number': 2,
+    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera2/snap20160706230618.jpg',
+    'spots': [
+        {
+            'number': 4,
+            'vertices': [(   0,  50),
+                         (   0, 200),
+                         ( 224, 195),
+                         ( 224,   0),
+                         ( 170,   0)],
+            'base_means': [130,130,131],
+        },
+        {
+            'number': 5,
+            'vertices': [(   0, 215),
+                         (   0, 370),
+                         ( 100, 400),
+                         ( 224, 400),
+                         ( 224, 210)],
+            'base_means': [126,126,125],
+        }
+    ]
+}
+
+camera = camera2
 
 fname = camera['im_full_path']
 
@@ -123,7 +113,8 @@ for color in range(0,3):
         
         imm[shp_mask] = imc[shp_mask]
 
-        spot['means'][color] = imc[shp_mask].mean()
+        spot['base_means'][color] = imc[shp_mask].mean()
+        
 
     pylab.ion()
     pylab.figure(figsize=(10,6))
@@ -138,3 +129,5 @@ for color in range(0,3):
     pylab.show()
 
 
+for spot in camera['spots']:
+    pp.pprint(spot)

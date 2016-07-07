@@ -13,7 +13,10 @@ def get_image( ip, cam, wd, to ):
     # using wget cuz otherwise I can't open the file (urllib etc)
     url = 'http://' + ip + ':' + str(cam['port'])
     url += '/cgi-bin/getsnapshot.cgi'
-    call = 'wget ' + url + ' -O ' + fname + ' >/dev/null 2>&1'
+    fout = ' -O ' + fname + ' '
+    timeout = ' --timeout=5 --tries=2'
+    dump = ' >/dev/null 2>&1'
+    call = 'wget ' + url + fout  + timeout + dump
     # Verbose
     #call = 'wget ' + url + ' -O ' + fname
     
@@ -26,11 +29,14 @@ def get_image( ip, cam, wd, to ):
 
         tries += 1
         os.system(call)
-        if os.stat(fname).st_size < 16000:
-            copyfile(fname, wd+'/failed_snap_'+str(tries)+'.jpg')
-            continue
+        if os.path.isfile(fname):
+            if os.stat(fname).st_size < 16000:
+                copyfile(fname, wd+'/failed_snap_'+str(tries)+'.jpg')
+                continue
+            else:
+                break
         else:
-            break
+            continue
 
     
     # get timestamp
