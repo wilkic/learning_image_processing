@@ -110,7 +110,7 @@ for spot in spots:
 
 tabHtml += '</table>'
 
-ho.write_page( 'table.html', 'Lot Status', 3, tabHtml )
+ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
 os.rename("table.html","/var/www/html/table/index.html")
 
 nHtml = """\
@@ -121,7 +121,7 @@ nHtml = """\
         </div>
         """ % n_remaining 
 
-ho.write_page( 'n_avail.html', 'Available Spots', 3, nHtml )
+ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
 os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
 
 
