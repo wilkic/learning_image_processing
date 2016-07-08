@@ -18,7 +18,7 @@ bport = 9000
 
 cams = range(1,16)
 
-store_dir = '/home/acp/Projects/ggp/cam_images'
+store_dir = '/home/ubuntu/cam_images'
 
 #################################
 #################################

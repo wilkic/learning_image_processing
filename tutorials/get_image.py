@@ -1,7 +1,7 @@
 
 import os
 import sys
-import datetime as dt
+import time
 from shutil import copyfile
 
 def get_image( ip, cam, wd, to ):
@@ -40,11 +40,10 @@ def get_image( ip, cam, wd, to ):
 
     
     # get timestamp
-    ts = dt.datetime.now()
+    ts = time.time()
     
     # get time since last image
-    delta_time_obj = ts - cam['im_ts']
-    delta_time = delta_time_obj.total_seconds()
+    delta_time = ts - cam['im_ts']
     
     # set timestamp for current image
     cam['im_ts'] = ts

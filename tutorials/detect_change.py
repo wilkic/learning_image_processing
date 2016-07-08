@@ -40,7 +40,7 @@ ip = "108.45.109.111"
 camera1 = {
     'number': 1,
     'port': 9001,
-    'im_ts': dt.datetime(2016,07,04,00,00,00),
+    'im_ts': time.time(),
     'spots': [
         {
             'number': 1,
@@ -90,7 +90,7 @@ camera1 = {
 camera2 = {
     'number': 2,
     'port': 9002,
-    'im_ts': dt.datetime(2016,07,04,00,00,00),
+    'im_ts': time.time(),
     'spots': [
         {
             'number': 4,
@@ -154,7 +154,9 @@ csd = os.path.join( os.getcwd(), 'camera_states' )
 if not os.path.exists(csd):
     os.makedirs(csd)
 
-#for index in range(0,3):
+failure_notifications = 0
+
+#for index in range(0,10):
 while True:
     
     try:
@@ -226,37 +228,48 @@ while True:
                     if spot['occupied'] and newly_occupied:
                         notify.print_mean(spot['mean'])
                         print "Present %f seconds" % spot['time_present']
+                        ts_gmt = time.gmtime(camera['im_ts'])
                         message = """
                         %s
                         Spot taken !
-                        %s """ % ( dt.datetime.now(),
+                        %s """ % ( time.asctime(ts_gmt),
                                    pp.pformat( camera ) )
                         notify.send_msg_with_jpg( message, fname, to )
 
                     # When spot is vacated, notify too
                     if leaving:
+                        ts_gmt = time.gmtime(camera['im_ts'])
                         message = """
                         %s
                         Car has left !
-                        %s """ % ( dt.datetime.now(),
+                        %s """ % ( time.asctime(ts_gmt),
                                    pp.pformat( camera ) )
                         notify.send_msg_with_jpg( message, fname, to )
 
                     # Log spot data
-                    slog_data = [spot['time_present']] + spot['means']
+
+                    slog_data = [camera['im_ts'], spot['time_present']] + spot['means']
                     slog_fname = 'spot' + str(spot['number']) + '.log'
                     slog_ffname = os.path.join(sld,slog_fname)
                     with open(slog_ffname,'a') as l:
                         w = csv.writer(l)
                         w.writerow(slog_data)
+                
+                # Reset failure notification log
+                failure_notifications = 0
 
-            
             else:
                 msg = """
                 %s
                 Camera %d is not producing images !
-                """ % (str(dt.datetime.now()),camera['number'])
-                notify.send_msg(msg,to)
+                """ % (time.asctime(),camera['number'])
+                if failure_notifications < 5:
+                    notify.send_msg(msg,to)
+                    failure_notifications += 1
+                elif failure_notifications == 5:
+                    msg += """
+                    Camera is BROKEN
+                    -- DONE SENDING MESSAGES LIKE THIS"""
                 print msg
 
                 
