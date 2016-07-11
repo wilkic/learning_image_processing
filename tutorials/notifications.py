@@ -1,4 +1,5 @@
 
+import sys
 import smtplib
 import getpass
 
@@ -50,10 +51,16 @@ def send_mean( mean, recipients ):
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
 
+    try:
+        srvDict['server'].sendmail( srvDict['sender'], 
+                                    recipients,
+                                    msg.as_string() )
+    except smtplib.SMTPDataError as e:
+        sys.stderr.write("""
+        Warning: %s was caught while trying to notify
+        of mean = %f""" (e,mean))
 
-    srvDict['server'].sendmail( srvDict['sender'], 
-                                recipients,
-                                msg.as_string() )
+    srvDict['server'].close()
 
     return
 
@@ -67,10 +74,16 @@ def send_msg( message, recipients ):
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
 
+    try:
+        srvDict['server'].sendmail( srvDict['sender'], 
+                                    recipients,
+                                    msg.as_string() )
+    except smtplib.SMTPDataError as e:
+        sys.stderr.write("""
+        Warning: %s was caught while trying to notify
+        of mean = %f""" (e,mean))
 
-    srvDict['server'].sendmail( srvDict['sender'], 
-                                recipients,
-                                msg.as_string() )
+    srvDict['server'].close()
 
     return
 
@@ -85,10 +98,16 @@ def send_msg_with_jpg( message, fname, recipients  ):
     msg['To'] = ', '.join(recipients)
     msg.attach(body)
     msg.attach(MIMEImage(file(fname).read(), _subtype="jpeg"))
+    
+    try:
+        srvDict['server'].sendmail( srvDict['sender'], 
+                                    recipients,
+                                    msg.as_string() )
+    except smtplib.SMTPDataError as e:
+        sys.stderr.write("""
+        Warning: %s was caught while trying to notify
+        of mean = %f""" (e,mean))
 
-    srvDict['server'].sendmail( srvDict['sender'], 
-                                recipients,
-                                msg.as_string() )
     srvDict['server'].close()
 
     return
