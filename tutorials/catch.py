@@ -224,7 +224,7 @@ pylab.ion()
 pylab.figure(figsize=(10,6))
 pylab.imshow(ime)
 pylab.show()
-import sys; sys.exit()
+#import sys; sys.exit()
 
 # Set up keypoint threshold
 #surf = cv2.SURF(400)
