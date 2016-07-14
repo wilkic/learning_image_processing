@@ -1,4 +1,4 @@
-def loadCameras( time )
+def loadCameras( time ):
 
     camera1 = {
         'number': 1,

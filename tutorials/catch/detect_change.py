@@ -4,7 +4,6 @@ import os
 
 import numpy as np
 import pylab
-import mahotas as mh
 
 import matplotlib.pyplot as plt
 
@@ -18,10 +17,12 @@ import sys
 import traceback
 
 sys.path.append(os.getcwd())
+import dataRecording as log
+import loadCameras as lc
 
+sys.path.append("..")
 import notifications as notify
 import get_image as gi
-import dataRecording as log
 
 ##########################################
 ##########################################
@@ -38,7 +39,7 @@ ip = "108.45.109.111"
 #      '3102452197@mms.att.net']
 to = ['info@goodspeedparking.com']
 
-cameras = loadCameras( time.time() )
+cameras = lc.loadCameras( time.time() )
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
