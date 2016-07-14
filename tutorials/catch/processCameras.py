@@ -2,7 +2,7 @@
 sys.path.append(os.getcwd())
 import notifications as notify
 import get_image as gi
-import logging as log
+import dataRecording as log
 
 ####
 
