@@ -16,7 +16,7 @@ def evaluatePresence( spot ):
         spot['time_present'] = 0
     
     # if wasn't occupied, occupance will be new
-    newly_occupied = not spot['occupied']
+    new_occupation = not spot['occupied']
     
     # Mark as occupied once spot has been taken for time past threshold
     spot['occupied'] = spot['time_present'] >= spot['persistence_threshold']
@@ -27,7 +27,7 @@ def evaluatePresence( spot ):
     # When spot is flagged as occupied, notify 
     ts_gmt = time.gmtime(camera['im_ts'])
     ts_str = time.asctime(ts_gmt)
-    if spot['occupied'] and newly_occupied:
+    if spot['occupied'] and new_occupation:
         
         spot['occupationStartTime'] = ts_str
         

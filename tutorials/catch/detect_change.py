@@ -19,6 +19,8 @@ import traceback
 sys.path.append(os.getcwd())
 import dataRecording as log
 import loadCameras as lc
+import processSpots
+import processCameras
 
 sys.path.append("..")
 import notifications as notify
@@ -39,7 +41,11 @@ ip = "108.45.109.111"
 #      '3102452197@mms.att.net']
 to = ['info@goodspeedparking.com']
 
-cameras = lc.loadCameras( time.time() )
+threshSurf = 400
+edgeLims = [100, 200]
+
+
+cameras = lc.loadCameras( time.time(), threshSurf, edgeLims )
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
@@ -51,15 +57,15 @@ if not os.path.exists(wd):
 sld, cld, csd = log.setupDirs( os.getcwd() )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd}
 
-spots = createSpots()
+spots = processSpots.create()
 
 #for index in range(0,10):
 while True:
     
     try:
 
-        processCameras( ip, cameras, dirs )
-        writeSpotsFromCameras( cameras, spots )
+        processCameras.processCameras( ip, cameras, dirs, to )
+        processSpots.write( cameras, spots )
 
         processPayments( spots )
 
@@ -72,8 +78,8 @@ while True:
         Catch is going offline due to user error !
         Check my error logs for details...
         %s """ % (str(dt.datetime.now()),str(e))
-        notify.send_msg(msg,to)
-        print str(e)
+        #notify.send_msg(msg,to)
+        print "%s\n\n%s" % (msg, str(e))
         sys.exit()
 
     # Do it all over again, after some rest

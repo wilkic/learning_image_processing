@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-filename = '/home/acp/Projects/ggp/cam_images/camera1/spot2_occupied.jpg'
-#filename = '/home/acp/Projects/ggp/cam_images/camera1/snap20160707185220.jpg'
+filename = '/home/acp/work/ggp/cam_images/camera1/spot2_occupied.jpg'
+#filename = '/home/acp/work/ggp/cam_images/camera1/snap20160707185220.jpg'
 
 img = cv2.imread(filename)
 
-surf = cv2.SURF(400)
+surf = cv2.xfeatures2d.SURF_create(400)
 
 kp, des = surf.detectAndCompute(img,None)
 

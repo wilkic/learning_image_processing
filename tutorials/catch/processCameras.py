@@ -1,12 +1,18 @@
 
+import sys
+import os
+
 sys.path.append(os.getcwd())
+import dataRecording as log
+import analyzeImage as ai
+
+sys.path.append("..")
 import notifications as notify
 import get_image as gi
-import dataRecording as log
 
 ####
 
-def processCameras( ip, cameras, dirs )
+def processCameras( ip, cameras, dirs, to ):
     
     for c, camera in cameras.iteritems():
         
@@ -19,8 +25,7 @@ def processCameras( ip, cameras, dirs )
             fname = result['fname']
             
             # Process image
-            analyzeImage( fname, camera['spots'], 
-                          threshSurf, edgeMin, edgeMax )
+            ai.analyzeImage( fname, camera ) 
 
             # Judging
             for spot in camera['spots']:

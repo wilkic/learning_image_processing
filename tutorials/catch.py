@@ -3,7 +3,6 @@ import os
 
 import numpy as np
 import pylab
-import mahotas as mh
 import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 
@@ -19,8 +18,8 @@ plt.close("all")
 
 test_camera1 = {
     'number': 1,
-#    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera1/snap20160705224323.jpg',
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera1/spot2_occupied.jpg',
+#    'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera1/spot2_occupied.jpg',
     'spots': [
         {
             'number': 1,
@@ -56,7 +55,7 @@ test_camera1 = {
 
 camera1 = {
     'number': 1,
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera1/snap20160705224323.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
     'spots': [
         {
             'number': 1,
@@ -87,7 +86,7 @@ camera1 = {
 
 camera2 = {
     'number': 2,
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera2/snap20160706230618.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera2/snap20160706230618.jpg',
     'spots': [
         {
             'number': 4,
@@ -112,7 +111,7 @@ camera2 = {
 
 camera3 = {
     'number': 3,
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera3/snap20160705224324.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera3/snap20160705224324.jpg',
     'spots': [
         {
             'number': 6,
@@ -145,7 +144,7 @@ camera3 = {
 
 camera4 = {
     'number': 4,
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera4/snap20160706230618.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera4/snap20160706230618.jpg',
     'spots': [
         {
             'number': 9,
@@ -177,7 +176,7 @@ camera4 = {
 
 camera5 = {
     'number': 5,
-    'im_full_path': '/home/acp/Projects/ggp/cam_images/camera5/snap20160705224325.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera5/snap20160705224325.jpg',
     'spots': [
         {
             'number': 12,
@@ -213,7 +212,7 @@ camera = test_camera1
 
 fname = camera['im_full_path']
 
-im = mh.imread(fname)
+im = cv2.imread(fname)
 
 # get edges
 edges = cv2.Canny( im, 100, 200 )

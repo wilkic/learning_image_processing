@@ -1,26 +1,26 @@
+import numpy as np
 import cv2
-from PIL import Image
 
-def analyzeImage( imageFname, spots, threshSurf, edgemin, edgeMax)
+def analyzeImage( imageFname, camera):
     
     # Read image
-    image = cv2.imread(imFname)
+    image = cv2.imread(imageFname)
 
     # Get edges in image (use mask later)
-    edges = cv2.Canny( image, edgeMin, edgeMax )
+    edges = cv2.Canny( image, camera['edgeLims'][0], camera['edgeLims'][1])
 
     # Set up surface for threshold
-    surf = cv2.SURF(threshSurf)
+    surf = cv2.xfeatures2d.SURF_create(camera['threshSurf'])
     
-    for spot in spots:
+    for spot in camera['spots']:
         
         # get the polygon vertices for the spot
         verts = spot['vertices']
         
         # Make (boolean) mask for spot
-        shp = Image.new( 'L', image[:,:,0].shape, 0 )
-        ImageDraw.Draw(shp).polygon( verts, outline=1, fill=1 )
-        bMask = np.array(shp).transpose().astype(bool)
+        mask = np.zeros((image.shape[0],image.shape[1]))
+        cv2.fillConvexPoly(mask,verts,1)
+        bMask = mask.astype(bool)
         
         # Make integer mask for surfing
         iMask = bMask.astype('uint8')
@@ -31,16 +31,19 @@ def analyzeImage( imageFname, spots, threshSurf, edgemin, edgeMax)
 
         ### Get number of edges
         spotEdges = edges[bMask]
-        edgeInds = np.where(spotEdges == 255))
+        edgeInds = np.where(spotEdges == 255)
         spot['nEdges'] = np.shape(edgeInds)[1]
     
         ### Get channel stats
         for color in range(3):
         
-            imc = im[bMask,color]
+            imc = image[bMask,color]
+            import ipdb
+            import pprint as pp
+            ipdb.set_trace()
             spot['means'][color] = imc.mean()
             spot['sigs'][color] = imc.std()
+            pp.pprint(spot)
             spot['maxs'][color] = imc.max()
             spot['mins'][color] = imc.min()
-
     return

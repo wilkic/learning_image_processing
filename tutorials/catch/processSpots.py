@@ -1,5 +1,5 @@
 
-def createSpots()
+def create():
 
     # Set up the spots dictionary
     nSpots = 49
@@ -15,7 +15,7 @@ def createSpots()
         'lpn': '',
         'monthly': 0,
         'occupied': 0,
-        'present': 0,
+        'timePresent': 0,
         'occupationStartTime': 0,
         'occupationEndTime': 0
     }
@@ -29,3 +29,16 @@ def createSpots()
 
     return spots
 
+def write( cameras, spots ):
+    
+    for c, camera in cameras.iteritems():
+        
+        for spot in camera['spots']:
+            
+            sn = spot['number']
+            spots[sn]['occupied'] = spot['occupied']
+            spots[sn]['timePresent'] = spot['timePresent']
+            spots[sn]['occupationStartTime'] = spot['occupationStartTime']
+            spots[sn]['occupationEndTime'] = spot['occupationEndTime']
+    
+    return
