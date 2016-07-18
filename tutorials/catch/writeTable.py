@@ -2,6 +2,7 @@
 import ipdb
 
 import os, sys
+import time
 
 sys.path.append(os.getcwd())
 
@@ -43,21 +44,23 @@ def writeTable( spots ):
         lpnCell = '<td> ' + str(spots[spot]['lpn']) + '</td>'
         lpsCell = '<td> ' + str(spots[spot]['lps']) + '</td>'
         mnthCell = '<td> ' + str(spots[spot]['monthly']) + '</td>'
-        ostCell = '<td> ' + str(spots[spot]['occupationStartTime']) + '</td>'
-        oetCell = '<td> ' + str(spots[spot]['occupationEndTime']) + '</td>'
+        ost_gmt = time.gmtime(spots[spot]['occupationStartTime'])
+        oet_gmt = time.gmtime(spots[spot]['occupationEndTime'])
+        ostCell = '<td> ' + time.asctime(ost_gmt) + '</td>'
+        oetCell = '<td> ' + time.asctime(oet_gmt) + '</td>'
         row += spaceCell 
         row = row + occCell + presCell + paidCell
         row = row + pstCell + petCell
         row = row + lpnCell + lpsCell
-        row = row + ostCell + oetCell
         row += mnthCell
+        row = row + ostCell + oetCell
         row += '</tr>'
         tabHtml += row
 
     tabHtml += '</table>'
 
     ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
-    #os.rename("table.html","/var/www/html/table/index.html")
+    #os.rename("table.html","/var/www/html/newtable/index.html")
     print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\

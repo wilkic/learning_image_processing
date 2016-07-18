@@ -19,7 +19,8 @@ def determinePresence( spot ):
     spot['ePresent'] = dEdges > spot['edgeThresh']
     
     # Give out the final score
-    present = spot['ePresent']
+    #present = spot['ePresent']
+    present = spot['kPresent']
     
     return present
 
