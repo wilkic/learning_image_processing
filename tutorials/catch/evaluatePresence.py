@@ -32,14 +32,15 @@ def evaluatePresence( spot, present, delta_time, ts ):
         spot['occupationStartTime'] = ts
         
         message = """
-        Spot %d taken at %s!
-        """ % ( spot['number'], ts_str )
+        %s
+        Spot %d taken!
+        """ % ( ts_str, spot['number'] )
         print message
     
     # Record duration of occuption
     spot['timeOccupied'] = 0
     if occupied:
-        spot['timeOccupied'] = ts - spot['occupationStartTime']
+        spot['timeOccupied'] = ts - spot['occupationStartTime'] + delta_time
         
     # When spot is vacated, notify too
     if leaving:
@@ -48,8 +49,8 @@ def evaluatePresence( spot, present, delta_time, ts ):
         
         message = """
         %s
-        Car left spot %d at %s!
-        %s """ % ( spot['number'], ts_str )
+        Car left spot %d!
+        """ % ( ts_str, spot['number'] )
         print message
 
     return message
