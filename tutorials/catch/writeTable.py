@@ -60,8 +60,8 @@ def writeTable( spots ):
     tabHtml += '</table>'
 
     ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
-    #os.rename("table.html","/var/www/html/newtable/index.html")
-    print 'WARNING: table webpage is not going to served site location!'
+    os.rename("table.html","/var/www/html/table/index.html")
+    #print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\
             <div>
@@ -72,8 +72,8 @@ def writeTable( spots ):
             """ % n_remaining 
 
     ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-    #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
-    print 'WARNING: number webpage is not going to served site location!'
+    os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+    #print 'WARNING: number webpage is not going to served site location!'
 
 
     return

@@ -49,7 +49,7 @@ def evaluatePresence( spot, present, delta_time, ts ):
         
         message = """
         %s
-        Car left spot %d!
+        Spot %d vacated!
         """ % ( ts_str, spot['number'] )
         print message
 
