@@ -1,5 +1,9 @@
 
-def create():
+import sys
+sys.path.append("..")
+import notifications as notify
+
+def create( nSpots, monthlies ):
 
     # Set up the spots dictionary
     nSpots = 49
@@ -14,8 +18,8 @@ def create():
         'lps': '',
         'lpn': '',
         'monthly': 0,
-        'occupied': 0,
         'timePresent': 0,
+        'timeOccupied': 0,
         'occupationStartTime': 0,
         'occupationEndTime': 0
     }
@@ -36,9 +40,34 @@ def write( cameras, spots ):
         for spot in camera['spots']:
             
             sn = spot['number']
-            spots[sn]['occupied'] = spot['occupied']
             spots[sn]['timePresent'] = spot['timePresent']
+            spots[sn]['timeOccupied'] = spot['timeOccupied']
             spots[sn]['occupationStartTime'] = spot['occupationStartTime']
             spots[sn]['occupationEndTime'] = spot['occupationEndTime']
+    
+    return
+
+def judge( spots, freeTime, to, imdir, vdir ):
+
+    for s, spot in spots.iteritems():
+        if spot['timeOccupied'] > freeTime:
+           if spot['paid'] < 1:
+                spot['violation'] = True
+                
+                gmt = time.gmtime(spot['occupationStartTime'])
+                tss = time.asctime(gmt)
+
+                sn = str(spot['number'])
+                fname = 'spot' + sn + '.jpg'
+                fname = os.path.join( imdir, fname )
+                vfname = 'spot' + sn + '_' + tss + '.jpg'
+                vfname = os.path.join( vdir, vfname )
+                copyfile( fname, vfname ) 
+                msg = """
+                %s
+                Spot %d in VIOLATION
+                """ % (time.asctime(), spot['number'])
+                notify.send_msg_with_jpg( msg, vfname, to )
+
     
     return

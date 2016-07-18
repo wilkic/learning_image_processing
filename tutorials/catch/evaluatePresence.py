@@ -3,47 +3,54 @@
 import time
 
 ####
-def evaluatePresence( spot ):
+def evaluatePresence( spot, present, delta_time, ts ):
     
     # If car is present, mark as taken
     # otherwise reset counter
     leaving = 0
-    if present > 1:
-        spot['time_present'] += delta_time
+    if present:
+        spot['timePresent'] += delta_time
     else:
-        if spot['time_present'] >= spot['persistence_threshold']:
+        if spot['timePresent'] >= spot['occupationThresh']:
             leaving = 1
-        spot['time_present'] = 0
+        spot['timePresent'] = 0
     
     # if wasn't occupied, occupance will be new
-    new_occupation = not spot['occupied']
+    new_occupation = spot['timeOccupied'] == 0
     
     # Mark as occupied once spot has been taken for time past threshold
-    spot['occupied'] = spot['time_present'] >= spot['persistence_threshold']
+    occupied = spot['timePresent'] >= spot['occupationThresh']
     
     # By default don't send a message
     message = None
 
     # When spot is flagged as occupied, notify 
-    ts_gmt = time.gmtime(camera['im_ts'])
+    ts_gmt = time.gmtime(ts)
     ts_str = time.asctime(ts_gmt)
-    if spot['occupied'] and new_occupation:
+    if occupied and new_occupation:
         
-        spot['occupationStartTime'] = ts_str
+        spot['occupationStartTime'] = ts
         
         message = """
         Spot %d taken at %s!
         """ % ( spot['number'], ts_str )
-
+        print message
+    
+    # Record duration of occuption
+    spot['timeOccupied'] = 0
+    if occupied:
+        spot['timeOccupied'] = ts - spot['occupationStartTime']
+        
     # When spot is vacated, notify too
     if leaving:
         
-        spot['occupationEndTime'] = ts_str
+        spot['occupationEndTime'] = ts
         
         message = """
         %s
         Car left spot %d at %s!
         %s """ % ( spot['number'], ts_str )
+        print message
 
     return message
 

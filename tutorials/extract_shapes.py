@@ -14,7 +14,7 @@ camera1 = {
     'spots': [
         {
             'number': 1,
-            'vertices': np.array([[0,200],[0,800],[500,200]]),
+            'vertices': np.array([[200,200],[0,800],[500,200]]),
             'mean': 0,
             'taken': 0
         },
@@ -58,21 +58,43 @@ im = cv2.imread(cameras[1]['floc'])
 
 imr = im[:,:,0]
 
-shp_verts = cameras[1]['spots'][1]['vertices']
-#shp_mask = np.zeros((imr.shape[0],imr.shape[1]))
-shp_mask = np.zeros_like(imr)
-cv2.fillConvexPoly(shp_mask,shp_verts,1)
-shp_mask = shp_mask.astype(bool)
+verts = cameras[1]['spots'][1]['vertices']
+#mask = np.zeros((imr.shape[0],imr.shape[1]))
+mask = np.zeros_like(imr)
+cv2.fillConvexPoly(mask,verts,1)
+#cv2.fillPoly(mask,np.array(verts),1)
+mask = mask.astype(bool)
 
-imrt = np.zeros_like(imr)
-imrt[shp_mask] = imr[shp_mask]
+imm = np.zeros_like(imr)
+imm[mask] = imr[mask]
+
+#import pylab
+#pylab.ion()
+#pylab.figure()
+#pylab.imshow(imr)
+#pylab.show()
+#
+#pylab.ion()
+#pylab.figure()
+#pylab.imshow(imm)
+#pylab.show()
+
 
 
 cv2.imshow('orig',imr)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+cv2.waitKey(0)
+cv2.waitKey(0)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
-cv2.imshow('orig',imrt)
+
+cv2.imshow('orig',imm)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+cv2.waitKey(0)
+cv2.waitKey(0)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 

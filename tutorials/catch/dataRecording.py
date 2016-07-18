@@ -23,15 +23,16 @@ def setupDirs( baseDir ):
     return sld, cld, csd
 
 
-def logSpots( ts, spot, logDir ):
+def logSpot( ts, spot, logDir ):
     
     # Log spot data
-    data = ( [ts, spot['time_present']] 
+    data = ( [ts, spot['timePresent']] 
              + spot['means']
              + spot['sigs']
              + spot['maxs']
              + spot['mins']
-             + spot['nKeys'] )
+             + [spot['nEdges']]
+             + [spot['nKeys']] )
 
     fname = 'spot' + str(spot['number']) + '.log'
     ffname = os.path.join( logDir, fname )

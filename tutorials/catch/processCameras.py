@@ -1,10 +1,13 @@
 
 import sys
 import os
+from shutil import copyfile
 
 sys.path.append(os.getcwd())
 import dataRecording as log
 import analyzeImage as ai
+import determinePresence as dp
+import evaluatePresence as ep
 
 sys.path.append("..")
 import notifications as notify
@@ -30,17 +33,29 @@ def processCameras( ip, cameras, dirs, to ):
             # Judging
             for spot in camera['spots']:
 
-                present = determinePresence( spot )
+                present = dp.determinePresence( spot )
                 
-                msg = evaluatePresence( spot, delta_time )
+                msg = ep.evaluatePresence( spot,
+                                           present,
+                                           delta_time,
+                                           camera['im_ts'] )
                 
                 if msg is not None:
                     notify.send_msg_with_jpg( msg, fname, to )
                 
-            # Log data
-            log.logSpot( ts, spot, dirs['sld'] )
+                # Store all current images
+                sfname = 'spot' + str(spot['number']) + '.jpg'
+                cfname = os.path.join( dirs['cd'], sfname )
+                copyfile(fname,cfname)
 
+                # Log spot data
+                log.logSpot( camera['im_ts'], spot, dirs['sld'] )
+
+            # reset failure counter
             camera['nFails'] = 0
+            
+            # delete the image that has been processed
+            os.remove(fname)
 
         else:
             camera['nFails'] += 1
@@ -53,8 +68,6 @@ def processCameras( ip, cameras, dirs, to ):
                 notify.send_msg(msg,to)
                 print msg
             
-        # delete the image that has been processed
-        os.remove(fname)
 
         # store the current state of the camera
         log.addState( camera, dirs['cld'] )

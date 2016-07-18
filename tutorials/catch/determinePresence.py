@@ -11,10 +11,12 @@ def determinePresence( spot ):
 
     meanPresence = np.where( dMean > spot['meanThresh'] )
     spot['mPresent'] = len( meanPresence ) > 1
+    
+    dKeys = spot['nKeys'] - spot['base_nKeys']
+    spot['kPresent'] = dKeys > spot['keyThresh']
 
-    spot['kPresent'] = spot['nKeys'] > spot['keyThresh']
-
-    spot['ePresent'] = spot['nEdges'] > spot['edgeThresh']
+    dEdges = spot['nEdges'] - spot['base_nEdges']
+    spot['ePresent'] = dEdges > spot['edgeThresh']
     
     # Give out the final score
     present = spot['ePresent']

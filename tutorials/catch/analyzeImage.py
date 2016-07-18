@@ -38,12 +38,8 @@ def analyzeImage( imageFname, camera):
         for color in range(3):
         
             imc = image[bMask,color]
-            import ipdb
-            import pprint as pp
-            ipdb.set_trace()
             spot['means'][color] = imc.mean()
             spot['sigs'][color] = imc.std()
-            pp.pprint(spot)
             spot['maxs'][color] = imc.max()
             spot['mins'][color] = imc.min()
     return

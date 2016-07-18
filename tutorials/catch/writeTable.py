@@ -7,13 +7,13 @@ sys.path.append(os.getcwd())
 
 import html_ops as ho
 
-def writeTable( spots )
+def writeTable( spots ):
 
     # Put the data in a table
     tabHtml = '<table border="1">'
     tabHtml += ("<tr><td>Space Number</td>"
                     "<td>Occupied</td>"
-                    "<td>Present</td>"
+                    "<td>Time Present</td>"
                     "<td>Paid</td>"
                     "<td>Paid Start Time</td>"
                     "<td>Paid End Time</td>"
@@ -25,7 +25,7 @@ def writeTable( spots )
                 "</tr>")
 
 
-    n_remaining = nSpots
+    n_remaining = len(spots)
 
     for spot in spots:
 
@@ -35,8 +35,8 @@ def writeTable( spots )
 
         row = '<tr>'
         spaceCell = '<td>Space ' + str(spot) + '</td>'
-        occCell = '<td> ' + str(spots[spot]['occupied']) + '</td>'
-        presCell = '<td> ' + str(spots[spot]['present']) + '</td>'
+        occCell = '<td> ' + str(spots[spot]['timeOccupied']>0) + '</td>'
+        presCell = '<td> ' + str(spots[spot]['timePresent']) + '</td>'
         paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
         pstCell = '<td> ' + str(spots[spot]['payStartTime']) + '</td>'
         petCell = '<td> ' + str(spots[spot]['payEndTime']) + '</td>'
@@ -57,7 +57,8 @@ def writeTable( spots )
     tabHtml += '</table>'
 
     ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
-    os.rename("table.html","/var/www/html/table/index.html")
+    #os.rename("table.html","/var/www/html/table/index.html")
+    print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\
             <div>
@@ -68,6 +69,9 @@ def writeTable( spots )
             """ % n_remaining 
 
     ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-    os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+    #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+    print 'WARNING: number webpage is not going to served site location!'
 
+
+    return
 
