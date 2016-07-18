@@ -34,8 +34,8 @@ def processApi( spots ):
         for i in data['parkingRights']:
             sn = int( i['spaceNumber'] )
             spots[ sn ]['paid'] = 1
-            spots[ sn ]['startTime'] = str(i['startDateLocal'])
-            spots[ sn ]['endTime'] = str(i['endDateLocal'])
+            spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
+            spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
             spots[ sn ]['lpn'] = str(i['lpn'])
             spots[ sn ]['lps'] = str(i['lpnState'])
 
