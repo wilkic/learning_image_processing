@@ -393,10 +393,118 @@ def loadCameras( time, threshSurf, edgeLims, t2occ ):
         ]
     }
 
+    camera6 = {
+        'number': 6,
+        'port': 9006,
+        'im_ts': time,
+        'threshSurf': threshSurf,
+        'edgeLims': edgeLims,       
+        'spots': [
+            {
+                'number': 15,
+                'vertices': np.array(
+                            [[   0,  40],
+                             [  40,  40],
+                             [ 110, 140],
+                             [   0, 120]]),
+                'base_means': [115,113,113],
+                'base_nEdges': 53,
+                'base_nKeys': 1,
+                'base_means': [114,113,113],
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 16,
+                'vertices': np.array(
+                            [[  85,  20],
+                             [ 290,  20],
+                             [ 235, 170],
+                             [ 140, 170]]),
+                'base_means': [110,113,113],
+                'base_nEdges': 115,
+                'base_nKeys': 16,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 17,
+                'vertices': np.array(
+                            [[ 365,   0],
+                             [ 400,   0],
+                             [ 400,  85],
+                             [ 370, 120],
+                             [ 290, 125]]),
+                'base_means': [109,111,111],
+                'base_nEdges': 58,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 22,
+                'vertices': np.array(
+                            [[ 150, 200],
+                             [ 275, 200],
+                             [ 255, 230],
+                             [ 155, 225]]),
+                'base_means': [166,163,163],
+                'base_nEdges': 122,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+        ]
+    }
     cameras = {1: camera1,
                2: camera2,
                3: camera3,
                4: camera4,
-               5: camera5}
+               5: camera5,
+               6: camera6}
     
     return cameras

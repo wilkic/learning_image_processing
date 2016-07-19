@@ -1,6 +1,6 @@
 import time
 
-import sys
+import os, sys
 sys.path.append("..")
 import notifications as notify
 

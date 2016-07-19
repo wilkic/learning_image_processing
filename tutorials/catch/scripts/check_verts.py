@@ -212,8 +212,61 @@ camera5 = {
     ]
 }
 
+camera6 = {
+    'number': 6,
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
+    #'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
+    'spots': [
+        {
+            'number': 15,
+            'vertices': np.array(
+                        [[   0,  40],
+                         [  40,  40],
+                         [ 110, 140],
+                         [   0, 120]]),
+            'base_means': [115,113,113],
+            'base_nEdges': 53,
+            'base_nKeys': 1
+        },
+        {
+            'number': 16,
+            'vertices': np.array(
+                        [[  85,  20],
+                         [ 290,  20],
+                         [ 235, 170],
+                         [ 140, 170]]),
+            'base_means': [110,113,113],
+            'base_nEdges': 115,
+            'base_nKeys': 16
+        },
+        {
+            'number': 17,
+            'vertices': np.array(
+                        [[ 365,   0],
+                         [ 400,   0],
+                         [ 400,  85],
+                         [ 370, 120],
+                         [ 290, 125]]),
+            'base_means': [109,111,111],
+            'base_nEdges': 58,
+            'base_nKeys': 0
+        },
+        {
+            'number': 22,
+            'vertices': np.array(
+                        [[ 150, 200],
+                         [ 275, 200],
+                         [ 255, 230],
+                         [ 155, 225]]),
+            'base_means': [166,163,163],
+            'base_nEdges': 122,
+            'base_nKeys': 0
+        }
+    ]
+}
 
-camera = camera1
+
+camera = camera6
 
 _plot = True
 
@@ -267,8 +320,10 @@ for spot in camera['spots']:
         for color in range(0,3):
             imm[bMask,color] = im[bMask,color]
         imm[bMask,0] = edges[bMask]
+        ims = np.copy(imm)
+        #ims = cv2.drawKeypoints( imm, kp, None, (255,0,0), 4 )
         plt.figure(figsize=(10,6))
-        plt.imshow(imm)
+        plt.imshow(ims)
 
     for color in range(0,3):
     #for color in range(0,1):
