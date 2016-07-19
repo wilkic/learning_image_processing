@@ -1,3 +1,4 @@
+from shutil import copyfile
 import time
 
 import os, sys
@@ -52,8 +53,9 @@ def judge( spots, freeTime, to, imdir, vdir ):
 
     for s, spot in spots.iteritems():
 
-        if spot['timeOccupied'] > freeTime:
-           if spot['paid'] < 1:
+        if spot['timeOccupied'] > freeTime and not spot['paid']:
+            if not spot['violation']:
+
                 spot['violation'] = True
                 
                 gmt = time.gmtime(spot['occupationStartTime'])
@@ -70,6 +72,8 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 Spot %d in VIOLATION
                 """ % (time.asctime(), s)
                 notify.send_msg_with_jpg( msg, vfname, to )
+        else:
+            spot['violation'] = False
 
     
     return
