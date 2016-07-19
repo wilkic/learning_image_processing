@@ -7,8 +7,6 @@ import pylab
 
 import matplotlib.pyplot as plt
 
-import ipdb
-
 import time
 import datetime as dt
 
@@ -81,7 +79,7 @@ while True:
 
         processCameras.processCameras( ip, cameras, dirs, to )
         processSpots.write( cameras, spots )
-
+        
         processApi.processApi( spots )
         
         processSpots.judge( spots, violationThresh, to, cd, vd )

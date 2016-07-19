@@ -1,4 +1,3 @@
-
 import time
 
 import sys
@@ -52,6 +51,7 @@ def write( cameras, spots ):
 def judge( spots, freeTime, to, imdir, vdir ):
 
     for s, spot in spots.iteritems():
+
         if spot['timeOccupied'] > freeTime:
            if spot['paid'] < 1:
                 spot['violation'] = True
@@ -59,16 +59,15 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 gmt = time.gmtime(spot['occupationStartTime'])
                 tss = time.asctime(gmt)
 
-                sn = str(spot['number'])
-                fname = 'spot' + sn + '.jpg'
+                fname = 'spot' + s + '.jpg'
                 fname = os.path.join( imdir, fname )
-                vfname = 'spot' + sn + '_' + tss + '.jpg'
+                vfname = 'spot' + s + '_' + tss + '.jpg'
                 vfname = os.path.join( vdir, vfname )
                 copyfile( fname, vfname ) 
                 msg = """
                 %s
                 Spot %d in VIOLATION
-                """ % (time.asctime(), spot['number'])
+                """ % (time.asctime(), s)
                 notify.send_msg_with_jpg( msg, vfname, to )
 
     
