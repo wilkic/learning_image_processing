@@ -18,7 +18,8 @@ plt.close("all")
 
 camera1 = {
     'number': 1,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
+    #'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
+    'im_full_path': '/home/acp/work/aws/current_images/spot1.jpg',
     'spots': [
         {
             'number': 1,
@@ -212,7 +213,7 @@ camera5 = {
 }
 
 
-camera = camera5
+camera = camera1
 
 _plot = True
 
