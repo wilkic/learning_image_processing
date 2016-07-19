@@ -58,10 +58,11 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 
                 gmt = time.gmtime(spot['occupationStartTime'])
                 tss = time.asctime(gmt)
-
-                fname = 'spot' + s + '.jpg'
+                
+                ss = str(s)
+                fname = 'spot' + ss + '.jpg'
                 fname = os.path.join( imdir, fname )
-                vfname = 'spot' + s + '_' + tss + '.jpg'
+                vfname = 'spot' + ss + '_' + tss + '.jpg'
                 vfname = os.path.join( vdir, vfname )
                 copyfile( fname, vfname ) 
                 msg = """
