@@ -13,6 +13,8 @@ def get_spot_data(log_dir):
         sigs = [[], [], []]
         maxs = [[], [], []]
         mins = [[], [], []]
+        nEdges = []
+        nKeys = []
         with open(ffname) as f:
             rdr = csv.reader(f)
             for r in rdr:
@@ -23,6 +25,8 @@ def get_spot_data(log_dir):
                     sigs[i] += [float(r[5+i])]
                     maxs[i] += [float(r[8+i])]
                     mins[i] += [float(r[11+i])]
+                nEdges += [float(r[14])]
+                nKeys += [float(r[15])]
 
         spot = {
             'num':s,
@@ -31,7 +35,9 @@ def get_spot_data(log_dir):
             'means':means,
             'sigs':sigs,
             'maxs':maxs,
-            'mins':mins
+            'mins':mins,
+            'nEdges':nEdges,
+            'nKeys':nKeys
         }
 
         spots += [spot]
@@ -44,19 +50,28 @@ def get_spot_data(log_dir):
 #######################################
 
 import matplotlib.pyplot as plt
+import numpy as np
 
-spots = get_spot_data('..')
+fdir = os.path.expanduser('~/work/aws/spot_logs')
+spots = get_spot_data(fdir)
+
 c = ['r','g','b']
 
 for s in spots:
+    time = np.asarray(s['ts'])
+    t2end = time - time[-1]
     plt.ion()
     plt.figure()
-    for i in range(3):
-        plt.plot(s['ts'],s['means'][i],c[i])
+    plt.plot( t2end, s['nKeys'] )
+#    for i in range(3):
+#        plt.plot(s['ts'],s['means'][i],c[i])
     
     #plt.show()
     fname = 'spot' + str(s['num']) + '_means.png'
     plt.savefig(fname)
+
+plt.figure()
+plt.close()
 
 html = '<html><body>'
 for s in spots:
