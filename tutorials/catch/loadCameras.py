@@ -1,6 +1,6 @@
 import numpy as np
 
-def loadCameras( time, threshSurf, edgeLims, t2occ ):
+def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
 
     camera1 = {
         'number': 1,
