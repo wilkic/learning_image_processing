@@ -1,12 +1,25 @@
 
 
 import csv
-import os
+import os, sys
+import re
+sys.path.append('..')
+import loadCameras as lc
+
 def get_spot_data(log_dir):
     spots = []
-    for s in range(1,14+1):
-        fname = 'spot' + str(s) + '.log'
-        ffname = os.path.join(log_dir,fname)
+
+    f = []
+    for (dirpath, dirnames, filenames) in os.walk(log_dir):
+        f.extend(filenames)
+        break
+
+    for s in f:
+        #fname = 'spot' + str(s) + '.log'
+        #ffname = os.path.join(log_dir,fname)
+        ffname = os.path.join(log_dir,s)
+        ft = os.path.splitext(s)
+        sn = int( ft[0][4:] )
         ts = []
         tp = []
         means = [[], [], []]
@@ -29,7 +42,7 @@ def get_spot_data(log_dir):
                 nKeys += [float(r[15])]
 
         spot = {
-            'num':s,
+            'num':sn,
             'ts':ts,
             'tp':tp,
             'means':means,
@@ -37,7 +50,8 @@ def get_spot_data(log_dir):
             'maxs':maxs,
             'mins':mins,
             'nEdges':nEdges,
-            'nKeys':nKeys
+            'nKeys':nKeys,
+            'klim':0
         }
 
         spots += [spot]
@@ -54,29 +68,45 @@ import numpy as np
 
 fdir = os.path.expanduser('~/work/aws/spot_logs')
 spots = get_spot_data(fdir)
+cams = lc.loadCameras()
 
+for c,cam in cams.iteritems():
+    for s in cam['spots']:
+        si = next(i for i in spots if i['num'] == s['number'])
+        si['klim'] = s['keyThresh'] + s['base_nKeys']
+
+    
 c = ['r','g','b']
 
 for s in spots:
+
     time = np.asarray(s['ts'])
-    t2end = time - time[-1]
+    t2end = (time - time[-1]) / 60
+
+    keylim = s['klim']
     plt.ion()
     plt.figure()
     plt.plot( t2end, s['nKeys'] )
+    plt.plot( t2end, keylim*np.ones_like(t2end) )
+
 #    for i in range(3):
 #        plt.plot(s['ts'],s['means'][i],c[i])
     
     #plt.show()
-    fname = 'spot' + str(s['num']) + '_means.png'
+    fname = 'spot' + str(s['num']) + '.png'
     plt.savefig(fname)
 
 plt.figure()
 plt.close()
 
+sort_spots = sorted( spots, key=lambda k: k['num'] )
+
 html = '<html><body>'
-for s in spots:
+for s in sort_spots:
+    ss = str(s['num'])
+    fname = 'spot' + ss + '.png'
     html += '<h2>'
-    html += 'Spot ' + str(s['num']) + ' History'
+    html += 'Spot ' + ss + ' History'
     html += '</h2>'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
 

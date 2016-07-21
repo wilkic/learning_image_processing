@@ -256,8 +256,8 @@ camera6 = {
             'vertices': np.array(
                         [[ 150, 200],
                          [ 275, 200],
-                         [ 255, 230],
-                         [ 155, 225]]),
+                         [ 255, 224],
+                         [ 155, 224]]),
             'base_means': [166,163,163],
             'base_nEdges': 122,
             'base_nKeys': 0
@@ -265,8 +265,59 @@ camera6 = {
     ]
 }
 
+camera7 = {
+    'number': 7,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera7/snap20160721043347.jpg',
+    'spots': [
+        {
+            'number': 18,
+            'vertices': np.array(
+                        [[   0,  40],
+                         [  75,  40],
+                         [ 120, 125],
+                         [   0, 100]]),
+            'base_means': [115,113,113],
+            'base_nEdges': 53,
+            'base_nKeys': 1
+        },
+        {
+            'number': 19,
+            'vertices': np.array(
+                        [[  90,  20],
+                         [ 325,  20],
+                         [ 265, 130],
+                         [ 135, 130]]),
+            'base_means': [110,113,113],
+            'base_nEdges': 115,
+            'base_nKeys': 16
+        },
+        {
+            'number': 20,
+            'vertices': np.array(
+                        [[ 355,   0],
+                         [ 400,   0],
+                         [ 400, 120],
+                         [ 385, 135],
+                         [ 280, 135]]),
+            'base_means': [109,111,111],
+            'base_nEdges': 58,
+            'base_nKeys': 0
+        },
+        {
+            'number': 23,
+            'vertices': np.array(
+                        [[ 110, 190],
+                         [ 290, 200],
+                         [ 280, 224],
+                         [ 110, 224]]),
+            'base_means': [166,163,163],
+            'base_nEdges': 122,
+            'base_nKeys': 0
+        }
+    ]
+}
 
-camera = camera6
+camera = camera7
 
 _plot = True
 
