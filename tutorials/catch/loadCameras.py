@@ -500,11 +500,120 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
             },
         ]
     }
+
+    camera7 = {
+        'number': 7,
+        'port': 9007,
+        'im_ts': time,
+        'threshSurf': threshSurf,
+        'edgeLims': edgeLims,       
+        'spots': [
+            {
+                'number': 18,
+                'vertices': np.array(
+                            [[   0,  40],
+                             [  75,  40],
+                             [ 120, 125],
+                             [   0, 100]]),
+                'base_means': [115,113,113],
+                'base_nEdges': 53,
+                'base_nKeys': 1,
+                'base_means': [114,113,113],
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 19,
+                'vertices': np.array(
+                            [[  90,  20],
+                             [ 325,  20],
+                             [ 265, 130],
+                             [ 135, 130]]),
+                'base_means': [110,113,113],
+                'base_nEdges': 115,
+                'base_nKeys': 16,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 20,
+                'vertices': np.array(
+                            [[ 355,   0],
+                             [ 400,   0],
+                             [ 400, 120],
+                             [ 385, 135],
+                             [ 280, 135]]),
+                'base_means': [109,111,111],
+                'base_nEdges': 58,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 23,
+                'vertices': np.array(
+                            [[ 110, 190],
+                             [ 290, 200],
+                             [ 280, 224],
+                             [ 110, 224]]),
+                'base_means': [166,163,163],
+                'base_nEdges': 122,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 200,
+                'keyThresh': 20,
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+        ]
+    }
     cameras = {1: camera1,
                2: camera2,
                3: camera3,
                4: camera4,
                5: camera5,
-               6: camera6}
+               6: camera6,
+               7: camera7}
     
     return cameras

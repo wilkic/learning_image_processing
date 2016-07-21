@@ -21,7 +21,18 @@ def processApi( spots ):
     url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
     usr = 'ws_goodspeedcapi'
     pwd = 'x2warEya'
-    resp = requests.get(url, auth=(usr,pwd), verify=True)
+    
+    i = 0
+    while True:
+        try:
+            resp = requests.get(url, auth=(usr,pwd), verify=True)
+            break
+        except Exception, e:
+            i += 1
+            print 'BAD NEWS PARKMOBILE!'
+            print 'Error number %d' % (i)
+            if i==5:
+                raise
 
     # Populate spots based on response
     if resp.status_code != 404:

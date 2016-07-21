@@ -18,11 +18,8 @@ def get_spot_data(log_dir):
         #fname = 'spot' + str(s) + '.log'
         #ffname = os.path.join(log_dir,fname)
         ffname = os.path.join(log_dir,s)
-        sng = re.search(r'spot(\d.)log',s)
-        sn = sng.group(1)
-        import ipdb
-        ipdb.set_trace()
-
+        ft = os.path.splitext(s)
+        sn = int( ft[0][4:] )
         ts = []
         tp = []
         means = [[], [], []]
@@ -75,7 +72,8 @@ cams = lc.loadCameras()
 
 for c,cam in cams.iteritems():
     for s in cam['spots']:
-        spots[s['number']-1]['klim'] = s['keyThresh'] + s['base_nKeys']
+        si = next(i for i in spots if i['num'] == s['number'])
+        si['klim'] = s['keyThresh'] + s['base_nKeys']
 
     
 c = ['r','g','b']
@@ -89,22 +87,26 @@ for s in spots:
     plt.ion()
     plt.figure()
     plt.plot( t2end, s['nKeys'] )
-    plt.plot( t2end, keylim )
+    plt.plot( t2end, keylim*np.ones_like(t2end) )
 
 #    for i in range(3):
 #        plt.plot(s['ts'],s['means'][i],c[i])
     
     #plt.show()
-    fname = 'spot' + str(s['num']) + '_means.png'
+    fname = 'spot' + str(s['num']) + '.png'
     plt.savefig(fname)
 
 plt.figure()
 plt.close()
 
+sort_spots = sorted( spots, key=lambda k: k['num'] )
+
 html = '<html><body>'
-for s in spots:
+for s in sort_spots:
+    ss = str(s['num'])
+    fname = 'spot' + ss + '.png'
     html += '<h2>'
-    html += 'Spot ' + str(s['num']) + ' History'
+    html += 'Spot ' + ss + ' History'
     html += '</h2>'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
 
