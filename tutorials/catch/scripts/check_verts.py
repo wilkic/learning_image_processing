@@ -14,6 +14,9 @@ import ipdb
 
 plt.close("all")
 
+def onclick(event):
+    print('button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %
+          (event.button, event.x, event.y, event.xdata, event.ydata))
 
 
 camera1 = {
@@ -278,7 +281,7 @@ camera7 = {
                          [   0, 100]]),
             'base_means': [115,113,113],
             'base_nEdges': 53,
-            'base_nKeys': 1
+            'base_nKeys': 1,
         },
         {
             'number': 19,
@@ -289,7 +292,7 @@ camera7 = {
                          [ 135, 130]]),
             'base_means': [110,113,113],
             'base_nEdges': 115,
-            'base_nKeys': 16
+            'base_nKeys': 16,
         },
         {
             'number': 20,
@@ -301,7 +304,7 @@ camera7 = {
                          [ 280, 135]]),
             'base_means': [109,111,111],
             'base_nEdges': 58,
-            'base_nKeys': 0
+            'base_nKeys': 0,
         },
         {
             'number': 23,
@@ -312,12 +315,74 @@ camera7 = {
                          [ 110, 224]]),
             'base_means': [166,163,163],
             'base_nEdges': 122,
-            'base_nKeys': 0
+            'base_nKeys': 0,
         }
     ]
 }
 
-camera = camera7
+camera8 = {
+    'number': 8,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
+    'spots': [
+        {
+            'number': 21,
+            'vertices': np.array(
+                        [[  70,  25],
+                         [ 169,  25],
+                         [ 140, 224],
+                         [   0, 224],
+                         [   0, 130]]),
+            'base_means': [105,105,105],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        }
+    ]
+}
+
+camera9 = {
+    'number': 9,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera9/snap20160721043347.jpg',
+    'spots': [
+        {
+            'number': 24,
+            'vertices': np.array(
+                        [[  80,  40],
+                         [ 155,  30],
+                         [  95, 170],
+                         [  35, 165],
+                         [  15, 120]]),
+            'base_means': [138,137,135],
+            'base_nEdges': 31,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 25,
+            'vertices': np.array(
+                        [[ 172,  30],
+                         [ 260,  30],
+                         [ 290, 100],
+                         [ 145, 100]]),
+            'base_means': [112,112,112],
+            'base_nEdges': 11,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 26,
+            'vertices': np.array(
+                        [[ 275,  30],
+                         [ 350,  30],
+                         [ 395,  70],
+                         [ 390, 160],
+                         [ 340, 165]]),
+            'base_means': [136,135,134],
+            'base_nEdges': 9,
+            'base_nKeys': 0,
+        },
+    ]
+}
+
+
+camera = camera9
 
 _plot = True
 
@@ -338,11 +403,13 @@ surf = cv2.xfeatures2d.SURF_create(400)
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
-    plt.ion()
+    #plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
-    plt.figure(figsize=(10,6))
+    fig = plt.figure(figsize=(10,6))
     plt.imshow(imc)
+    
+    cid = fig.canvas.mpl_connect('button_press_event', onclick)
 
 for spot in camera['spots']:
     
@@ -372,8 +439,8 @@ for spot in camera['spots']:
             imm[bMask,color] = im[bMask,color]
         imm[bMask,0] = edges[bMask]
         ims = np.copy(imm)
-        #ims = cv2.drawKeypoints( imm, kp, None, (255,0,0), 4 )
-        plt.figure(figsize=(10,6))
+        ims = cv2.drawKeypoints( imm, kp, None, (255,0,0), 4 )
+        sfig = plt.figure(figsize=(10,6))
         plt.imshow(ims)
 
     for color in range(0,3):
