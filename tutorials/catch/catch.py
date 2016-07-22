@@ -31,7 +31,7 @@ import get_image as gi
 ##########################################
 
 
-sleepytime = 10
+sleepytime = 30
 
 nSpots = 49
 monthlies = [39, 40, 41, 42]
@@ -44,6 +44,8 @@ ip = "108.45.109.111"
 #to = ['info@goodspeedparking.com',
 #      '3474005261@tmomail.net',
 #      '3102452197@mms.att.net']
+toall = ['info@goodspeedparking.com',
+      '3474005261@tmomail.net']
 to = ['info@goodspeedparking.com']
 
 threshSurf = 400
@@ -70,7 +72,6 @@ if not os.path.exists(vd):
 sld, cld, csd = log.setupDirs( os.getcwd() )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
-spots = processSpots.create(nSpots,monthlies)
 
 #for index in range(0,3):
 while True:
@@ -78,11 +79,13 @@ while True:
     try:
 
         processCameras.processCameras( ip, cameras, dirs, to )
+        
+        spots = processSpots.create(nSpots,monthlies)
         processSpots.write( cameras, spots )
         
         processApi.processApi( spots )
         
-        processSpots.judge( spots, violationThresh, to, cd, vd )
+        processSpots.judge( spots, violationThresh, toall, cd, vd )
 
         writeTable.writeTable( spots )
 
@@ -93,7 +96,7 @@ while True:
         Catch is going offline due to user error !
         Check my error logs for details...
         %s """ % (str(dt.datetime.now()),str(e))
-        #notify.send_msg(msg,to)
+        notify.send_msg(msg,toall)
         print "%s\n\n%s" % (msg, str(e))
         sys.exit()
 
