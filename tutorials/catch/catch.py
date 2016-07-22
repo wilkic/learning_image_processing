@@ -72,6 +72,8 @@ if not os.path.exists(vd):
 sld, cld, csd = log.setupDirs( os.getcwd() )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
+# Create the list of spots
+spots = processSpots.create(nSpots,monthlies)
 
 #for index in range(0,3):
 while True:
@@ -80,7 +82,6 @@ while True:
 
         processCameras.processCameras( ip, cameras, dirs, to )
         
-        spots = processSpots.create(nSpots,monthlies)
         processSpots.write( cameras, spots )
         
         processApi.processApi( spots )

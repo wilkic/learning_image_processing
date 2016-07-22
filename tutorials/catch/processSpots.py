@@ -23,7 +23,8 @@ def create( nSpots, monthlies ):
         'timePresent': 0,
         'timeOccupied': 0,
         'occupationStartTime': 0,
-        'occupationEndTime': 0
+        'occupationEndTime': 0,
+        'violation': False,
     }
 
     spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
