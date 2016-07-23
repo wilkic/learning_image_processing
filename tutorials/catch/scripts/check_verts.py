@@ -136,17 +136,18 @@ camera3 = {
 camera4 = {
     'number': 4,
     'im_full_path': '/home/acp/work/ggp/cam_images/camera4/snap20160706230618.jpg',
+#    'im_full_path': '/home/acp/work/aws/cam_images/camera4/snap20160723023418.jpg',
     'spots': [
         {
             'number': 9,
             'vertices': np.array(
-                        [[ 275,  30],
-                         [ 335,  30],
-                         [ 400, 115],
-                         [ 400, 224],
-                         [ 390, 224]]),
-            'base_means': [120,121,119],
-            'base_nEdges': 67,
+                        [[ 325,  25],
+                         [ 380,  25],
+                         [ 400,  50],
+                         [ 400, 220],
+                         [ 385, 150]]),
+            'base_means': [125,126,126],
+            'base_nEdges': 425,
             'base_nKeys': 2
         },
         {
@@ -163,13 +164,13 @@ camera4 = {
         {
             'number': 11,
             'vertices': np.array(
-                        [[  40,  30],
-                         [ 150,  30],
-                         [ 220, 224],
+                        [[  40,  40],
+                         [ 145,  40],
+                         [ 210, 224],
                          [  40, 224]]),
             'base_means': [119,119,119],
-            'base_nEdges': 391,
-            'base_nKeys': 12
+            'base_nEdges': 63,
+            'base_nKeys': 5
         },
     ]
 }
@@ -381,8 +382,38 @@ camera9 = {
     ]
 }
 
+camera10 = {
+    'number': 10,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera10/snap20160707210354.jpg',
+    'spots': [
+        {
+            'number': 27,
+            'vertices': np.array(
+                        [[  60,  35],
+                         [ 140,  35],
+                         [ 105, 130],
+                         [   0, 130],
+                         [   0, 105]]),
+            'base_means': [145,145,145],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 28,
+            'vertices': np.array(
+                        [[ 270,  40],
+                         [ 345,  40],
+                         [ 400, 105],
+                         [ 400, 170],
+                         [ 325, 190]]),
+            'base_means': [135,135,135],
+            'base_nEdges': 0,
+            'base_nKeys': 4,
+        }
+    ]
+}
 
-camera = camera9
+camera = camera10
 
 _plot = True
 
@@ -390,20 +421,13 @@ fname = camera['im_full_path']
 
 im = cv2.imread(fname)
 
-#pylab.ion()
-#pylab.figure(figsize=(10,6))
-#pylab.imshow(im)
-#pylab.colorbar()
-#pylab.show()
-#break
-
 
 surf = cv2.xfeatures2d.SURF_create(400)
 
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
-    #plt.ion()
+    plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
     fig = plt.figure(figsize=(10,6))

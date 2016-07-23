@@ -78,7 +78,12 @@ for c,cam in cams.iteritems():
     
 c = ['r','g','b']
 
+#plots_spots = [9, 10]
+
 for s in spots:
+    
+#    if s['num'] not in plots_spots:
+#        continue
 
     time = np.asarray(s['ts'])
     t2end = (time - time[-1]) / 60
