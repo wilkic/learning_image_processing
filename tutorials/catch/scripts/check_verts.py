@@ -220,16 +220,17 @@ camera6 = {
     'number': 6,
     'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
     #'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
+#    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
     'spots': [
         {
             'number': 15,
             'vertices': np.array(
                         [[   0,  40],
-                         [  40,  40],
-                         [ 110, 140],
-                         [   0, 120]]),
-            'base_means': [115,113,113],
-            'base_nEdges': 53,
+                         [  30,  40],
+                         [ 100, 170],
+                         [   0, 170]]),
+            'base_means': [121,118,118],
+            'base_nEdges': 187,
             'base_nKeys': 1
         },
         {
@@ -246,13 +247,12 @@ camera6 = {
         {
             'number': 17,
             'vertices': np.array(
-                        [[ 365,   0],
-                         [ 400,   0],
+                        [[ 400,   0],
                          [ 400,  85],
-                         [ 370, 120],
-                         [ 290, 125]]),
-            'base_means': [109,111,111],
-            'base_nEdges': 58,
+                         [ 350, 150],
+                         [ 300, 155]]),
+            'base_means': [123,125,125],
+            'base_nEdges': 28,
             'base_nKeys': 0
         },
         {
@@ -413,7 +413,7 @@ camera10 = {
     ]
 }
 
-camera = camera10
+camera = camera6
 
 _plot = True
 
