@@ -25,8 +25,8 @@ def evaluatePresence( spot, present, delta_time, ts ):
     message = None
 
     # When spot is flagged as occupied, notify 
-    ts_gmt = time.gmtime(ts)
-    ts_str = time.asctime(ts_gmt)
+    ts_lt = time.localtime(ts)
+    ts_str = time.asctime(ts_lt)
     if occupied and new_occupation:
         
         spot['occupationStartTime'] = ts

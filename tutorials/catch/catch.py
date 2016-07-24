@@ -52,6 +52,9 @@ threshSurf = 400
 edgeLims = [100, 200]
 
 
+os.environ['TZ'] = 'US/Eastern'
+time.tzset()
+
 cameras = lc.loadCameras( time.time(), threshSurf, edgeLims, timePresentBeforeOccupied )
 
 # When getting the latest image, move it to a directory

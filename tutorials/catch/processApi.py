@@ -55,10 +55,6 @@ def processApi( spots ):
         for s,spot in spots.iteritems():
             if s not in paid:
                 spot['paid'] = 0
-                spot['payStartTime'] = ''
-                spot['payEndTime'] = ''
-                spot['lpn'] = ''
-                spot['lps'] = ''
 
     return
 

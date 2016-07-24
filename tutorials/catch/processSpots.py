@@ -59,8 +59,8 @@ def judge( spots, freeTime, to, imdir, vdir ):
 
                 spot['violation'] = True
                 
-                gmt = time.gmtime(spot['occupationStartTime'])
-                tss = time.asctime(gmt)
+                lt = time.localtime(spot['occupationStartTime'])
+                tss = time.strftime('%Y%m%dT%H%M%S',lt)
                 
                 ss = str(s)
                 fname = 'spot' + ss + '.jpg'
@@ -71,7 +71,7 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 msg = """
                 %s
                 Spot %d in VIOLATION
-                """ % (time.asctime(), s)
+                """ % (time.asctime(lt), s)
                 notify.send_msg_with_jpg( msg, vfname, to )
         else:
             spot['violation'] = False
