@@ -14,7 +14,7 @@ import requests
 
 import html_ops as ho
 
-def processApi( spots ):
+def processApi( logdir, spots ):
 
 
     # Get the PM API response
@@ -38,7 +38,8 @@ def processApi( spots ):
     if resp.status_code != 404:
         data = resp.json()
         
-        with open('pmAPI.log','a') as out:
+
+        with open(os.path.join(log_dir,'pmAPI.log'),'a') as out:
             print >> out, dt.datetime.now()
             pp.pprint( data, stream=out )
         

@@ -33,6 +33,8 @@ import get_image as gi
 
 sleepytime = 30
 
+data_dir = '/mnt/data/catch/'
+
 nSpots = 49
 monthlies = [39, 40, 41, 42]
 
@@ -59,20 +61,20 @@ cameras = lc.loadCameras( time.time(), threshSurf, edgeLims, timePresentBeforeOc
 
 # When getting the latest image, move it to a directory
 # for processing... then delete it when done.
-wd = os.path.join( os.getcwd(), 'images_being_processed' )
+wd = os.path.join( data_dir, 'images_being_processed' )
 if not os.path.exists(wd):
     os.makedirs(wd)
 
-cd = os.path.join( os.getcwd(), 'current_images' )
+cd = os.path.join( data_dir, 'current_images' )
 if not os.path.exists(cd):
     os.makedirs(cd)
 
-vd = os.path.join( os.getcwd(), 'images_of_violations' )
+vd = os.path.join( data_dir, 'images_of_violations' )
 if not os.path.exists(vd):
     os.makedirs(vd)
 
 # Put spot logs in their own dir
-sld, cld, csd = log.setupDirs( os.getcwd() )
+sld, cld, csd = log.setupDirs( data_dir )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
 # Create the list of spots
