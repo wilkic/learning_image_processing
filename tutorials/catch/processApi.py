@@ -39,7 +39,7 @@ def processApi( logdir, spots ):
         data = resp.json()
         
 
-        with open(os.path.join(log_dir,'pmAPI.log'),'a') as out:
+        with open(os.path.join(logdir,'pmAPI.log'),'a') as out:
             print >> out, dt.datetime.now()
             pp.pprint( data, stream=out )
         

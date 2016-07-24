@@ -41,12 +41,16 @@ def writeTable( spots ):
         paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
         rpst_str = str(spots[spot]['payStartTime'])
         rpet_str = str(spots[spot]['payEndTime'])
-        pstt = time.strptime(rpst_str[0:19],"%Y-%m-%dT%H:%M:%S")
-        pett = time.strptime(rpet_str[0:19],"%Y-%m-%dT%H:%M:%S")
-        pslt = time.localtime(pstt)
-        pelt = time.localtime(pett)
-        pstCell = '<td> ' + time.asctime(pslt) + '</td>'
-        petCell = '<td> ' + time.asctime(pelt) + '</td>'
+        if not rpst_str:
+            pstCell = '<td> </td>'
+        else:
+            pstt = time.strptime(rpst_str[0:19],"%Y-%m-%dT%H:%M:%S")
+            pstCell = '<td> ' + time.asctime(pstt) + '</td>'
+        if not rpet_str:
+            petCell = '<td> </td>'
+        else:
+            pett = time.strptime(rpet_str[0:19],"%Y-%m-%dT%H:%M:%S")
+            petCell = '<td> ' + time.asctime(pett) + '</td>'
         lpnCell = '<td> ' + str(spots[spot]['lpn']) + '</td>'
         lpsCell = '<td> ' + str(spots[spot]['lps']) + '</td>'
         mnthCell = '<td> ' + str(spots[spot]['monthly']) + '</td>'
@@ -66,8 +70,8 @@ def writeTable( spots ):
     tabHtml += '</table>'
 
     ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
-    os.rename("table.html","/var/www/html/table/index.html")
-    #print 'WARNING: table webpage is not going to served site location!'
+    #os.rename("table.html","/var/www/html/table/index.html")
+    print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\
             <div>
@@ -78,8 +82,8 @@ def writeTable( spots ):
             """ % n_remaining 
 
     ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-    os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
-    #print 'WARNING: number webpage is not going to served site location!'
+    #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+    print 'WARNING: number webpage is not going to served site location!'
 
 
     return
