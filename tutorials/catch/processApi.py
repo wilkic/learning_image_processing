@@ -14,7 +14,7 @@ import requests
 
 import html_ops as ho
 
-def processApi( logdir, spots ):
+def processApi( logdir, spots, monthlies ):
 
 
     # Get the PM API response
@@ -54,7 +54,7 @@ def processApi( logdir, spots ):
             spots[ sn ]['lps'] = str(i['lpnState'])
         
         for s,spot in spots.iteritems():
-            if s not in paid:
+            if s not in paid and s not in monthlies:
                 spot['paid'] = 0
 
     return
