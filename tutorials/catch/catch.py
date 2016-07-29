@@ -33,8 +33,8 @@ import get_image as gi
 
 sleepytime = 30
 
-data_dir = os.getcwd()
-#data_dir = '/mnt/data/catch/'
+#data_dir = os.getcwd()
+data_dir = '/mnt/data/catch/'
 
 nSpots = 49
 monthlies = [39, 40, 41, 42]
@@ -90,7 +90,7 @@ while True:
         
         processSpots.write( cameras, spots )
         
-        processApi.processApi( data_dir, spots )
+        processApi.processApi( data_dir, spots, monthlies )
         
         processSpots.judge( spots, violationThresh, toall, cd, vd )
 
