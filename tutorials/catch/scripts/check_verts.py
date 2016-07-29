@@ -218,9 +218,10 @@ camera5 = {
 
 camera6 = {
     'number': 6,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
-    #'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
+#    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
+#    'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
 #    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
+    'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
     'spots': [
         {
             'number': 15,
@@ -413,7 +414,226 @@ camera10 = {
     ]
 }
 
-camera = camera6
+camera11 = {
+    'number': 11,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera11/snap20160721043348.jpg',
+    'spots': [
+        {
+            'number': 36,
+            'vertices': np.array(
+                        [[  20, 120],
+                         [ 105, 120],
+                         [  85, 224],
+                         [   0, 224]]),
+            'base_means': [122,125,124],
+            'base_nEdges': 92,
+            'base_nKeys': 1,
+        },
+        {
+            'number': 37,
+            'vertices': np.array(
+                        [[ 135, 120],
+                         [ 260, 120],
+                         [ 300, 224],
+                         [ 120, 224]]),
+            'base_means': [142,146,145],
+            'base_nEdges': 109,
+            'base_nKeys': 2,
+        },
+        {
+            'number': 38,
+            'vertices': np.array(
+                        [[ 280, 120],
+                         [ 370, 115],
+                         [ 400, 150],
+                         [ 400, 224],
+                         [ 330, 224]]),
+            'base_means': [118,121,121],
+            'base_nEdges': 79,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 43,
+            'vertices': np.array(
+                        [[ 165,   0],
+                         [ 200,   0],
+                         [ 225,  40],
+                         [ 155,  40]]),
+            'base_means': [154,147,146],
+            'base_nEdges': 78,
+            'base_nKeys': 3,
+        },
+    ]
+}
+
+camera12 = {
+    'number': 12,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
+    'spots': [
+        {
+            'number': 33,
+            'vertices': np.array(
+                        [[  35, 120],
+                         [ 120, 125],
+                         [  90, 224],
+                         [   0, 224]]),
+            'base_means': [136,135,134],
+            'base_nEdges': 112,
+            'base_nKeys': 4,
+        },
+        {
+            'number': 34,
+            'vertices': np.array(
+                        [[ 150, 125],
+                         [ 275, 125],
+                         [ 300, 224],
+                         [ 130, 224]]),
+            'base_means': [137,139,138],
+            'base_nEdges': 107,
+            'base_nKeys': 2,
+        },
+        {
+            'number': 35,
+            'vertices': np.array(
+                        [[ 300, 125],
+                         [ 370, 125],
+                         [ 400, 224],
+                         [ 330, 224]]),
+            'base_means': [133,133,133],
+            'base_nEdges': 73,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 44,
+            'vertices': np.array(
+                        [[ 305,  10],
+                         [ 330,  10],
+                         [ 380,  40],
+                         [ 330,  40]]),
+            'base_means': [130,124,127],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 45,
+            'vertices': np.array(
+                        [[ 245,  10],
+                         [ 290,  10],
+                         [ 300,  30],
+                         [ 255,  30]]),
+            'base_means': [98,98,102],
+            'base_nEdges': 36,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 46,
+            'vertices': np.array(
+                        [[ 185,  10],
+                         [ 230,  10],
+                         [ 235,  25],
+                         [ 185,  25]]),
+            'base_means': [114,114,118],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+    ]
+}
+
+camera13 = {
+    'number': 13,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera13/snap20160721233213.jpg',
+    'spots': [
+        {
+            'number': 29,
+            'vertices': np.array(
+                        [[   0,  60],
+                         [  60,  50],
+                         [  70,  75],
+                         [  55, 140],
+                         [  50, 224],
+                         [   0, 224]]),
+            'base_means': [144,138,135],
+            'base_nEdges': 8,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 30,
+            'vertices': np.array(
+                        [[ 140,  55],
+                         [ 280,  55],
+                         [ 300, 224],
+                         [ 115, 224]]),
+            'base_means': [109,113,112],
+            'base_nEdges': 110,
+            'base_nKeys': 3,
+        },
+        {
+            'number': 31,
+            'vertices': np.array(
+                        [[ 305,  55],
+                         [ 400,  55],
+                         [ 400, 224],
+                         [ 325, 224]]),
+            'base_means': [138,139,139],
+            'base_nEdges': 18,
+            'base_nKeys': 4,
+        },
+    ]
+}
+
+camera14 = {
+    'number': 14,
+    'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
+    'spots': [
+        {
+            'number': 32,
+            'vertices': np.array(
+                        [[ 150, 130],
+                         [ 280, 140],
+                         [ 290, 224],
+                         [ 105, 224]]),
+            'base_means': [115,118,118],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 47,
+            'vertices': np.array(
+                        [[ 270,   0],
+                         [ 305,  10],
+                         [ 330,  35],
+                         [ 275,  25]]),
+            'base_means': [150,145,150],
+            'base_nEdges': 34,
+            'base_nKeys': 0,
+        },
+        {
+            'number': 48,
+            'vertices': np.array(
+                        [[ 205,   0],
+                         [ 250,   0],
+                         [ 255,  25],
+                         [ 190,  20]]),
+            'base_means': [126,125,128],
+            'base_nEdges': 89,
+            'base_nKeys': 2,
+        },
+        {
+            'number': 49,
+            'vertices': np.array(
+                        [[ 162,   0],
+                         [ 190,   0],
+                         [ 180,  20],
+                         [ 160,  20]]),
+            'base_means': [144,142,148],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+    ]
+}
+
+
+camera = camera14
 
 _plot = True
 
@@ -427,7 +647,7 @@ surf = cv2.xfeatures2d.SURF_create(400)
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
-    plt.ion()
+    #plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
     fig = plt.figure(figsize=(10,6))
