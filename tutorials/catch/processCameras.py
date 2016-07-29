@@ -70,7 +70,7 @@ def processCameras( ip, cameras, dirs, to ):
             
 
         # store the current state of the camera
-        log.addState( camera, dirs['cld'] )
+        #log.addState( camera, dirs['cld'] )
         log.recordState( camera, dirs['csd'] )
 
     return
