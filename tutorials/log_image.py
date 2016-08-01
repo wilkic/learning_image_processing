@@ -18,7 +18,9 @@ bport = 9000
 
 cams = range(1,16)
 
-store_dir = '/home/ubuntu/cam_images'
+#store_dir = '/home/ubuntu/cam_images'
+#store_dir = '/home/acp/work/aws/cam_images'
+store_dir = '/home/acp/work/aws/all_cam_images'
 
 #################################
 #################################
@@ -29,14 +31,16 @@ for c in cams:
     d = bd + str(c)
     port = bport + c
 
-    wd = os.path.join( store_dir, d )
+    #wd = os.path.join( store_dir, d )
+    wd = store_dir
     if not os.path.exists(wd):
         os.makedirs(wd)
 
     ts = dt.datetime.now()
     tss = ts.strftime('%Y%m%d%H%M%S')
 
-    fname = wd + '/snap' + tss + '.jpg'
+    #fname = wd + '/snap' + tss + '.jpg'
+    fname = wd + '/camera' + str(c) + '_' + tss + '.jpg'
 
     url = 'http://' + ip
     if port is not None:
