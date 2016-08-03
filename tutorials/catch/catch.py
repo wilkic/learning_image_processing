@@ -90,7 +90,7 @@ while True:
         
         processSpots.write( cameras, spots )
         
-        processApi.processApi( data_dir, spots, monthlies )
+        processApi.processApi( data_dir, spots, monthlies, toall )
         
         processSpots.judge( spots, violationThresh, toall, cd, vd )
 

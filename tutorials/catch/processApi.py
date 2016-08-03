@@ -1,20 +1,25 @@
 
-import ipdb
-
 import os, sys
+import requests
+import pprint as pp
 
 sys.path.append(os.getcwd())
+
 import send_mean as sm
 
-import pprint as pp
 
 import datetime as dt
 
-import requests
 
 import html_ops as ho
 
-def processApi( logdir, spots, monthlies ):
+sys.path.append("..")
+import notifications as notify
+
+global fails
+fails = 0
+
+def processApi( logdir, spots, monthlies, to ):
 
 
     # Get the PM API response
@@ -32,7 +37,14 @@ def processApi( logdir, spots, monthlies ):
             print 'BAD NEWS PARKMOBILE!'
             print 'Error number %d' % (i)
             if i==5:
-                raise
+                msg = """
+                %s
+                Park Mobile API is not responding!
+                """ % dt.datetime.now()
+                notify.send_msg(msg,to)
+                fails += 1
+                if fails == 5:
+                    raise
 
     # Populate spots based on response
     if resp.status_code != 404:
