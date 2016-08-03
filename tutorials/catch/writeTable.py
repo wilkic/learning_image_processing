@@ -11,20 +11,31 @@ import html_ops as ho
 def writeTable( spots ):
 
     # Put the data in a table
-    tabHtml = '<table border="1">'
-    tabHtml += ("<tr><td>Space Number</td>"
-                    "<td>Occupied</td>"
-                    "<td>Time Present</td>"
-                    "<td>Paid</td>"
-                    "<td>Paid Start Time</td>"
-                    "<td>Paid End Time</td>"
-                    "<td>License Number</td>"
-                    "<td>License State</td>"
-                    "<td>Monthly</td>"
-                    "<td>Occupation Start Time</td>"
-                    "<td>Occupation End Time</td>"
+    tabHtml = '<div id="latable">'
+    tabHtml += '<input class="search" placeholder="Search" />'
+    tabHtml += """
+    <button class="sort" data-sort="timp">
+      Sort by Time Present
+    </button>
+    <button class="sort" data-sort="pd">
+      Sort by Paid
+    </button>
+    <table border="1">"""
+
+    tabHtml += ("<tr><th>Space Number</th>"
+                    "<th>Occupied</th>"
+                    "<th>Time Present</th>"
+                    "<th>Paid</th>"
+                    "<th>Paid Start Time</th>"
+                    "<th>Paid End Time</th>"
+                    "<th>License Number</th>"
+                    "<th>License State</th>"
+                    "<th>Monthly</th>"
+                    "<th>Occupation Start Time</th>"
+                    "<th>Occupation End Time</th>"
                 "</tr>")
 
+    tabHtml += '<tbody class="list">'
 
     n_remaining = len(spots)
 
@@ -37,8 +48,12 @@ def writeTable( spots ):
         row = '<tr>'
         spaceCell = '<td>Space ' + str(spot) + '</td>'
         occCell = '<td> ' + str(spots[spot]['timeOccupied']>0) + '</td>'
-        presCell = '<td> ' + str(spots[spot]['timePresent']) + '</td>'
-        paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
+        presCell = ( '<td class="timp"> '
+                     + str(spots[spot]['timePresent'])
+                     + '</td>' )
+        paidCell = ( '<td class="pd"> '
+                     + str(spots[spot]['paid'])
+                     + '</td>' )
         rpst_str = str(spots[spot]['payStartTime'])
         rpet_str = str(spots[spot]['payEndTime'])
         if not rpst_str:
@@ -66,10 +81,21 @@ def writeTable( spots ):
         row = row + ostCell + oetCell
         row += '</tr>'
         tabHtml += row
-
+    
+    tabHtml += '</tbody>'
     tabHtml += '</table>'
+    tabHtml += '</div>'
+    tabHtml += """
+    <script src="http://listjs.com/no-cdn/list.js"></script>
+    <script>
+      var options = {
+       valueNames: [ 'pd', 'timp' ]
+      };
 
-    ho.write_page( 'table.html', 'Lot Status', 15, tabHtml )
+      var userList = new List('latable', options);
+    </script>"""
+
+    ho.write_page( 'table.html', 'Lot Status', 30, tabHtml )
     #os.rename("table.html","/var/www/html/table/index.html")
     print 'WARNING: table webpage is not going to served site location!'
 
@@ -81,7 +107,7 @@ def writeTable( spots ):
             </div>
             """ % n_remaining 
 
-    ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
+    ho.write_page( 'n_avail.html', 'Available Spots', 30, nHtml )
     #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
     print 'WARNING: number webpage is not going to served site location!'
 
