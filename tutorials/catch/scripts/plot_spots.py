@@ -6,7 +6,7 @@ import re
 sys.path.append('..')
 import loadCameras as lc
 
-def get_spot_data(log_dir):
+def get_spot_data(log_dir,plot_spots=None):
     spots = []
 
     f = []
@@ -20,6 +20,11 @@ def get_spot_data(log_dir):
         ffname = os.path.join(log_dir,s)
         ft = os.path.splitext(s)
         sn = int( ft[0][4:] )
+        
+        if not plot_spots is None:
+            if sn not in plot_spots:
+                continue
+
         ts = []
         tp = []
         means = [[], [], []]
@@ -66,40 +71,86 @@ def get_spot_data(log_dir):
 import matplotlib.pyplot as plt
 import numpy as np
 
+plot_spots = [16]
+tmin = -130
+#tmax = -125
+tmax = -60
+tmin = -60
+tmax = 0
+
 fdir = os.path.expanduser('~/work/aws/spot_logs')
-spots = get_spot_data(fdir)
+spots = get_spot_data(fdir,plot_spots)
 cams = lc.loadCameras()
 
 for c,cam in cams.iteritems():
     for s in cam['spots']:
+        if s['number'] not in plot_spots:
+            continue
         si = next(i for i in spots if i['num'] == s['number'])
         si['klim'] = s['keyThresh'] + s['base_nKeys']
 
     
 c = ['r','g','b']
 
-#plots_spots = [9, 10]
 
+#plt.ion()
+#plt.figure()
+
+i = 1
 for s in spots:
-    
-#    if s['num'] not in plots_spots:
-#        continue
+   
+    if 'plot_spots' in locals():
+        if s['num'] not in plot_spots:
+            continue
 
     time = np.asarray(s['ts'])
-    t2end = (time - time[-1]) / 60
+    t2end = (time - time[-1]) / 3600
+    
+    inds = np.where( np.bitwise_and( t2end > tmin, t2end < tmax ) )
 
     keylim = s['klim']
-    plt.ion()
+    nks = np.asarray( s['nKeys'] )
+
+    #plt.subplot( 3,1,i)
     plt.figure()
-    plt.plot( t2end, s['nKeys'] )
-    plt.plot( t2end, keylim*np.ones_like(t2end) )
+    plt.plot( t2end[inds], nks[inds] )
+    plt.plot( t2end[inds], keylim*np.ones_like(t2end[inds]) )
+    plt.title( 'Spot %d: nKeys' % s['num'] )
 
 #    for i in range(3):
 #        plt.plot(s['ts'],s['means'][i],c[i])
     
     #plt.show()
-    fname = 'spot' + str(s['num']) + '.png'
+    fname = 'spot' + str(s['num']) + '_nkeys.png'
     plt.savefig(fname)
+
+    #plt.waitforbuttonpress(timeout=-1)
+    
+    plt.figure()
+    plt.title( 'Spot %d: means' % s['num'] )
+    for i in range(3):
+        m = np.asarray( s['means'][i] )
+        plt.plot(t2end[inds],m[inds],c[i])
+    
+    #plt.show()
+    fname = 'spot' + str(s['num']) + '_means.png'
+    plt.savefig(fname)
+
+    #plt.waitforbuttonpress(timeout=-1)
+    
+    nes = np.asarray( s['nEdges'] )
+
+    plt.figure()
+    plt.plot( t2end[inds], nes[inds] )
+    plt.title( 'Spot %d: nEdges' % s['num'] )
+
+    #plt.show()
+    fname = 'spot' + str(s['num']) + '_nedges.png'
+    plt.savefig(fname)
+
+    #plt.waitforbuttonpress(timeout=-1)
+
+    i += 1
 
 plt.figure()
 plt.close()
@@ -109,11 +160,20 @@ sort_spots = sorted( spots, key=lambda k: k['num'] )
 html = '<html><body>'
 for s in sort_spots:
     ss = str(s['num'])
-    fname = 'spot' + ss + '.png'
+    
     html += '<h2>'
     html += 'Spot ' + ss + ' History'
     html += '</h2>'
+    
+    fname = 'spot' + ss + '_nkeys.png'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
+
+    fname = 'spot' + ss + '_means.png'
+    html += '<img src="' + fname + '" style="width:304px;height:228px;">'
+    
+    fname = 'spot' + ss + '_nedges.png'
+    html += '<img src="' + fname + '" style="width:304px;height:228px;">'
+
 
 html += '</body></html>'
 
