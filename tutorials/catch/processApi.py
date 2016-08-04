@@ -55,19 +55,20 @@ def processApi( logdir, spots, monthlies, to ):
             print >> out, dt.datetime.now()
             pp.pprint( data, stream=out )
         
-        paid = []
-        for i in data['parkingRights']:
-            sn = int( i['spaceNumber'] )
-            paid += [sn]
-            spots[ sn ]['paid'] = 1
-            spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
-            spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
-            spots[ sn ]['lpn'] = str(i['lpn'])
-            spots[ sn ]['lps'] = str(i['lpnState'])
-        
-        for s,spot in spots.iteritems():
-            if s not in paid and s not in monthlies:
-                spot['paid'] = 0
+        if 'parkingRights' in data:
+            paid = []
+            for i in data['parkingRights']:
+                sn = int( i['spaceNumber'] )
+                paid += [sn]
+                spots[ sn ]['paid'] = 1
+                spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
+                spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
+                spots[ sn ]['lpn'] = str(i['lpn'])
+                spots[ sn ]['lps'] = str(i['lpnState'])
+            
+            for s,spot in spots.iteritems():
+                if s not in paid and s not in monthlies:
+                    spot['paid'] = 0
 
     return
 
