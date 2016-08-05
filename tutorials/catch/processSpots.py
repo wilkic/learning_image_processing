@@ -32,7 +32,7 @@ def create( nSpots, monthlies ):
     # Assign the monthlies
     for i in monthlies:
         spots[i]['monthly'] = 1
-        spots[i]['paid'] = 1
+        spots[i]['paid'] = 0.9
 
     return spots
 
@@ -68,11 +68,12 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 vfname = 'spot' + ss + '_' + tss + '.jpg'
                 vfname = os.path.join( vdir, vfname )
                 copyfile( fname, vfname ) 
+                sub = "Violation"
                 msg = """
                 %s
                 Spot %d in VIOLATION
                 """ % (time.asctime(lt), s)
-                notify.send_msg_with_jpg( msg, vfname, to )
+                notify.send_msg_with_jpg( sub, msg, vfname, to )
         else:
             spot['violation'] = False
 

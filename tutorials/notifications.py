@@ -65,12 +65,12 @@ def send_mean( mean, recipients ):
     return
 
 
-def send_msg( message, recipients ):
+def send_msg( subject, message, recipients ):
 
     srvDict = setup_server()
 
     msg = MIMEText(message)
-    msg['Subject'] = "test message from viper"
+    msg['Subject'] = subject
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
 
@@ -87,13 +87,13 @@ def send_msg( message, recipients ):
 
     return
 
-def send_msg_with_jpg( message, fname, recipients  ):
+def send_msg_with_jpg( subject, message, fname, recipients  ):
 
     srvDict = setup_server()
 
     msg = MIMEMultipart()
     body = MIMEText(message,'plain')
-    msg['Subject'] = "test message from viper"
+    msg['Subject'] = subject
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
     msg.attach(body)

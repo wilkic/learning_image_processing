@@ -41,7 +41,7 @@ def processApi( logdir, spots, monthlies, to ):
                 %s
                 Park Mobile API is not responding!
                 """ % dt.datetime.now()
-                notify.send_msg(msg,to)
+                notify.send_msg('Error',msg,to)
                 fails += 1
                 if fails == 5:
                     raise

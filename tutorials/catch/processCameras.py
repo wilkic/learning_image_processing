@@ -35,13 +35,14 @@ def processCameras( ip, cameras, dirs, to ):
 
                 present = dp.determinePresence( spot )
                 
-                msg = ep.evaluatePresence( spot,
+                res = ep.evaluatePresence( spot,
                                            present,
                                            delta_time,
                                            camera['im_ts'] )
-                
-                if msg is not None:
-                    notify.send_msg_with_jpg( msg, fname, to )
+                if res['message'] is not None:
+                    notify.send_msg_with_jpg( res['subject'],
+                                              res['message'],
+                                              fname, to )
                 
                 # Store all current images
                 sfname = 'spot' + str(spot['number']) + '.jpg'
@@ -65,7 +66,7 @@ def processCameras( ip, cameras, dirs, to ):
                 %s
                 Camera %d is not producing images !
                 """ % (time.asctime(),camera['number'])
-                notify.send_msg(msg,to)
+                notify.send_msg('Error',msg,to)
                 print msg
             
 

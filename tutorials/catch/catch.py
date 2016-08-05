@@ -103,7 +103,7 @@ while True:
         Catch is going offline due to user error !
         Check my error logs for details...
         %s """ % (str(dt.datetime.now()),str(e))
-        notify.send_msg(msg,toall)
+        notify.send_msg('Error',msg,toall)
         print "%s\n\n%s" % (msg, str(e))
         sys.exit()
 

@@ -22,6 +22,7 @@ def evaluatePresence( spot, present, delta_time, ts ):
     occupied = spot['timePresent'] >= spot['occupationThresh']
     
     # By default don't send a message
+    subject = None
     message = None
 
     # When spot is flagged as occupied, notify 
@@ -31,6 +32,8 @@ def evaluatePresence( spot, present, delta_time, ts ):
         
         spot['occupationStartTime'] = ts
         
+        subject = "Presence"
+
         message = """
         %s
         Spot %d taken!
@@ -47,11 +50,15 @@ def evaluatePresence( spot, present, delta_time, ts ):
         
         spot['occupationEndTime'] = ts
         
+        subject = "Vacation"
+
         message = """
         %s
         Spot %d vacated!
         """ % ( ts_str, spot['number'] )
         print message
-
-    return message
+    
+    result = {'subject': subject, 'message': message}
+    
+    return result
 
