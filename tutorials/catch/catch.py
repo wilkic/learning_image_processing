@@ -40,7 +40,7 @@ nSpots = 49
 monthlies = [39, 40, 41, 42]
 
 timePresentBeforeOccupied = 60
-violationThresh = 600
+violationThresh = 900
 
 ip = "108.45.109.111"
 
