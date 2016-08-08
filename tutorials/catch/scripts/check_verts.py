@@ -22,7 +22,8 @@ def onclick(event):
 camera1 = {
     'number': 1,
     #'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
-    'im_full_path': '/home/acp/work/aws/current_images/spot1.jpg',
+    #'im_full_path': '/home/acp/work/aws/current_images/spot1.jpg',
+    'im_full_path': '/home/acp/Downloads/spot2violation.jpg',
     'spots': [
         {
             'number': 1,
@@ -221,7 +222,9 @@ camera6 = {
 #    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
 #    'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
 #    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
-    'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
+   # 'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot16.jpg',
+    'im_full_path': '/home/acp/Downloads/spot16taken_072916211956.jpg',
     'spots': [
         {
             'number': 15,
@@ -417,58 +420,62 @@ camera10 = {
 camera11 = {
     'number': 11,
     'im_full_path': '/home/acp/work/aws/cam_images/camera11/snap20160721043348.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera11/snap20160721043348.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot38_violation.jpg',
     'spots': [
         {
             'number': 36,
             'vertices': np.array(
-                        [[  20, 120],
-                         [ 105, 120],
-                         [  85, 224],
-                         [   0, 224]]),
-            'base_means': [122,125,124],
+                        [[  50,  75],
+                         [ 105,  75],
+                         [  50, 224],
+                         [   0, 224],
+                         [   0, 155]]),
+            'base_means': [114,116,115],
             'base_nEdges': 92,
             'base_nKeys': 1,
         },
         {
             'number': 37,
             'vertices': np.array(
-                        [[ 135, 120],
-                         [ 260, 120],
+                        [[ 140,  75],
+                         [ 245,  75],
                          [ 300, 224],
                          [ 120, 224]]),
-            'base_means': [142,146,145],
+            'base_means': [140,142,141],
             'base_nEdges': 109,
             'base_nKeys': 2,
         },
         {
             'number': 38,
             'vertices': np.array(
-                        [[ 280, 120],
-                         [ 370, 115],
-                         [ 400, 150],
+                        [[ 305,  90],
+                         [ 350,  85],
+                         [ 400, 145],
                          [ 400, 224],
-                         [ 330, 224]]),
-            'base_means': [118,121,121],
-            'base_nEdges': 79,
+                         [ 355, 224]]),
+            'base_means': [110,113,112],
+            'base_nEdges': 104,
             'base_nKeys': 0,
         },
         {
             'number': 43,
             'vertices': np.array(
-                        [[ 165,   0],
-                         [ 200,   0],
-                         [ 225,  40],
-                         [ 155,  40]]),
-            'base_means': [154,147,146],
-            'base_nEdges': 78,
-            'base_nKeys': 3,
+                        [[ 168,   2],
+                         [ 200,   2],
+                         [ 223,  30],
+                         [ 159,  30]]),
+            'base_means': [152,144,143],
+            'base_nEdges': 72,
+            'base_nKeys': 2,
         },
     ]
 }
 
 camera12 = {
     'number': 12,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
+    'im_full_path': '/home/acp/Downloads/snap20160729153725.jpg',
     'spots': [
         {
             'number': 33,
@@ -633,7 +640,7 @@ camera14 = {
 }
 
 
-camera = camera14
+camera = camera11
 
 _plot = True
 
@@ -647,7 +654,7 @@ surf = cv2.xfeatures2d.SURF_create(400)
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
-    #plt.ion()
+    plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
     fig = plt.figure(figsize=(10,6))
@@ -657,7 +664,7 @@ if _plot is True:
 
 for spot in camera['spots']:
     
-#    if spot['number'] != 2:
+#    if spot['number'] != 38:
 #        continue
     
     verts = spot['vertices']

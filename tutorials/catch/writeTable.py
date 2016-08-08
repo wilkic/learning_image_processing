@@ -52,23 +52,36 @@ def writeTable( spots ):
 
     n_remaining = len(spots)
 
-    for spot in spots:
+    for s in spots:
+        spot = spots[s]
 
         # For now, update remaining number of
         # spots based on the number paid
-        n_remaining -= spots[spot]['paid']
+        n_remaining -= spot['paid']
+        
+        rcolor = '#FFFFFF'
+        if spot['violation']:
+            rcolor = '#FF0000"'
+        elif spot['failedDetection']:
+            rcolor = '#FF7F00"'
+        elif spot['paid'] == 1:
+            rcolor = '#00FF00"'
+        elif spot['paid']:
+            rcolor = '#0000FF"'
 
-        row = '<tr>'
-        spaceCell = '<td>Space ' + str(spot) + '</td>'
-        occCell = '<td> ' + str(spots[spot]['timeOccupied']>0) + '</td>'
-        presCell = ( '<td> '
-                     + str(spots[spot]['timePresent'])
+        rowsty = 'style="background-color:%s"' % rcolor
+        row = '<tr %s>' % rowsty
+
+        spaceCell = '<td>Space ' + str(s) + '</td>'
+        occCell = '<td> ' + str(spot['timeOccupied']>0) + '</td>'
+        presCell = ( '<td class="timp"> '
+                     + str(spot['timePresent'])
                      + '</td>' )
-        paidCell = ( '<td> '
-                     + str(spots[spot]['paid'])
+        paidCell = ( '<td class="pd"> '
+                     + str(spot['paid'])
                      + '</td>' )
-        rpst_str = str(spots[spot]['payStartTime'])
-        rpet_str = str(spots[spot]['payEndTime'])
+        rpst_str = str(spot['payStartTime'])
+        rpet_str = str(spot['payEndTime'])
         if not rpst_str:
             pstCell = '<td> </td>'
         else:
@@ -79,11 +92,11 @@ def writeTable( spots ):
         else:
             pett = time.strptime(rpet_str[0:19],"%Y-%m-%dT%H:%M:%S")
             petCell = '<td> ' + time.asctime(pett) + '</td>'
-        lpnCell = '<td> ' + str(spots[spot]['lpn']) + '</td>'
-        lpsCell = '<td> ' + str(spots[spot]['lps']) + '</td>'
-        mnthCell = '<td> ' + str(spots[spot]['monthly']) + '</td>'
-        ost_lt = time.localtime(spots[spot]['occupationStartTime'])
-        oet_lt = time.localtime(spots[spot]['occupationEndTime'])
+        lpnCell = '<td> ' + str(spot['lpn']) + '</td>'
+        lpsCell = '<td> ' + str(spot['lps']) + '</td>'
+        mnthCell = '<td> ' + str(spot['monthly']) + '</td>'
+        ost_lt = time.localtime(spot['occupationStartTime'])
+        oet_lt = time.localtime(spot['occupationEndTime'])
         ostCell = '<td> ' + time.asctime(ost_lt) + '</td>'
         oetCell = '<td> ' + time.asctime(oet_lt) + '</td>'
         row += spaceCell 
@@ -101,8 +114,8 @@ def writeTable( spots ):
     with open('table.html','w') as f:
         f.write(tabHtml)
 
-    os.rename("table.html","/var/www/html/newtable/index.html")
-    #print 'WARNING: table webpage is not going to served site location!'
+    #os.rename("table.html","/var/www/html/newtable/index.html")
+    print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\
             <div>
@@ -114,7 +127,7 @@ def writeTable( spots ):
 
     ho.write_page( 'n_avail.html', 'Available Spots', 30, nHtml )
     #os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
-    #print 'WARNING: number webpage is not going to served site location!'
+    print 'WARNING: number webpage is not going to served site location!'
 
 
     return

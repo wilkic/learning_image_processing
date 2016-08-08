@@ -33,8 +33,8 @@ import get_image as gi
 
 sleepytime = 30
 
-#data_dir = os.getcwd()
-data_dir = '/mnt/data/catch/'
+data_dir = os.getcwd()
+#data_dir = '/mnt/data/catch/'
 
 nSpots = 49
 monthlies = [39, 40, 41, 42]
@@ -74,6 +74,10 @@ vd = os.path.join( data_dir, 'images_of_violations' )
 if not os.path.exists(vd):
     os.makedirs(vd)
 
+ud = os.path.join( data_dir, 'images_of_undetections' )
+if not os.path.exists(ud):
+    os.makedirs(ud)
+
 # Put spot logs in their own dir
 sld, cld, csd = log.setupDirs( data_dir )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
@@ -92,7 +96,7 @@ while True:
         
         processApi.processApi( data_dir, spots, monthlies, toall )
         
-        processSpots.judge( spots, violationThresh, toall, cd, vd )
+        processSpots.judge( spots, violationThresh, toall, cd, vd, ud )
 
         writeTable.writeTable( spots )
 

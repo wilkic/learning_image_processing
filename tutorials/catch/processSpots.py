@@ -25,6 +25,7 @@ def create( nSpots, monthlies ):
         'occupationStartTime': 0,
         'occupationEndTime': 0,
         'violation': False,
+        'failedDetection': False,
     }
 
     spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
@@ -50,7 +51,7 @@ def write( cameras, spots ):
     
     return
 
-def judge( spots, freeTime, to, imdir, vdir ):
+def judge( spots, freeTime, to, imdir, vdir, udir ):
 
     for s, spot in spots.iteritems():
 
@@ -76,6 +77,39 @@ def judge( spots, freeTime, to, imdir, vdir ):
                 notify.send_msg_with_jpg( sub, msg, vfname, to )
         else:
             spot['violation'] = False
+            
+            if spot['paid'] == 1 and spot['timePresent'] == 0:
+                pss = spot['payStartTime']
+                pstt = time.strptime(pss[0:19],"%Y-%m-%dT%H:%M:%S")
+                pst = time.mktime(pstt)
+                pes = spot['payEndTime']
+                pett = time.strptime(pes[0:19],"%Y-%m-%dT%H:%M:%S")
+                pet = time.mktime(pett)
+                
+                oet = spot['occupationEndTime']
 
-    
+                if oet < pst :
+                    if not spot['failedDetection']:
+                        spot['failedDetection'] = True
+
+                        tss = spot['payStartTime']
+
+                        ss = str(s)
+                        fname = 'spot' + ss + '.jpg'
+                        fname = os.path.join( imdir, fname )
+                        ufname = 'spot' + ss + '_' + tss + '.jpg'
+                        ufname = os.path.join( udir, ufname )
+                        copyfile( fname, ufname ) 
+                        sub = "Failed Detection?"
+                        msg = """
+                        %s
+                        Spot %d Detection Failed, or ...
+                        Person left spot within pay period
+                        """ % (tss, s)
+                        notify.send_msg_with_jpg( sub, msg, ufname, to )
+                else:
+                    spot['failedDetection'] = False
+            else:
+                spot['failedDetection'] = False
+
     return
