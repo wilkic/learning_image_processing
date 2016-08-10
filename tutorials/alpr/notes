@@ -1,0 +1,15 @@
+
+Installing:
+
+This _should_ work:
+https://github.com/openalpr/openalpr/wiki/Compilation-instructions-(Ubuntu-Linux)
+
+But it didn't quite do it all last try...
+Also needed:
+ * sudo ln /dev/null /dev/raw1394
+ * sudo apt-get install python-pip
+ * sudo pip install pytesseract
+ * sudo apt-get install tesseract-ocr
+ * sudo apt-get install python-imaging
+ * sudo ln -s /usr/include/freetype2/ /usr/local/include/freetype
+
