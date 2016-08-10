@@ -274,41 +274,44 @@ camera6 = {
 
 camera7 = {
     'number': 7,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera7/snap20160721043347.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera7/snap20160721043347.jpg',
+    #'im_full_path': '/home/acp/Downloads/19paid_20taken.jpg',
+    'im_full_path': '/home/acp/work/aws/all_cam_images/camera7_20160810002858.jpg',
+    
     'spots': [
         {
             'number': 18,
             'vertices': np.array(
-                        [[   0,  40],
-                         [  75,  40],
-                         [ 120, 125],
-                         [   0, 100]]),
-            'base_means': [115,113,113],
-            'base_nEdges': 53,
-            'base_nKeys': 1,
+                        [[   0,  75],
+                         [  75,  75],
+                         [ 110, 150],
+                         [  30, 150]]),
+            'base_means': [120,120,120],
+            'base_nEdges': 32,
+            'base_nKeys': 0,
         },
         {
             'number': 19,
             'vertices': np.array(
                         [[  90,  20],
                          [ 325,  20],
-                         [ 265, 130],
-                         [ 135, 130]]),
-            'base_means': [110,113,113],
-            'base_nEdges': 115,
-            'base_nKeys': 16,
+                         [ 255, 150],
+                         [ 140, 150]]),
+            'base_means': [117,120,119],
+            'base_nEdges': 98,
+            'base_nKeys': 6,
         },
         {
             'number': 20,
             'vertices': np.array(
-                        [[ 355,   0],
+                        [[ 365,   0],
                          [ 400,   0],
                          [ 400, 120],
-                         [ 385, 135],
-                         [ 280, 135]]),
-            'base_means': [109,111,111],
-            'base_nEdges': 58,
-            'base_nKeys': 0,
+                         [ 365, 150],
+                         [ 305, 150]]),
+            'base_means': [99,99,99],
+            'base_nEdges': 9,
+            'base_nKeys': 3,
         },
         {
             'number': 23,
@@ -318,7 +321,7 @@ camera7 = {
                          [ 280, 224],
                          [ 110, 224]]),
             'base_means': [166,163,163],
-            'base_nEdges': 122,
+            'base_nEdges': 254,
             'base_nKeys': 0,
         }
     ]
@@ -639,7 +642,7 @@ camera14 = {
 }
 
 
-camera = camera3
+camera = camera7
 
 _plot = True
 

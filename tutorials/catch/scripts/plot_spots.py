@@ -71,7 +71,7 @@ def get_spot_data(log_dir,plot_spots=None):
 import matplotlib.pyplot as plt
 import numpy as np
 
-plot_spots = [4, 5]
+plot_spots = [18, 19, 20, 23]
 tmin = -60
 tmax = 0
 
