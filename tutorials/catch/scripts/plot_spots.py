@@ -71,8 +71,8 @@ def get_spot_data(log_dir,plot_spots=None):
 import matplotlib.pyplot as plt
 import numpy as np
 
-plot_spots = [18, 19, 20, 23]
-tmin = -60
+plot_spots = range(1,38+1) + range(43,49+1)
+tmin = -12
 tmax = 0
 
 fdir = os.path.expanduser('~/work/aws/spot_logs')
@@ -107,7 +107,10 @@ for s in spots:
 
     keylim = s['klim']
     nks = np.asarray( s['nKeys'] )
-
+    nes = np.asarray( s['nEdges'] )
+    
+    
+    
     #plt.subplot( 3,1,i)
     plt.figure()
     plt.plot( t2end[inds], nks[inds] )
@@ -121,7 +124,10 @@ for s in spots:
     fname = 'spot' + str(s['num']) + '_nkeys.png'
     plt.savefig(fname)
 
+    plt.close()
     #plt.waitforbuttonpress(timeout=-1)
+    
+    
     
     plt.figure()
     plt.title( 'Spot %d: means' % s['num'] )
@@ -133,10 +139,12 @@ for s in spots:
     fname = 'spot' + str(s['num']) + '_means.png'
     plt.savefig(fname)
 
+    plt.close()
     #plt.waitforbuttonpress(timeout=-1)
     
-    nes = np.asarray( s['nEdges'] )
 
+    
+    
     plt.figure()
     plt.plot( t2end[inds], nes[inds] )
     plt.title( 'Spot %d: nEdges' % s['num'] )
@@ -145,6 +153,7 @@ for s in spots:
     fname = 'spot' + str(s['num']) + '_nedges.png'
     plt.savefig(fname)
 
+    plt.close()
     #plt.waitforbuttonpress(timeout=-1)
 
     i += 1
@@ -154,7 +163,12 @@ plt.close()
 
 sort_spots = sorted( spots, key=lambda k: k['num'] )
 
-html = '<html><body>'
+html = """
+<html>
+    <head>
+    <title>Spot Plots</title>
+    </head>
+    <body>"""
 for s in sort_spots:
     ss = str(s['num'])
     
