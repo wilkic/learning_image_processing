@@ -276,7 +276,9 @@ camera7 = {
     'number': 7,
     #'im_full_path': '/home/acp/work/aws/cam_images/camera7/snap20160721043347.jpg',
     #'im_full_path': '/home/acp/Downloads/19paid_20taken.jpg',
-    'im_full_path': '/home/acp/work/aws/all_cam_images/camera7_20160810002858.jpg',
+    'im_full_path': '/home/acp/Downloads/19paid_20taken_again.jpg',
+    #'im_full_path': '/home/acp/work/aws/all_cam_images/camera7_20160810002858.jpg',
+    #'im_full_path': '/home/acp/Downloads/19paid_20empty.jpg',
     
     'spots': [
         {
@@ -477,7 +479,9 @@ camera11 = {
 camera12 = {
     'number': 12,
     #'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
-    'im_full_path': '/home/acp/Downloads/snap20160729153725.jpg',
+    #'im_full_path': '/home/acp/Downloads/snap20160729153725.jpg',
+    #'im_full_path': '/home/acp/Downloads/45failed_detect.jpg',
+    'im_full_path': '/home/acp/Downloads/46failed_detect.jpg',
     'spots': [
         {
             'number': 33,
@@ -551,6 +555,7 @@ camera12 = {
 camera13 = {
     'number': 13,
     'im_full_path': '/home/acp/work/aws/cam_images/camera13/snap20160721233213.jpg',
+    #'im_full_path': '/home/acp/Downloads/cam13_30present_false31.jpg',
     'spots': [
         {
             'number': 29,
@@ -579,20 +584,22 @@ camera13 = {
         {
             'number': 31,
             'vertices': np.array(
-                        [[ 305,  55],
-                         [ 400,  55],
+                        [[ 335,   0],
+                         [ 375,   0],
+                         [ 400,  65],
                          [ 400, 224],
-                         [ 325, 224]]),
-            'base_means': [138,139,139],
-            'base_nEdges': 18,
-            'base_nKeys': 4,
+                         [ 365, 224]]),
+            'base_means': [138,139,137],
+            'base_nEdges': 76,
+            'base_nKeys': 5,
         },
     ]
 }
 
 camera14 = {
     'number': 14,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
+    'im_full_path': '/home/acp/Downloads/48failed_detect.jpg',
     'spots': [
         {
             'number': 32,
@@ -642,7 +649,7 @@ camera14 = {
 }
 
 
-camera = camera7
+camera = camera14
 
 _plot = True
 
