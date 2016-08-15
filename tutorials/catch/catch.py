@@ -101,12 +101,17 @@ while True:
         writeTable.writeTable( spots )
 
     except Exception, e:
-        traceback.print_exc()
+        tb = traceback.format_exc()
         msg = """
         %s
         Catch is going offline due to user error !
         Check my error logs for details...
-        %s """ % (str(dt.datetime.now()),str(e))
+        
+        Exception:
+        %s
+        
+        Traceback:
+        %s""" % (str(dt.datetime.now()),str(e),tb)
         notify.send_msg('Error',msg,toall)
         print "%s\n\n%s" % (msg, str(e))
         sys.exit()

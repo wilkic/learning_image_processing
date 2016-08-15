@@ -19,6 +19,26 @@ import notifications as notify
 global fails
 fails = 0
 
+def assign_data( data, spots, monthlies ):
+    
+    if 'parkingRights' in data:
+        paid = []
+        for i in data['parkingRights']:
+            sn = int( i['spaceNumber'] )
+            paid += [sn]
+            spots[ sn ]['paid'] = 1
+            spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
+            spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
+            spots[ sn ]['lpn'] = str(i['lpn'])
+            spots[ sn ]['lps'] = str(i['lpnState'])
+        
+        for s,spot in spots.iteritems():
+            if s not in paid and s not in monthlies:
+                spot['paid'] = 0
+
+    return
+
+
 def processApi( logdir, spots, monthlies, to ):
 
 
@@ -48,27 +68,22 @@ def processApi( logdir, spots, monthlies, to ):
 
     # Populate spots based on response
     if resp.status_code != 404:
-        data = resp.json()
-        
-
-        with open(os.path.join(logdir,'pmAPI.log'),'a') as out:
-            print >> out, dt.datetime.now()
-            pp.pprint( data, stream=out )
-        
-        if 'parkingRights' in data:
-            paid = []
-            for i in data['parkingRights']:
-                sn = int( i['spaceNumber'] )
-                paid += [sn]
-                spots[ sn ]['paid'] = 1
-                spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
-                spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
-                spots[ sn ]['lpn'] = str(i['lpn'])
-                spots[ sn ]['lps'] = str(i['lpnState'])
+        try:
+            # Read data
+            data = resp.json()
             
-            for s,spot in spots.iteritems():
-                if s not in paid and s not in monthlies:
-                    spot['paid'] = 0
+            # Log it
+            with open(os.path.join(logdir,'pmAPI.log'),'a') as out:
+                print >> out, dt.datetime.now()
+                pp.pprint( data, stream=out )
+            
+            # Write it to spot object
+            assign_data( data, spots, monthlies )
+
+        except Exception, e:
+            print "PM API returning crap JSON?"
+            print "Exception: \n%s" % str(e)
+            print "Response: \n%s" % resp.text
 
     return
 
