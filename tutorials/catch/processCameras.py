@@ -15,7 +15,7 @@ import get_image as gi
 
 ####
 
-def processCameras( ip, cameras, dirs, to ):
+def processCameras( ip, cameras, dirs, to, spam ):
     
     for c, camera in cameras.iteritems():
         
@@ -39,7 +39,7 @@ def processCameras( ip, cameras, dirs, to ):
                                            present,
                                            delta_time,
                                            camera['im_ts'] )
-                if res['message'] is not None:
+                if res['message'] is not None and spam:
                     notify.send_msg_with_jpg( res['subject'],
                                               res['message'],
                                               fname, to )

@@ -18,12 +18,11 @@ def determinePresence( spot ):
     dEdges = spot['nEdges'] - spot['base_nEdges']
     spot['ePresent'] = dEdges > spot['edgeThresh']
     
-    # Give out the final score
-    if spot['detectionType'] == 'ke':
-        present = spot['ePresent'] and spot['kPresent']
-    else:
-        # Do key detection alone in general
-        present = spot['kPresent']
+    # All criteria must be met
+    present = True
+    for s in spot['detectionType']:
+        pstr = s + 'Present'
+        present = present and spot[pstr]
     
     return present
 

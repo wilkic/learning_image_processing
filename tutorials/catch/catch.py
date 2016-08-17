@@ -44,6 +44,8 @@ violationThresh = 900
 
 ip = "108.45.109.111"
 
+spam = True 
+
 #to = ['info@goodspeedparking.com',
 #      '3474005261@tmomail.net',
 #      '3102452197@mms.att.net']
@@ -90,7 +92,7 @@ while True:
     
     try:
 
-        processCameras.processCameras( ip, cameras, dirs, to )
+        processCameras.processCameras( ip, cameras, dirs, to, spam )
         
         processSpots.write( cameras, spots )
         
