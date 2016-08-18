@@ -182,36 +182,35 @@ camera5 = {
         {
             'number': 12,
             'vertices': np.array(
-                        [[ 310,   0],
+                        [[ 330,   0],
                          [ 400,   0],
                          [ 400, 224],
-                         [ 360, 224]]),
+                         [ 370, 224]]),
             'base_means': [99,101,103],
-            'base_nEdges': 2,
-            'base_nKeys': 1
+            'base_nEdges': 0,
+            'base_nKeys': 0,
         },
         {
             'number': 13,
             'vertices': np.array(
-                        [[ 135,   0],
-                         [ 290,   0],
+                        [[ 130,  25],
+                         [ 290,  25],
                          [ 330, 224],
-                         [  85, 224]]),
+                         [  90, 224]]),
             'base_means': [122,122,121],
-            'base_nEdges': 405,
-            'base_nKeys': 24
+            'base_nEdges': 280,
+            'base_nKeys': 21,
         },
         {
             'number': 14,
             'vertices': np.array(
-                        [[  20,   0],
-                         [ 115,   0],
-                         [  60, 224],
-                         [   0, 224],
-                         [   0,  30]]),
-            'base_means': [119,119,121],
-            'base_nEdges': 650,
-            'base_nKeys': 25
+                        [[   0,  50],
+                         [ 100,  50],
+                         [  50, 224],
+                         [   0, 224]]),
+            'base_means': [126,123,123],
+            'base_nEdges': 0,
+            'base_nKeys': 1
         },
     ]
 }
@@ -223,7 +222,8 @@ camera6 = {
 #    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
    # 'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
     #'im_full_path': '/home/acp/Downloads/spot16.jpg',
-    'im_full_path': '/home/acp/Downloads/spot16taken_072916211956.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot16taken_072916211956.jpg',
+    'im_full_path': '/home/acp/Downloads/spots1617_occ.jpg',
     'spots': [
         {
             'number': 15,
@@ -598,8 +598,11 @@ camera13 = {
 
 camera14 = {
     'number': 14,
-    #'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
-    'im_full_path': '/home/acp/Downloads/48failed_detect.jpg',
+    'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
+    #'im_full_path': '/home/acp/Downloads/48failed_detect.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot38_fn.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot47_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot48_fd.jpg',
     'spots': [
         {
             'number': 32,
@@ -649,7 +652,7 @@ camera14 = {
 }
 
 
-camera = camera14
+camera = camera5
 
 _plot = True
 

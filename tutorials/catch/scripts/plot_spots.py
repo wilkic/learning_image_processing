@@ -85,6 +85,7 @@ for c,cam in cams.iteritems():
             continue
         si = next(i for i in spots if i['num'] == s['number'])
         si['klim'] = s['keyThresh'] + s['base_nKeys']
+        si['elim'] = s['edgeThresh'] + s['base_nEdges']
 
     
 c = ['r','g','b']
@@ -106,6 +107,7 @@ for s in spots:
     inds = np.where( np.bitwise_and( t2end > tmin, t2end < tmax ) )
 
     keylim = s['klim']
+    edgelim = s['elim']
     nks = np.asarray( s['nKeys'] )
     nes = np.asarray( s['nEdges'] )
     
@@ -147,6 +149,7 @@ for s in spots:
     
     plt.figure()
     plt.plot( t2end[inds], nes[inds] )
+    plt.plot( t2end[inds], edgelim*np.ones_like(t2end[inds]) )
     plt.title( 'Spot %d: nEdges' % s['num'] )
 
     #plt.show()

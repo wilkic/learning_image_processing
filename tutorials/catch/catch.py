@@ -37,7 +37,7 @@ data_dir = os.getcwd()
 #data_dir = '/mnt/data/catch/'
 
 nSpots = 49
-monthlies = [39, 40, 41, 42]
+monthlies = [38, 39, 40, 41, 42]
 
 timePresentBeforeOccupied = 60
 violationThresh = 900
