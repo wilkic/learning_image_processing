@@ -7,12 +7,6 @@ import notifications as notify
 
 def create( nSpots, monthlies ):
 
-    # Set up the spots dictionary
-    nSpots = 49
-
-    # These spots are monthly
-    monthlies = [39, 40, 41, 42]
-
     defaultProperties = {
         'paid': 0,
         'payStartTime': '',
@@ -51,9 +45,12 @@ def write( cameras, spots ):
     
     return
 
-def judge( spots, freeTime, to, imdir, vdir, udir ):
+def judge( spots, freeTime, monthlies, to, imdir, vdir, udir ):
 
     for s, spot in spots.iteritems():
+        
+        if s in monthlies:
+            continue
 
         if spot['timeOccupied'] > freeTime and not spot['paid']:
             if not spot['violation']:

@@ -98,7 +98,7 @@ while True:
         
         processApi.processApi( data_dir, spots, monthlies, toall )
         
-        processSpots.judge( spots, violationThresh, toall, cd, vd, ud )
+        processSpots.judge( spots, violationThresh, monthlies, toall, cd, vd, ud )
 
         writeTable.writeTable( spots )
 

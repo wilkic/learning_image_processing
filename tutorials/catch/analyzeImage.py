@@ -33,7 +33,7 @@ def analyzeImage( imageFname, camera):
         spotEdges = edges[bMask]
         edgeInds = np.where(spotEdges == 255)
         spot['nEdges'] = np.shape(edgeInds)[1]
-    
+	
         ### Get channel stats
         for color in range(3):
         
