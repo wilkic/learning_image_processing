@@ -85,14 +85,14 @@ sld, cld, csd = log.setupDirs( data_dir )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
 # Create the list of spots
-spots = processSpots.create(nSpots,monthlies)
+spots = processSpots.create(nSpots,monthlies,cameras,ip)
 
 #for index in range(0,3):
 while True:
     
     try:
 
-        processCameras.processCameras( ip, cameras, dirs, to, spam )
+        processCameras.processCameras( cameras, dirs, to, spam )
         
         processSpots.write( cameras, spots )
         

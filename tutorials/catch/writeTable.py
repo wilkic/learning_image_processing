@@ -71,8 +71,10 @@ def writeTable( spots ):
 
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
-
-        spaceCell = '<td>Space ' + str(s) + '</td>'
+        
+        spaceText = 'Space ' + str(s)
+        linkText = '<a href="' + spot['url'] + '">' + spaceText + '</a>'
+        spaceCell = '<td>' + linkText + '</td>'
         occCell = '<td> ' + str(spot['timeOccupied']>0) + '</td>'
         presCell = ( '<td class="timp"> '
                      + str(spot['timePresent'])

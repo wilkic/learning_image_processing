@@ -15,13 +15,13 @@ import get_image as gi
 
 ####
 
-def processCameras( ip, cameras, dirs, to, spam ):
+def processCameras( cameras, dirs, to, spam ):
     
     for c, camera in cameras.iteritems():
         
         # Write jpeg to image dir and
         # populate camera dict with time info
-        result = gi.get_image( ip, camera, dirs['wd'], to )
+        result = gi.get_image( camera, dirs['wd'], to )
         
         if result['success']:
             delta_time = result['delta_time']

@@ -4,15 +4,16 @@ import sys
 import time
 from shutil import copyfile
 
-def get_image( ip, cam, wd, to ):
+def get_image( cam, wd, to ):
     
     # File name of image in working dir while processing
     fname = wd + '/snap.jpg'
 
     # store snapshot to processing dir (wd)
     # using wget cuz otherwise I can't open the file (urllib etc)
-    url = 'http://' + ip + ':' + str(cam['port'])
-    url += '/cgi-bin/getsnapshot.cgi'
+    #url = 'http://' + ip + ':' + str(cam['port'])
+    #url += '/cgi-bin/getsnapshot.cgi'
+    url = cam['url']
     fout = ' -O ' + fname + ' '
     timeout = ' --timeout=5 --tries=2'
     dump = ' >/dev/null 2>&1'

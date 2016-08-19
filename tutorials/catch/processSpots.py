@@ -5,7 +5,7 @@ import os, sys
 sys.path.append("..")
 import notifications as notify
 
-def create( nSpots, monthlies ):
+def create( nSpots, monthlies, cameras, ip ):
 
     defaultProperties = {
         'paid': 0,
@@ -20,6 +20,7 @@ def create( nSpots, monthlies ):
         'occupationEndTime': 0,
         'violation': False,
         'failedDetection': False,
+        'url': '',
     }
 
     spots = {prop:defaultProperties.copy() for prop in range(1,nSpots+1)}
@@ -28,6 +29,17 @@ def create( nSpots, monthlies ):
     for i in monthlies:
         spots[i]['monthly'] = 1
         spots[i]['paid'] = 0.9
+    
+    # Assign each camera and spot the camera's url
+    for c, camera in cameras.iteritems():
+        
+        for spot in camera['spots']:
+            
+            sn = spot['number']
+            url = 'http://' + ip + ':' + str(camera['port'])
+            url += '/cgi-bin/getsnapshot.cgi'
+            camera['url'] = url
+            spots[sn]['url'] = url
 
     return spots
 
