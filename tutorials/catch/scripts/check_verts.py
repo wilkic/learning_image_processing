@@ -478,74 +478,77 @@ camera11 = {
 
 camera12 = {
     'number': 12,
-    #'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
+    'im_full_path': '/home/acp/work/aws/cam_images/camera12/snap20160721233213.jpg',
     #'im_full_path': '/home/acp/Downloads/snap20160729153725.jpg',
     #'im_full_path': '/home/acp/Downloads/45failed_detect.jpg',
-    'im_full_path': '/home/acp/Downloads/46failed_detect.jpg',
+    #'im_full_path': '/home/acp/Downloads/46failed_detect.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot46_fd.jpg',
     'spots': [
         {
             'number': 33,
             'vertices': np.array(
-                        [[  35, 120],
-                         [ 120, 125],
-                         [  90, 224],
-                         [   0, 224]]),
-            'base_means': [136,135,134],
-            'base_nEdges': 112,
+                        [[  50, 105],
+                         [ 125, 105],
+                         [  85, 224],
+                         [   0, 224],
+                         [   0, 175]]),
+            'base_means': [133,132,130],
+            'base_nEdges': 111,
             'base_nKeys': 4,
         },
         {
             'number': 34,
             'vertices': np.array(
-                        [[ 150, 125],
-                         [ 275, 125],
-                         [ 300, 224],
-                         [ 130, 224]]),
-            'base_means': [137,139,138],
-            'base_nEdges': 107,
-            'base_nKeys': 2,
+                        [[ 157, 100],
+                         [ 270, 100],
+                         [ 305, 224],
+                         [ 120, 224]]),
+            'base_means': [133,135,134],
+            'base_nEdges': 123,
+            'base_nKeys': 6,
         },
         {
             'number': 35,
             'vertices': np.array(
-                        [[ 300, 125],
-                         [ 370, 125],
+                        [[ 300, 100],
+                         [ 370, 100],
+                         [ 400, 135],
                          [ 400, 224],
-                         [ 330, 224]]),
-            'base_means': [133,133,133],
-            'base_nEdges': 73,
-            'base_nKeys': 0,
+                         [ 335, 224]]),
+            'base_means': [121,122,121],
+            'base_nEdges': 94,
+            'base_nKeys': 2,
         },
         {
             'number': 44,
             'vertices': np.array(
-                        [[ 305,  10],
-                         [ 330,  10],
+                        [[ 300,   8],
+                         [ 329,   9],
                          [ 380,  40],
                          [ 330,  40]]),
-            'base_means': [130,124,127],
+            'base_means': [130,123,127],
             'base_nEdges': 0,
             'base_nKeys': 0,
         },
         {
             'number': 45,
             'vertices': np.array(
-                        [[ 245,  10],
-                         [ 290,  10],
-                         [ 300,  30],
-                         [ 255,  30]]),
-            'base_means': [98,98,102],
-            'base_nEdges': 36,
+                        [[ 240,   8],
+                         [ 280,   8],
+                         [ 307,  27],
+                         [ 250,  27]]),
+            'base_means': [97,97,100],
+            'base_nEdges': 29,
             'base_nKeys': 0,
         },
         {
             'number': 46,
             'vertices': np.array(
-                        [[ 185,  10],
-                         [ 230,  10],
-                         [ 235,  25],
-                         [ 185,  25]]),
-            'base_means': [114,114,118],
+                        [[ 187,   5],
+                         [ 230,   5],
+                         [ 239,  26],
+                         [ 182,  26]]),
+            'base_means': [113,112,116],
             'base_nEdges': 0,
             'base_nKeys': 0,
         },
@@ -652,7 +655,7 @@ camera14 = {
 }
 
 
-camera = camera5
+camera = camera13
 
 _plot = True
 
@@ -666,7 +669,7 @@ surf = cv2.xfeatures2d.SURF_create(400)
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
-    #plt.ion()
+    plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
     fig = plt.figure(figsize=(10,6))
