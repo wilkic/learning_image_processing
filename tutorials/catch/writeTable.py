@@ -14,7 +14,7 @@ def writeTable( spots ):
     tabHtml = """
     <html>
         <head>
-            <meta http-equiv="refresh" content="30" />
+            <meta http-equiv="refresh" content="60" />
             <title>Lot Status</title>
             <script type="text/javascript" src="sorttable.js">
             </script>
