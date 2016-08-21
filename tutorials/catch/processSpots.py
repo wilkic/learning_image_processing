@@ -57,7 +57,7 @@ def write( cameras, spots ):
     
     return
 
-def judge( spots, freeTime, monthlies, to, imdir, vdir, udir ):
+def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
 
     for s, spot in spots.iteritems():
         
@@ -83,7 +83,7 @@ def judge( spots, freeTime, monthlies, to, imdir, vdir, udir ):
                 %s
                 Spot %d in VIOLATION
                 """ % (time.asctime(lt), s)
-                notify.send_msg_with_jpg( sub, msg, vfname, to )
+                notify.send_msg_with_jpg( sub, msg, vfname, team )
         else:
             spot['violation'] = False
             

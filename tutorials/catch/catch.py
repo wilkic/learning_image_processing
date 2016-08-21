@@ -46,9 +46,9 @@ ip = "108.45.109.111"
 
 spam = True 
 
-#to = ['info@goodspeedparking.com',
-#      '3474005261@tmomail.net',
-#      '3102452197@mms.att.net']
+toForce = ['info@goodspeedparking.com',
+           '3474005261@tmomail.net',
+           '3102452197@mms.att.net']
 toall = ['info@goodspeedparking.com',
       '3474005261@tmomail.net']
 to = ['info@goodspeedparking.com']
@@ -98,7 +98,7 @@ while True:
         
         processApi.processApi( data_dir, spots, monthlies, toall )
         
-        processSpots.judge( spots, violationThresh, monthlies, toall, cd, vd, ud )
+        processSpots.judge( spots, violationThresh, monthlies, toall, toForce, cd, vd, ud )
 
         writeTable.writeTable( spots )
 

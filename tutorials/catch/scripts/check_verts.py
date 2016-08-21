@@ -483,6 +483,7 @@ camera12 = {
     #'im_full_path': '/home/acp/Downloads/45failed_detect.jpg',
     #'im_full_path': '/home/acp/Downloads/46failed_detect.jpg',
     #'im_full_path': '/home/acp/Downloads/spot46_fd.jpg',
+    'im_full_path': '/home/acp/Downloads/46left.jpg',
     'spots': [
         {
             'number': 33,
@@ -549,8 +550,8 @@ camera12 = {
                          [ 239,  26],
                          [ 182,  26]]),
             'base_means': [113,112,116],
-            'base_nEdges': 0,
-            'base_nKeys': 0,
+            'base_nEdges': 14,
+            'base_nKeys': 1,
         },
     ]
 }
@@ -655,7 +656,7 @@ camera14 = {
 }
 
 
-camera = camera13
+camera = camera12
 
 _plot = True
 

@@ -51,6 +51,9 @@ def writeTable( spots ):
                 "</tr>")
 
     n_remaining = len(spots)
+    
+    # Make a separate table like normal, with paids only
+    ptabHtml = tabHtml
 
     for s in spots:
         spot = spots[s]
@@ -109,14 +112,25 @@ def writeTable( spots ):
         row = row + ostCell + oetCell
         row += '</tr>'
         tabHtml += row
+        
+        if spot['paid'] == 1:
+            ptabHtml += row
+
     
-    tabHtml += """
+    endHtml = """
         </table>
     </html>"""
+
+    tabHtml += endHtml
+    ptabHtml += endHtml
+
     with open('table.html','w') as f:
         f.write(tabHtml)
+    with open('paidTable.html','w') as f:
+        f.write(ptabHtml)
 
     #os.rename("table.html","/var/www/html/newtable/index.html")
+    #os.rename("paidTable.html","/var/www/html/whospaid/index.html")
     print 'WARNING: table webpage is not going to served site location!'
 
     nHtml = """\
