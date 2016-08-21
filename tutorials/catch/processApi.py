@@ -16,7 +16,6 @@ import html_ops as ho
 sys.path.append("..")
 import notifications as notify
 
-global fails
 fails = 0
 
 def assign_data( data, spots, monthlies ):
@@ -41,6 +40,7 @@ def assign_data( data, spots, monthlies ):
 
 def processApi( logdir, spots, monthlies, to ):
 
+    global fails
 
     # Get the PM API response
     url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
