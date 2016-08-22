@@ -12,13 +12,14 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
             {
                 'number': 1,
                 'vertices': np.array(
-                            [[   0,   0],
-                             [  30,   0],
+                            [[   0,  40],
+                             [  30,  40],
                              [  60, 150],
-                             [   0, 150]]),
-                'base_means': [118,123,127],
-                'base_nEdges': 404,
-                'base_nKeys': 11,
+                             [  20, 150],
+                             [   0,  90]]),
+                'base_means': [127,123,118],
+                'base_nEdges': 0,
+                'base_nKeys': 0
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
@@ -36,13 +37,13 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
             {
                 'number': 2,
                 'vertices': np.array(
-                            [[  90,   0],
-                             [ 290,   0],
-                             [ 230, 224],
-                             [ 110, 224]]),
-                'base_means': [117,117,115],
-                'base_nEdges': 419,
-                'base_nKeys': 18,
+                            [[  95,  20],
+                             [ 285,  20],
+                             [ 230, 215],
+                             [ 115, 190]]),
+                'base_means': [119,120,121],
+                'base_nEdges': 40,
+                'base_nKeys': 2
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
@@ -61,13 +62,13 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
             {
                 'number': 3,
                 'vertices': np.array(
-                            [[ 310,   0],
+                            [[ 325,   0],
                              [ 400,   0],
                              [ 400, 224],
-                             [ 250, 224]]),
-                'base_means': [119,119,117],
-                'base_nEdges': 550,
-                'base_nKeys': 10,
+                             [ 260, 224]]),
+                'base_means': [117,119,119],
+                'base_nEdges': 362,
+                'base_nKeys': 1
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
