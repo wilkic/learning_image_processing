@@ -36,7 +36,7 @@ camera1 = {
                          [   0,  90]]),
             'base_means': [127,123,118],
             'base_nEdges': 0,
-            'base_nKeys': 0
+            'base_nKeys': 0,
         },
         {
             'number': 2,
@@ -47,7 +47,7 @@ camera1 = {
                          [ 115, 190]]),
             'base_means': [119,120,121],
             'base_nEdges': 40,
-            'base_nKeys': 2
+            'base_nKeys': 2,
         },
         {
             'number': 3,
@@ -58,7 +58,7 @@ camera1 = {
                          [ 260, 224]]),
             'base_means': [117,119,119],
             'base_nEdges': 362,
-            'base_nKeys': 1
+            'base_nKeys': 1,
         }
     ]
 }

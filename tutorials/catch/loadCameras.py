@@ -19,7 +19,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                              [   0,  90]]),
                 'base_means': [127,123,118],
                 'base_nEdges': 0,
-                'base_nKeys': 0
+                'base_nKeys': 0,
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
@@ -43,7 +43,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                              [ 115, 190]]),
                 'base_means': [119,120,121],
                 'base_nEdges': 40,
-                'base_nKeys': 2
+                'base_nKeys': 2,
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
@@ -68,7 +68,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                              [ 260, 224]]),
                 'base_means': [117,119,119],
                 'base_nEdges': 362,
-                'base_nKeys': 1
+                'base_nKeys': 1,
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],
