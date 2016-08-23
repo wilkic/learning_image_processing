@@ -23,7 +23,7 @@ camera1 = {
     'number': 1,
     'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
     #'im_full_path': '/home/acp/work/aws/current_images/spot1.jpg',
-    #'im_full_path': '/home/acp/Downloads/spot2violation.jpg',
+    'im_full_path': '/home/acp/Downloads/spot2violation.jpg',
     #'im_full_path': '/home/acp/Downloads/spot3_taken.jpg',
     'spots': [
         {
@@ -179,7 +179,9 @@ camera4 = {
 
 camera5 = {
     'number': 5,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera5/snap20160705224325.jpg',
+    #'im_full_path': '/home/acp/work/ggp/cam_images/camera5/snap20160705224325.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot12_fd.png',
+    'im_full_path': '/home/acp/Downloads/spot12_fd_again.jpg',
     'spots': [
         {
             'number': 12,
@@ -658,7 +660,7 @@ camera14 = {
 }
 
 
-camera = camera1
+camera = camera14
 
 _plot = True
 

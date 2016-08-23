@@ -72,7 +72,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 plot_spots = range(1,38+1) + range(43,49+1)
-tmin = -12
+tmin = -24
 tmax = 0
 
 fdir = os.path.expanduser('~/work/aws/spot_logs')
