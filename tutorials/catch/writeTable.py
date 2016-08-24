@@ -79,12 +79,8 @@ def writeTable( spots ):
         linkText = '<a href="' + spot['url'] + '">' + spaceText + '</a>'
         spaceCell = '<td>' + linkText + '</td>'
         occCell = '<td> ' + str(spot['timeOccupied']>0) + '</td>'
-        presCell = ( '<td class="timp"> '
-                     + str(spot['timePresent'])
-                     + '</td>' )
-        paidCell = ( '<td class="pd"> '
-                     + str(spot['paid'])
-                     + '</td>' )
+        presCell = '<td> ' + str(spot['timePresent']) + '</td>'
+        paidCell = '<td> ' + str(spot['paid']) + '</td>'
         rpst_str = str(spot['payStartTime'])
         rpet_str = str(spot['payEndTime'])
         if not rpst_str:
@@ -113,7 +109,7 @@ def writeTable( spots ):
         row += '</tr>'
         tabHtml += row
         
-        if spot['paid'] == 1:
+        if spot['paid'] == 1 or spot['timeOccupied'] > 0:
             ptabHtml += row
 
     
