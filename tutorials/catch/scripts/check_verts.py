@@ -229,7 +229,8 @@ camera6 = {
    # 'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
     #'im_full_path': '/home/acp/Downloads/spot16.jpg',
     #'im_full_path': '/home/acp/Downloads/spot16taken_072916211956.jpg',
-    'im_full_path': '/home/acp/Downloads/spots1617_occ.jpg',
+    #'im_full_path': '/home/acp/Downloads/spots1617_occ.jpg',
+    'im_full_path': '/home/acp/Downloads/spot22_fd.jpg',
     'spots': [
         {
             'number': 15,
@@ -662,7 +663,7 @@ camera14 = {
 }
 
 
-camera = camera1
+camera = camera6
 
 _plot = True
 
