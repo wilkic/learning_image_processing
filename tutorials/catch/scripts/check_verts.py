@@ -281,57 +281,42 @@ camera6 = {
 
 camera7 = {
     'number': 7,
-    #'im_full_path': '/home/acp/work/aws/cam_images/camera7/snap20160721043347.jpg',
-    #'im_full_path': '/home/acp/Downloads/19paid_20taken.jpg',
-    'im_full_path': '/home/acp/Downloads/19paid_20taken_again.jpg',
-    #'im_full_path': '/home/acp/work/aws/all_cam_images/camera7_20160810002858.jpg',
-    #'im_full_path': '/home/acp/Downloads/19paid_20empty.jpg',
+    'im_full_path': '/home/acp/Downloads/cam7.jpg',
     
     'spots': [
         {
             'number': 18,
             'vertices': np.array(
-                        [[   0,  75],
-                         [  75,  75],
-                         [ 110, 150],
-                         [  30, 150]]),
-            'base_means': [120,120,120],
-            'base_nEdges': 32,
-            'base_nKeys': 0,
+                        [[ 180, 110],
+                         [ 295, 110],
+                         [ 375, 224],
+                         [ 175, 224]]),
+            'base_means': [110,114,114],
+            'base_nEdges': 82,
+            'base_nKeys': 4,
         },
         {
             'number': 19,
             'vertices': np.array(
-                        [[  90,  20],
-                         [ 325,  20],
-                         [ 255, 150],
-                         [ 140, 150]]),
-            'base_means': [117,120,119],
-            'base_nEdges': 98,
+                        [[  50, 110],
+                         [ 150, 110],
+                         [ 150, 224],
+                         [   0, 224],
+                         [   0, 180]]),
+            'base_means': [120,121,121],
+            'base_nEdges': 72,
             'base_nKeys': 6,
-        },
-        {
-            'number': 20,
-            'vertices': np.array(
-                        [[ 365,   0],
-                         [ 400,   0],
-                         [ 400, 120],
-                         [ 365, 150],
-                         [ 305, 150]]),
-            'base_means': [99,99,99],
-            'base_nEdges': 9,
-            'base_nKeys': 3,
         },
         {
             'number': 23,
             'vertices': np.array(
-                        [[ 110, 190],
-                         [ 290, 200],
-                         [ 280, 224],
-                         [ 110, 224]]),
-            'base_means': [166,163,163],
-            'base_nEdges': 254,
-            'base_nKeys': 0,
+                        [[  80,  30],
+                         [ 220,  30],
+                         [ 220,  50],
+                         [  80,  50]]),
+            'base_means': [150,148,145],
+            'base_nEdges': 141,
+            'base_nKeys': 4,
         }
     ]
 }
@@ -341,10 +326,23 @@ camera8 = {
     'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
     'spots': [
         {
+            'number': 20,
+            'vertices': np.array(
+                        [[ 260,  20],
+                         [ 360,  20],
+                         [ 400,  70],
+                         [ 400, 224],
+                         [ 275, 224],
+                         [ 255,  50]]),
+            'base_means': [99,99,99],
+            'base_nEdges': 9,
+            'base_nKeys': 3,
+        },
+        {
             'number': 21,
             'vertices': np.array(
                         [[  70,  25],
-                         [ 169,  25],
+                         [ 170,  25],
                          [ 140, 224],
                          [   0, 224],
                          [   0, 130]]),
@@ -663,7 +661,7 @@ camera14 = {
 }
 
 
-camera = camera6
+camera = camera8
 
 _plot = True
 
