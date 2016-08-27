@@ -247,10 +247,9 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'number': 9,
                 'vertices': np.array(
                             [[ 325,  25],
-                             [ 380,  25],
-                             [ 400,  50],
-                             [ 400, 220],
-                             [ 385, 150]]),
+                             [ 330,  25],
+                             [ 400, 120],
+                             [ 400, 165]]),
                 'base_means': [125,126,126],
                 'base_nEdges': 425,
                 'base_nKeys': 2,
@@ -272,10 +271,10 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
             {
                 'number': 10,
                 'vertices': np.array(
-                            [[ 165,  30],
+                            [[ 190,  30],
                              [ 260,  30],
                              [ 370, 224],
-                             [ 240, 224]]),
+                             [ 260, 224]]),
                 'base_means': [121,122,119],
                 'base_nEdges': 67,
                 'base_nKeys': 2,
@@ -299,7 +298,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'vertices': np.array(
                             [[  40,  40],
                              [ 145,  40],
-                             [ 210, 224],
+                             [ 170, 224],
                              [  40, 224]]),
                 'base_means': [119,119,119],
                 'base_nEdges': 63,
