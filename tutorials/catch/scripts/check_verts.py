@@ -150,9 +150,9 @@ camera4 = {
                          [ 330,  25],
                          [ 400, 120],
                          [ 400, 165]]),
-            'base_means': [125,126,126],
-            'base_nEdges': 425,
-            'base_nKeys': 2,
+            'base_means': [118,120,120],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
         },
         {
             'number': 10,
@@ -161,9 +161,9 @@ camera4 = {
                          [ 260,  30],
                          [ 370, 224],
                          [ 260, 224]]),
-            'base_means': [121,122,119],
-            'base_nEdges': 67,
-            'base_nKeys': 2,
+            'base_means': [119,122,122],
+            'base_nEdges': 62,
+            'base_nKeys': 1,
         },
         {
             'number': 11,
@@ -172,9 +172,9 @@ camera4 = {
                          [ 145,  40],
                          [ 170, 224],
                          [  40, 224]]),
-            'base_means': [119,119,119],
-            'base_nEdges': 63,
-            'base_nKeys': 5,
+            'base_means': [117,117,118],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
         },
     ]
 }
