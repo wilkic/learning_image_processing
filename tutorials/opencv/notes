@@ -10,4 +10,12 @@ Do magic
 
 http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html
 
+--------------
+Installing from repos:
+
+$ sudo apt-get install python-opencv
+
+--------------
+Learning what to do
+http://opencvpython.blogspot.com/2012/06/hi-this-article-is-tutorial-which-try.html
 
