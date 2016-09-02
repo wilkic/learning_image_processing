@@ -3,6 +3,8 @@
 import ipdb
 
 import os, sys
+import time
+import pprint as pp
 
 sys.path.append(os.getcwd())
 
@@ -13,6 +15,7 @@ import html_ops as ho
 
 # Set up the spots dictionary
 spotNumbers = range(1001,1119+1) + range(1127,1132+1)
+
 
 # These spots are monthly
 monthlies = []
@@ -34,10 +37,10 @@ for i in monthlies:
 
 
 # Get the API response
-url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=jso://ppprk.com/apps/v7/server/opmgmt/api/partner_index.php/getzoneinfo?format=json'
+url = 'https://ppprk.com/apps/v7/server/opmgmt/api/partner_index.php/getzoneinfo?format=json'
 zoneId = 476823
 apiKey = 'cde94f0cb408435d9792da3d525a9671'
-fullUrl = url + '&apikey=' + apiKey + '&zoneid=' str(zoneId)
+fullUrl = url + '&apikey=' + apiKey + '&zoneid=' + str(zoneId)
 
 resp = requests.get(fullUrl)
 
@@ -47,10 +50,10 @@ if resp.status_code != 404:
     data = data['data'][0]
 
     with open('paymentAPI.log','a') as out:
-        print >> out, dt.datetime.now()
+        print >> out, time.asctime()
         pp.pprint( data, stream=out )
 
-    for i in data['spaces']:
+    for i in data['locations_spaces'][0]['spaces']:
         sn = int( i['number'] )
         spots[ sn ]['paid'] = 1
         spots[ sn ]['startTime'] = str(i['entrytime'])
@@ -59,7 +62,6 @@ if resp.status_code != 404:
 # Put the data in a table
 tabHtml = '<table border="1">'
 tabHtml += ("<tr><td>Space Number</td>"
-                "<td>Occupied</td>"
                 "<td>Paid</td>"
                 "<td>Paid Start Time</td>"
                 "<td>Paid End Time</td>"
@@ -67,7 +69,7 @@ tabHtml += ("<tr><td>Space Number</td>"
             "</tr>")
 
 
-n_remaining = nSpots
+n_remaining = len(spotNumbers)
 
 for spot in spots:
 
@@ -82,17 +84,17 @@ for spot in spots:
     petCell = '<td> ' + str(spots[spot]['endTime']) + '</td>'
     mnthCell = '<td> ' + str(spots[spot]['monthly']) + '</td>'
     row += spaceCell 
-    row = row + occCell + paidCell
+    row = row + paidCell
     row = row + pstCell + petCell
-    row = row + lpnCell + lpsCell
     row += mnthCell
     row += '</tr>'
     tabHtml += row
 
 tabHtml += '</table>'
 
-ho.write_page( 'table.html', 'Lot Status', 60, tabHtml )
-os.rename("table.html","/var/www/html/table/index.html")
+tname = 'tablePassport.html'
+ho.write_page( tname, 'Lot Status', 60, tabHtml )
+#os.rename(tname,"/var/www/html/reston/table/index.html")
 
 nHtml = """\
         <div>
@@ -102,7 +104,8 @@ nHtml = """\
         </div>
         """ % n_remaining 
 
-ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+nname = 'n_availPassport.html'
+ho.write_page( nname, 'Available Spots', 60, nHtml )
+#os.rename(nname,"/var/www/html/reston/n_spots_available/index.html")
 
 
