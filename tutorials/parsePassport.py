@@ -71,18 +71,29 @@ tabHtml += ("<tr><td>Space Number</td>"
 
 n_remaining = len(spotNumbers)
 
-for spot in spots:
+ptabHtml = tabHtml
+
+for s in spots:
+    
+    spot = spots[s]
 
     # For now, update remaining number of
     # spots based on the number paid
-    n_remaining -= spots[spot]['paid']
+    
+    rcolor = '#FFFFFF'
+    if spot['paid']:
+        n_remaining -= 1
+        rcolor = '#00FF00'
+    
+    rowsty = 'style="background-color:%s"' % rcolor
 
-    row = '<tr>'
-    spaceCell = '<td>Space ' + str(spot) + '</td>'
-    paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
-    pstCell = '<td> ' + str(spots[spot]['startTime']) + '</td>'
-    petCell = '<td> ' + str(spots[spot]['endTime']) + '</td>'
-    mnthCell = '<td> ' + str(spots[spot]['monthly']) + '</td>'
+    row = '<tr %s>' % rowsty
+
+    spaceCell = '<td>Space ' + str(s) + '</td>'
+    paidCell = '<td> ' + str(spot['paid']) + '</td>'
+    pstCell = '<td> ' + str(spot['startTime']) + '</td>'
+    petCell = '<td> ' + str(spot['endTime']) + '</td>'
+    mnthCell = '<td> ' + str(spot['monthly']) + '</td>'
     row += spaceCell 
     row = row + paidCell
     row = row + pstCell + petCell
@@ -90,11 +101,22 @@ for spot in spots:
     row += '</tr>'
     tabHtml += row
 
-tabHtml += '</table>'
+    if spot['paid']:
+        ptabHtml += row
+
+endHtml = """
+</table"""
+
+tabHtml += endHtml
+ptabHtml += endHtml
 
 tname = 'tablePassport.html'
 ho.write_page( tname, 'Lot Status', 60, tabHtml )
 #os.rename(tname,"/var/www/html/reston/table/index.html")
+
+tname = 'paidtablePassport.html'
+ho.write_page( tname, 'Lot Status', 60, ptabHtml )
+#os.rename(tname,"/var/www/html/reston/whospaid/index.html")
 
 nHtml = """\
         <div>
