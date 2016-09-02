@@ -142,6 +142,7 @@ camera4 = {
     'im_full_path': '/home/acp/work/ggp/cam_images/camera4/snap20160706230618.jpg',
 #    'im_full_path': '/home/acp/work/aws/cam_images/camera4/snap20160723023418.jpg',
     #'im_full_path': '/home/acp/Downloads/spot10_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot9_fd.jpg',
     'spots': [
         {
             'number': 9,
@@ -223,14 +224,15 @@ camera5 = {
 
 camera6 = {
     'number': 6,
-#    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
+    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
 #    'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
 #    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
    # 'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
     #'im_full_path': '/home/acp/Downloads/spot16.jpg',
     #'im_full_path': '/home/acp/Downloads/spot16taken_072916211956.jpg',
     #'im_full_path': '/home/acp/Downloads/spots1617_occ.jpg',
-    'im_full_path': '/home/acp/Downloads/spot22_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot22_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot17_bad_detection.jpg',
     'spots': [
         {
             'number': 15,
@@ -281,7 +283,8 @@ camera6 = {
 
 camera7 = {
     'number': 7,
-    'im_full_path': '/home/acp/Downloads/cam7.jpg',
+    #'im_full_path': '/home/acp/Downloads/cam7.jpg',
+    'im_full_path': '/home/acp/Downloads/spot23_fd.jpg',
     
     'spots': [
         {
@@ -355,7 +358,8 @@ camera8 = {
 
 camera9 = {
     'number': 9,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera9/snap20160721043347.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera9/snap20160721043347.jpg',
+    'im_full_path': '/home/acp/Downloads/spot26_taken.jpg',
     'spots': [
         {
             'number': 24,
@@ -383,13 +387,13 @@ camera9 = {
         {
             'number': 26,
             'vertices': np.array(
-                        [[ 275,  30],
-                         [ 350,  30],
-                         [ 395,  70],
-                         [ 390, 160],
-                         [ 340, 165]]),
-            'base_means': [136,135,134],
-            'base_nEdges': 9,
+                        [[ 300,  20],
+                         [ 340,  20],
+                         [ 400,  75],
+                         [ 400, 160],
+                         [ 370, 165]]),
+            'base_means': [143,142,142],
+            'base_nEdges': 0,
             'base_nKeys': 0,
         },
     ]
@@ -661,7 +665,7 @@ camera14 = {
 }
 
 
-camera = camera4
+camera = camera9
 
 _plot = True
 
