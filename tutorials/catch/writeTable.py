@@ -1,6 +1,4 @@
 
-import ipdb
-
 import os, sys
 import time
 
@@ -81,18 +79,18 @@ def writeTable( spots ):
         occCell = '<td> ' + str(spot['timeOccupied']>0) + '</td>'
         presCell = '<td> ' + str(spot['timePresent']) + '</td>'
         paidCell = '<td> ' + str(spot['paid']) + '</td>'
-        rpst_str = str(spot['payStartTime'])
-        rpet_str = str(spot['payEndTime'])
-        if not rpst_str:
-            pstCell = '<td> </td>'
+        if spot['payStartTime']:
+            pst_lt = time.localtime(spot['payStartTime'])
+            pst_str = time.asctime(pst_lt)
         else:
-            pstt = time.strptime(rpst_str[0:19],"%Y-%m-%dT%H:%M:%S")
-            pstCell = '<td> ' + time.asctime(pstt) + '</td>'
-        if not rpet_str:
-            petCell = '<td> </td>'
+            pst_str = ''
+        if spot['payEndTime']:
+            pet_lt = time.localtime(spot['payEndTime'])
+            pet_str = time.asctime(pet_lt)
         else:
-            pett = time.strptime(rpet_str[0:19],"%Y-%m-%dT%H:%M:%S")
-            petCell = '<td> ' + time.asctime(pett) + '</td>'
+            pet_str = ''
+        pstCell = '<td> ' + pst_str + '</td>'
+        petCell = '<td> ' + pet_str + '</td>'
         lpnCell = '<td> ' + str(spot['lpn']) + '</td>'
         lpsCell = '<td> ' + str(spot['lps']) + '</td>'
         mnthCell = '<td> ' + str(spot['monthly']) + '</td>'

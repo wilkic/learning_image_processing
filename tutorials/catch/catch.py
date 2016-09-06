@@ -8,7 +8,6 @@ import pylab
 import matplotlib.pyplot as plt
 
 import time
-import datetime as dt
 
 import sys
 
@@ -113,9 +112,9 @@ while True:
         %s
         
         Traceback:
-        %s""" % (str(dt.datetime.now()),str(e),tb)
-        notify.send_msg('Error',msg,toall)
+        %s""" % (time.asctime(),str(e),tb)
         print "%s\n\n%s" % (msg, str(e))
+        notify.send_msg('Error',msg,toall)
         sys.exit()
 
     # Do it all over again, after some rest

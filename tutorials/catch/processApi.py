@@ -8,7 +8,7 @@ sys.path.append(os.getcwd())
 import send_mean as sm
 
 
-import datetime as dt
+import time
 
 
 import html_ops as ho
@@ -24,12 +24,28 @@ def assign_data( data, spots, monthlies ):
         paid = []
         for i in data['parkingRights']:
             sn = int( i['spaceNumber'] )
-            paid += [sn]
-            spots[ sn ]['paid'] = 1
-            spots[ sn ]['payStartTime'] = str(i['startDateLocal'])
-            spots[ sn ]['payEndTime'] = str(i['endDateLocal'])
             spots[ sn ]['lpn'] = str(i['lpn'])
             spots[ sn ]['lps'] = str(i['lpnState'])
+            
+            psstr = str(i['startDateLocal'])
+            pestr = str(i['endDateLocal'])
+            
+            if psstr:
+                pstt = time.strptime(psstr[0:19],"%Y-%m-%dT%H:%M:%S")
+                pst = time.mktime(pstt)
+                spots[ sn ]['payStartTime'] = pst
+            if pestr:
+                pett = time.strptime(pestr[0:19],"%Y-%m-%dT%H:%M:%S")
+                pet = time.mktime(pett)
+                spots[ sn ]['payEndTime'] = pet
+            
+            # Mark as paid if currently within paid window
+            now = time.time()
+            if now > spots[sn]['payStartTime']:
+                
+                if now < spots[sn]['payEndTime']:
+                    spots[ sn ]['paid'] = 1
+                    paid += [sn]
         
         for s,spot in spots.iteritems():
             if s not in paid and s not in monthlies:
@@ -60,7 +76,7 @@ def processApi( logdir, spots, monthlies, to ):
                 msg = """
                 %s
                 Park Mobile API is not responding!
-                """ % dt.datetime.now()
+                """ % time.asctime()
                 notify.send_msg('Error',msg,to)
                 fails += 1
                 if fails == 5:
@@ -74,7 +90,7 @@ def processApi( logdir, spots, monthlies, to ):
             
             # Log it
             with open(os.path.join(logdir,'pmAPI.log'),'a') as out:
-                print >> out, dt.datetime.now()
+                print >> out, time.asctime()
                 pp.pprint( data, stream=out )
             
             # Write it to spot object
