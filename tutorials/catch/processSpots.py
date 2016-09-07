@@ -88,12 +88,8 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
             spot['violation'] = False
             
             if spot['paid'] == 1 and spot['timePresent'] == 0:
-                pss = spot['payStartTime']
-                pstt = time.strptime(pss[0:19],"%Y-%m-%dT%H:%M:%S")
-                pst = time.mktime(pstt)
-                pes = spot['payEndTime']
-                pett = time.strptime(pes[0:19],"%Y-%m-%dT%H:%M:%S")
-                pet = time.mktime(pett)
+                pst = spot['payStartTime']
+                pet = spot['payEndTime']
                 
                 oet = spot['occupationEndTime']
 
@@ -102,11 +98,14 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                         spot['failedDetection'] = True
 
                         tss = spot['payStartTime']
+                        pstt = time.localtime(spot['occupationStartTime'])
+                        pss = time.strftime('%Y%m%dT%H%M%S',pstt)
+                        
 
                         ss = str(s)
                         fname = 'spot' + ss + '.jpg'
                         fname = os.path.join( imdir, fname )
-                        ufname = 'spot' + ss + '_' + tss + '.jpg'
+                        ufname = 'spot' + ss + '_' + pss + '.jpg'
                         ufname = os.path.join( udir, ufname )
                         copyfile( fname, ufname ) 
                         sub = "Failed Detection?"
@@ -114,7 +113,7 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                         %s
                         Spot %d Detection Failed, or ...
                         Person left spot within pay period
-                        """ % (tss, s)
+                        """ % (pss, s)
                         notify.send_msg_with_jpg( sub, msg, ufname, to )
                 else:
                     spot['failedDetection'] = False
