@@ -492,14 +492,15 @@ camera12 = {
     #'im_full_path': '/home/acp/Downloads/45failed_detect.jpg',
     #'im_full_path': '/home/acp/Downloads/46failed_detect.jpg',
     #'im_full_path': '/home/acp/Downloads/spot46_fd.jpg',
-    'im_full_path': '/home/acp/Downloads/46left.jpg',
+    #'im_full_path': '/home/acp/Downloads/46left.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot35_bad.jpg',
     'spots': [
         {
             'number': 33,
             'vertices': np.array(
                         [[  50, 105],
-                         [ 125, 105],
-                         [  85, 224],
+                         [ 105, 105],
+                         [  75, 224],
                          [   0, 224],
                          [   0, 175]]),
             'base_means': [133,132,130],
@@ -520,14 +521,14 @@ camera12 = {
         {
             'number': 35,
             'vertices': np.array(
-                        [[ 300, 100],
+                        [[ 330, 100],
                          [ 370, 100],
                          [ 400, 135],
                          [ 400, 224],
-                         [ 335, 224]]),
-            'base_means': [121,122,121],
-            'base_nEdges': 94,
-            'base_nKeys': 2,
+                         [ 365, 224]]),
+            'base_means': [114,115,114],
+            'base_nEdges': 89,
+            'base_nKeys': 0,
         },
         {
             'number': 44,
@@ -556,11 +557,11 @@ camera12 = {
             'vertices': np.array(
                         [[ 187,   5],
                          [ 230,   5],
-                         [ 239,  26],
-                         [ 182,  26]]),
-            'base_means': [113,112,116],
-            'base_nEdges': 14,
-            'base_nKeys': 1,
+                         [ 239,  20],
+                         [ 182,  20]]),
+            'base_means': [107,106,110],
+            'base_nEdges': 3,
+            'base_nKeys': 0,
         },
     ]
 }
@@ -665,7 +666,7 @@ camera14 = {
 }
 
 
-camera = camera9
+camera = camera12
 
 _plot = True
 
