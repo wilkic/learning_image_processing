@@ -73,9 +73,9 @@ n_remaining = len(spotNumbers)
 
 ptabHtml = tabHtml
 
-for s in spots:
+for sn in spotNumbers:
     
-    spot = spots[s]
+    spot = spots[sn]
 
     # For now, update remaining number of
     # spots based on the number paid
@@ -89,7 +89,7 @@ for s in spots:
 
     row = '<tr %s>' % rowsty
 
-    spaceCell = '<td>Space ' + str(s) + '</td>'
+    spaceCell = '<td>Space ' + str(sn) + '</td>'
     paidCell = '<td> ' + str(spot['paid']) + '</td>'
     pstCell = '<td> ' + str(spot['startTime']) + '</td>'
     petCell = '<td> ' + str(spot['endTime']) + '</td>'
