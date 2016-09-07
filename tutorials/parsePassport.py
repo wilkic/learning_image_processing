@@ -56,8 +56,8 @@ if resp.status_code != 404:
     for i in data['locations_spaces'][0]['spaces']:
         sn = int( i['number'] )
         spots[ sn ]['paid'] = 1
-        spots[ sn ]['startTime'] = str(i['entrytime'])
-        spots[ sn ]['endTime'] = str(i['exittime'])
+        spots[ sn ]['startTime'] = str(i['formattedentrytime'])
+        spots[ sn ]['endTime'] = str(i['formattedexittime'])
 
 # Put the data in a table
 tabHtml = '<table border="1">'
