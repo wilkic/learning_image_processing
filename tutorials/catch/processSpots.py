@@ -98,7 +98,7 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                         spot['failedDetection'] = True
 
                         tss = spot['payStartTime']
-                        pstt = time.localtime(spot['occupationStartTime'])
+                        pstt = time.localtime(tss)
                         pss = time.strftime('%Y%m%dT%H%M%S',pstt)
                         
 
