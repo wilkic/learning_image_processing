@@ -55,10 +55,15 @@ def writeTable( spots ):
 
     for s in spots:
         spot = spots[s]
-
-        # For now, update remaining number of
-        # spots based on the number paid
-        n_remaining -= spot['paid']
+        
+        # Occupied once past presence threshold
+        # -- Can be occupied and not paid for
+        # -- duration of 'freeTime' or 'violationThresh'
+        # -- before marked as violating.
+        # -- Which is NOT what we want to indicate when
+        # -- presenting the number of spots available
+        occupied = spot['timeOccupied'] > 0
+        n_remaining -= occupied
         
         rcolor = '#FFFFFF'
         if spot['violation']:
@@ -76,7 +81,7 @@ def writeTable( spots ):
         spaceText = 'Space ' + str(s)
         linkText = '<a href="' + spot['url'] + '">' + spaceText + '</a>'
         spaceCell = '<td>' + linkText + '</td>'
-        occCell = '<td> ' + str(spot['timeOccupied']>0) + '</td>'
+        occCell = '<td> ' + str(occupied) + '</td>'
         presCell = '<td> ' + str(spot['timePresent']) + '</td>'
         paidCell = '<td> ' + str(spot['paid']) + '</td>'
         if spot['payStartTime']:
