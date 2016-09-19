@@ -5,6 +5,17 @@ import os, sys
 sys.path.append("..")
 import notifications as notify
 
+
+def try_copy( src, dest ):
+    try:
+        copyfile( src, dest )
+        return True
+    except IOError as e:
+        print "OOPs... that was a bad copy"
+        print e
+        return False
+
+
 def create( nSpots, monthlies, cameras, ip ):
 
     defaultProperties = {
@@ -77,13 +88,17 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                 fname = os.path.join( imdir, fname )
                 vfname = 'spot' + ss + '_' + tss + '.jpg'
                 vfname = os.path.join( vdir, vfname )
-                copyfile( fname, vfname ) 
+                copied = try_copy( fname, vfname ) 
+                if copied:
+                    send_image = vfname
+                else:
+                    send_image = fname
                 sub = "Violation"
                 msg = """
                 %s
                 Spot %d in VIOLATION
                 """ % (time.asctime(lt), s)
-                notify.send_msg_with_jpg( sub, msg, vfname, team )
+                notify.send_msg_with_jpg( sub, msg, send_image, team )
         else:
             spot['violation'] = False
             
@@ -107,14 +122,18 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                         fname = os.path.join( imdir, fname )
                         ufname = 'spot' + ss + '_' + pss + '.jpg'
                         ufname = os.path.join( udir, ufname )
-                        copyfile( fname, ufname ) 
+                        copied = try_copy( fname, ufname ) 
+                        if copied:
+                            send_image = ufname
+                        else:
+                            send_image = fname
                         sub = "Failed Detection?"
                         msg = """
                         %s
                         Spot %d Detection Failed, or ...
                         Person left spot within pay period
                         """ % (pss, s)
-                        notify.send_msg_with_jpg( sub, msg, ufname, to )
+                        notify.send_msg_with_jpg( sub, msg, send_image, to )
                 else:
                     spot['failedDetection'] = False
             else:
