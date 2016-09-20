@@ -20,7 +20,7 @@ import html_ops as ho
 nSpots = 49
 
 # These spots are monthly
-monthlies = [38, 39, 40, 41, 42]
+monthlies = [12, 13, 14, 38, 39, 40, 41, 42]
 
 defaultProperties = {
     'paid': 0,
@@ -122,6 +122,6 @@ nHtml = """\
         """ % n_remaining 
 
 ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+os.rename("n_avail.html","/var/www/html/n_spots_not_paid/index.html")
 
 
