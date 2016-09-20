@@ -12,6 +12,9 @@ sys.path.append("../catch/.")
 import analyzeImage as ai
 import determinePresence as dp
 
+sys.path.append("..")
+import notifications as notify
+
 import traceback
 
 
