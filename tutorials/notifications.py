@@ -27,7 +27,13 @@ def setup_server():
     pwd = getpass.getpass()
 
     #Next, log in to the server
-    server.login( sender, pwd )
+    try:
+        server.login( sender, pwd )
+    except smtplib.SMTPAuthenticationError as e:
+        sys.stderr.write("""
+        Warning: %s was caught while trying to authenticate
+        with Gmail""" (e))
+        return None
     
     srvDict = {'server':server,
                'sender':sender}
@@ -39,6 +45,10 @@ def setup_server():
 def send_mean( mean, recipients ):
 
     srvDict = setup_server()
+    
+    # If setup failed, don't email... keep going
+    if srvDict is None:
+        return
 
     body = \
     """
@@ -50,7 +60,7 @@ def send_mean( mean, recipients ):
     msg['Subject'] = "test message from viper"
     msg['From'] = srvDict['sender']
     msg['To'] = ', '.join(recipients)
-
+    
     try:
         srvDict['server'].sendmail( srvDict['sender'], 
                                     recipients,
