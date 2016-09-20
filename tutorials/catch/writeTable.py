@@ -63,7 +63,7 @@ def writeTable( spots ):
         # -- Which is NOT what we want to indicate when
         # -- presenting the number of spots available
         occupied = spot['timeOccupied'] > 0
-        n_remaining -= occupied
+        n_remaining -= ( occupied or spot['monthly'] ) 
         
         rcolor = '#FFFFFF'
         if spot['violation']:
