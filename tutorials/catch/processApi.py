@@ -23,7 +23,16 @@ def assign_data( data, spots, monthlies ):
     if 'parkingRights' in data:
         paid = []
         for i in data['parkingRights']:
+            
+            # Get space number
             sn = int( i['spaceNumber'] )
+
+            # Make sure space number is a valid spot
+            if sn > len(spots):
+                continue
+            if not spots[sn]:
+                continue
+
             spots[ sn ]['lpn'] = str(i['lpn'])
             spots[ sn ]['lps'] = str(i['lpnState'])
             

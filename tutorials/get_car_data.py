@@ -20,7 +20,7 @@ import html_ops as ho
 nSpots = 49
 
 # These spots are monthly
-monthlies = [38, 39, 40, 41, 42]
+monthlies = [12, 13, 14, 38, 39, 40, 41, 42]
 
 defaultProperties = {
     'paid': 0,
@@ -50,17 +50,18 @@ resp = requests.get(url, auth=(usr,pwd), verify=True)
 if resp.status_code != 404:
     data = resp.json()
     
-    with open('pmAPI.log','a') as out:
+    with open('/mnt/data/catch/get_car_data_pmAPI.log','a') as out:
         print >> out, dt.datetime.now()
         pp.pprint( data, stream=out )
 
     for i in data['parkingRights']:
         sn = int( i['spaceNumber'] )
-        spots[ sn ]['paid'] = 1
-        spots[ sn ]['startTime'] = str(i['startDateLocal'])
-        spots[ sn ]['endTime'] = str(i['endDateLocal'])
-        spots[ sn ]['lpn'] = str(i['lpn'])
-        spots[ sn ]['lps'] = str(i['lpnState'])
+        if sn <= len(spots):
+            spots[ sn ]['paid'] = 1
+            spots[ sn ]['startTime'] = str(i['startDateLocal'])
+            spots[ sn ]['endTime'] = str(i['endDateLocal'])
+            spots[ sn ]['lpn'] = str(i['lpn'])
+            spots[ sn ]['lps'] = str(i['lpnState'])
 
 
 # TODO:
@@ -122,6 +123,6 @@ nHtml = """\
         """ % n_remaining 
 
 ho.write_page( 'n_avail.html', 'Available Spots', 15, nHtml )
-os.rename("n_avail.html","/var/www/html/n_spots_available/index.html")
+os.rename("n_avail.html","/var/www/html/n_spots_not_paid/index.html")
 
 
