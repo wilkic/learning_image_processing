@@ -32,7 +32,7 @@ def setup_server():
     except smtplib.SMTPAuthenticationError as e:
         sys.stderr.write("""
         Warning: %s was caught while trying to authenticate
-        with Gmail""" (e))
+        with Gmail""" % (e))
         return None
     
     srvDict = {'server':server,
@@ -68,7 +68,7 @@ def send_mean( mean, recipients ):
     except smtplib.SMTPDataError as e:
         sys.stderr.write("""
         Warning: %s was caught while trying to notify
-        of mean = %f""" (e,mean))
+        of mean = %f""" % (e,mean))
 
     srvDict['server'].close()
 
@@ -91,7 +91,7 @@ def send_msg( subject, message, recipients ):
     except smtplib.SMTPDataError as e:
         sys.stderr.write("""
         Warning: %s was caught while trying to notify
-        of mean = %f""" (e,mean))
+        of mean = %f""" % (e,mean))
 
     srvDict['server'].close()
 
@@ -116,7 +116,7 @@ def send_msg_with_jpg( subject, message, fname, recipients  ):
     except smtplib.SMTPDataError as e:
         sys.stderr.write("""
         Warning: %s was caught while trying to notify
-        of mean = %f""" (e,mean))
+        of mean = %f""" % (e,mean))
 
     srvDict['server'].close()
 
