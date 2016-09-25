@@ -2,6 +2,7 @@
 import sys
 import os
 from shutil import copyfile
+import time
 
 sys.path.append(os.getcwd())
 import dataRecording as log
