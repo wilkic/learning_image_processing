@@ -78,6 +78,9 @@ def send_mean( mean, recipients ):
 def send_msg( subject, message, recipients ):
 
     srvDict = setup_server()
+    if srvDict is None:
+        print "Not emailing because of gmail issues"
+        return
 
     msg = MIMEText(message)
     msg['Subject'] = subject
@@ -100,6 +103,9 @@ def send_msg( subject, message, recipients ):
 def send_msg_with_jpg( subject, message, fname, recipients  ):
 
     srvDict = setup_server()
+    if srvDict is None:
+        print "Not emailing because of gmail issues"
+        return
 
     msg = MIMEMultipart()
     body = MIMEText(message,'plain')
