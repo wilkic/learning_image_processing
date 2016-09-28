@@ -43,6 +43,7 @@ def writeTable( spots ):
                 "</tr>")
 
     dspots = [12, 13, 14]
+    n_remaining = len(dspots)
 
     for s in spots:
         if s not in dspots:
@@ -97,7 +98,7 @@ def writeTable( spots ):
     with open(tabFname,'w') as f:
         f.write(tabHtml)
 
-    #os.rename(tabFname,"/var/www/html/demotable/index.html")
+    os.rename(tabFname,"/var/www/html/demotable/index.html")
     #print 'WARNING: number webpage is not going to served site location!'
 
 
