@@ -19,7 +19,7 @@ sleepytime = 30
 #n_checks = 5
 n_checks = int( 86400. / 2 / sleepytime )
 
-log_file = 'slog.txt'
+log_file = '/mnt/data/catch/mcatch/slog.txt'
 
 ###############################################
 
@@ -45,8 +45,8 @@ for timer in range(int(n_checks)):
     # Collect image
 
     # Load test image
-    #fname = 'cam09.bmp'
-    fname = '/home/acp/work/camera_testing/hosafe/cam9/just_lx.bmp'
+    fname = 'cam09.bmp'
+    #fname = '/home/acp/work/camera_testing/hosafe/cam9/just_lx.bmp'
     #fname = '/home/acp/work/camera_testing/hosafe/cam9/lx.bmp'
     #fname = '/home/acp/work/camera_testing/hosafe/cam9/tess.bmp'
     #fname = '/home/acp/work/camera_testing/hosafe/cam9/bg.bmp'
