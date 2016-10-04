@@ -70,10 +70,10 @@ def writeTable( spots ):
             rcolor = '#FF0000"'
         elif spot['failedDetection']:
             rcolor = '#FF7F00"'
-        elif spot['paid'] == 1:
-            rcolor = '#00FF00"'
-        elif spot['paid']:
+        elif spot['monthly']:
             rcolor = '#0000FF"'
+        elif spot['paid']:
+            rcolor = '#00FF00"'
 
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
