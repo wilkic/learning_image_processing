@@ -3,8 +3,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 #filename = 'van_spot17.jpg'
-#filename = 'home/acp/Downloads/spot37_occupied.jpg'
+#filename = '/home/acp/Downloads/spot37_occupied.jpg'
 filename = '/home/acp/work/camera_testing/hosafe/cam9/tess.bmp'
+#filename = '/home/acp/work/aws/tmpdir/hi.bmp'
+#filename = '/home/acp/work/aws/tmpdir/nower.bmp'
 
 im = cv2.imread(filename)
 
@@ -22,6 +24,7 @@ thc, contours, hierarchy = cv2.findContours(thc,cv2.RETR_TREE,cv2.CHAIN_APPROX_S
 #blur = cv2.GaussianBlur(imgray,(5,5),0)
 blur = cv2.GaussianBlur(imgray,(3,3),0)
 #blur = imgray.copy()
+#blur = cv2.dilate(blur, None, iterations=2)
 ret3,th3 = cv2.threshold(blur,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 #th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,2)
 th3c = th3.copy()
@@ -76,7 +79,7 @@ cv2.drawContours(imC, [bigc], -1, (200,0,50), 3)
 
 imR = im.copy()
 x,y,w,h = cv2.boundingRect(bigc)
-cv2.rectangle(imR,(x,y),(x+w,y+h),(0,255,0),2)
+cv2.rectangle(imR,(x,y),(x+w,y+h),(0,255,0),50)
 
 
 images = [im, th1, thc, imc, th3, im3c, imC, imR]
@@ -85,6 +88,9 @@ nc = np.ceil(float(len(images))/nr)
 for i,im in enumerate(images):
     plt.subplot(nr,nc,i+1)
     plt.imshow(im,'gray')
+
+
+#plt.ion()
 plt.show()
 
 
