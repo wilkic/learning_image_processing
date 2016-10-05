@@ -4,8 +4,11 @@ import cv2
 def analyzeImage( imageFname, camera):
     
     # Read image
-    image = cv2.imread(imageFname)
-
+    if isinstance(imageFname, basestring):
+        image = cv2.imread(imageFname)
+    else:
+        image = imageFname
+    
     # Get edges in image (use mask later)
     edges = cv2.Canny( image, camera['edgeLims'][0], camera['edgeLims'][1])
 
