@@ -12,18 +12,19 @@ from matplotlib import pyplot as plt
 ###############################################
 
 # How long between checks (seconds)
-#sleepytime = 1
-sleepytime = 30
+sleepytime = 1
+#sleepytime = 30
 
 # run for half a day
-#n_checks = 5
-n_checks = int( 86400. / 2 / sleepytime )
+n_checks = 5
+#n_checks = int( 86400. / 2 / sleepytime )
 
-log_file = '/mnt/data/catch/mcatch/slog.txt'
+log_file = 'slog.txt'
+#log_file = '/mnt/data/catch/mcatch/slog.txt'
 
 ###############################################
 
-call = "ffmpeg -rtsp_transport tcp -r 25 -y -i rtsp://108.45.109.111:9210/live0.264 -updatefirst 1 -r 1/10 cam09.bmp"
+call = "ffmpeg -rtsp_transport tcp -r 25 -y -i rtsp://108.45.109.111:9209/live0.264 -updatefirst 1 -r 2 cam09.bmp"
 
 ###############################################
 
