@@ -13,3 +13,27 @@ Also needed:
  * sudo apt-get install python-imaging
  * sudo ln -s /usr/include/freetype2/ /usr/local/include/freetype
 
+
+________________________________________________
+
+Tried this:
+http://doc.openalpr.com/compiling.html
+sudo apt-get install python-openalpr
+
+
+wget -O - http://deb.openalpr.com/openalpr.gpg.key | sudo apt-key add -
+echo "deb http://deb.openalpr.com/master/ trusty main" | sudo tee /etc/apt/sources.list.d/openalpr.list
+sudo apt-get update
+sudo apt-get install openalpr openalpr-daemon openalpr-utils libopenalpr-dev
+
+
+http://doc.openalpr.com/compiling.html
+
+
+Now for use in python:
+from openalpr import Alpr
+alpr = Alpr("us","/etc/openalpr/openalpr.conf","/usr/share/openalpr/runtime_data")alpr = Alpr("us","/etc/openalpr/openalpr.conf","/usr/share/openalpr/runtime_data")
+
+res = alpr.recognize_file('ea7the.jpg')
+
+
