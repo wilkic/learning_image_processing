@@ -1,12 +1,13 @@
 #!/usr/bin/env python
-
-import os
+import ipdb
 
 import numpy as np
 import pylab
+import cv2
 
 import time
 
+import os
 import sys
 sys.path.append("../catch/.")
 import analyzeImage as ai
@@ -16,14 +17,15 @@ sys.path.append("..")
 import notifications as notify
 
 import traceback
-
+import subprocess as sp
+import signal
 
 ##########################################
 ##########################################
 ##########################################
 
 
-sleepytime = 3
+sleepytime = 1
 
 data_dir = os.getcwd()
 #data_dir = '/mnt/data/catch/'
@@ -32,6 +34,7 @@ data_dir = os.getcwd()
 threshSurf = 400
 edgeLims = [100, 200]
 
+toall = ['info@goodspeedparking.com']
 
 os.environ['TZ'] = 'US/Eastern'
 time.tzset()
@@ -77,57 +80,64 @@ n_logs = 0
 
 log = open('log','w')
 
-#for index in range(0,3):
-while True:
+
+# Start getting pictures
+call = "ffmpeg -rtsp_transport tcp -r 30 -y -i "
+in_url = "rtsp://108.45.109.111:9209/live0.264"
+out_args = " -r 1 -update 1 "
+im_name = "tmp.bmp"
+call += in_url + out_args + im_name
+
+#proc = sp.Popen(call,shell=True)
+proc = sp.Popen(call,shell=True,stdout=sp.PIPE,preexec_fn=os.setsid)
+
+for index in range(3):
+#while True:
     
     try:
+        while not os.path.isfile(im_name):
+            time.sleep(1)
         
-
-        # Get picture
-        call = "ffmpeg -rtsp_transport tcp -y -i "
-        in_url = "rtsp://108.45.109.111:9204/live0.264"
-        out_args = " -vframes 1 "
-        im_name = "tmp.bmp"
-        call += in_url + out_args + im_name
-        
-        os.system(call)
-
+        im = cv2.imread(im_name)
 
         # Is something going on ?
-        ai.analyzeImage( im_name, camera )
+        ai.analyzeImage( im, camera )
 
         spot = camera['spots'][0]
         present = dp.determinePresence( spot )
+        
+        imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        blur = cv2.GaussianBlur(imgray,(5,5),0)
         
         log.write("nkeys = %d" % spot['nKeys'])
         log.write('      ')
         log.write("nedges = %d\n" % spot['nEdges'])
         log.write('\n\n')
         
-        if present:
-            
-            n_logs += 1
-            
-            log.write("\tI see something: %d\n" % n_logs)
-            log.write("\tnkeys = %d\n" % spot['nKeys'])
-            log.write("\tnedges = %d\n" % spot['nEdges'])
-            log.write('\n\n')
-
-            ncall = "ffmpeg -rtsp_transport tcp -y -i "
-            in_url = "rtsp://108.45.109.111:9204/live0.264"
-            out_args = " -vframes 120 -r 24 "
-            dir_name = "log%d" % n_logs
-            im_name = "tmp%03d.bmp"
-            fim_name = dir_name + '/' + im_name
-            ncall += in_url + out_args + fim_name
-            
-            if not os.path.exists(dir_name):
-                os.makedirs(dir_name)
-
-            os.system(ncall)
-
-            if n_logs == 9:
-                sys.exit()
+#        if present:
+#            
+#            n_logs += 1
+#            
+#            log.write("\tI see something: %d\n" % n_logs)
+#            log.write("\tnkeys = %d\n" % spot['nKeys'])
+#            log.write("\tnedges = %d\n" % spot['nEdges'])
+#            log.write('\n\n')
+#
+#            ncall = "ffmpeg -rtsp_transport tcp -y -i "
+#            in_url = "rtsp://108.45.109.111:9204/live0.264"
+#            out_args = " -vframes 120 -r 24 "
+#            dir_name = "log%d" % n_logs
+#            im_name = "tmp%03d.bmp"
+#            fim_name = dir_name + '/' + im_name
+#            ncall += in_url + out_args + fim_name
+#            
+#            if not os.path.exists(dir_name):
+#                os.makedirs(dir_name)
+#
+#            os.system(ncall)
+#
+#            if n_logs == 9:
+#                sys.exit()
 
     except Exception, e:
         tb = traceback.format_exc()
@@ -143,9 +153,13 @@ while True:
         %s""" % (time.asctime(),str(e),tb)
         print "%s\n\n%s" % (msg, str(e))
         notify.send_msg('Error',msg,toall)
+        
+        os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
+
         sys.exit()
 
     # Do it all over again, after some rest
     time.sleep(sleepytime)
 
+os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
 
