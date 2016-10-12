@@ -112,7 +112,7 @@ def writeTable( spots ):
         row += '</tr>'
         tabHtml += row
         
-        if spot['paid'] == 1 or spot['violation']:
+        if spot['paid'] == 1 or spot['violation'] and not spot['monthly']:
             ptabHtml += row
 
     

@@ -39,7 +39,7 @@ def create( nSpots, monthlies, cameras, ip ):
     # Assign the monthlies
     for i in monthlies:
         spots[i]['monthly'] = 1
-        spots[i]['paid'] = 0.9
+        spots[i]['paid'] = 0
     
     # Assign each camera and spot the camera's url
     for c, camera in cameras.iteritems():
