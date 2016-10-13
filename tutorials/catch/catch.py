@@ -20,6 +20,7 @@ import processSpots
 import processCameras
 import processApi
 import writeTable
+import writeDemo
 
 sys.path.append("..")
 import notifications as notify
@@ -101,6 +102,7 @@ while True:
         processSpots.judge( spots, violationThresh, monthlies, toall, toForce, cd, vd, ud )
 
         writeTable.writeTable( spots )
+        writeDemo.writeTable( spots )
 
     except Exception, e:
         tb = traceback.format_exc()
