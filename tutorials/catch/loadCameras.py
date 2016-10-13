@@ -444,11 +444,11 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'vertices': np.array(
                             [[  85,  20],
                              [ 290,  20],
-                             [ 235, 170],
-                             [ 140, 170]]),
-                'base_means': [110,113,113],
-                'base_nEdges': 115,
-                'base_nKeys': 16,
+                             [ 235, 195],
+                             [ 140, 195]]),
+                'base_means': [113,115,115],
+                'base_nEdges': 220,
+                'base_nKeys': 21
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],

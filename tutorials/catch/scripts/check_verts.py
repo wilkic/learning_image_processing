@@ -21,11 +21,14 @@ def onclick(event):
 
 camera1 = {
     'number': 1,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
+    #'im_full_path': '/home/acp/work/ggp/cam_images/camera1/snap20160705224323.jpg',
     #'im_full_path': '/home/acp/work/aws/current_images/spot1.jpg',
     #'im_full_path': '/home/acp/Downloads/spot2violation.jpg',
     #'im_full_path': '/home/acp/Downloads/spot3_taken.jpg',
     #'im_full_path': '/home/acp/Downloads/spot1_fv.jpg',
+    'im_full_path': '/home/acp/work/aws/images_of_undetections/spot3_20161007T092135.jpg',
+    #'im_full_path': '/home/acp/work/aws/images_of_undetections/spot1_20161007T214217.jpg',
+
     'spots': [
         {
             'number': 1,
@@ -184,7 +187,8 @@ camera5 = {
     'number': 5,
     #'im_full_path': '/home/acp/work/ggp/cam_images/camera5/snap20160705224325.jpg',
     #'im_full_path': '/home/acp/Downloads/spot12_fd.png',
-    'im_full_path': '/home/acp/Downloads/spot12_fd_again.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot12_fd_again.jpg',
+    'im_full_path': '/home/acp/Downloads/spot14_taken.jpg',
     'spots': [
         {
             'number': 12,
@@ -224,7 +228,7 @@ camera5 = {
 
 camera6 = {
     'number': 6,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
+    #'im_full_path': '/home/acp/work/ggp/cam_images/camera6/snap20160705224325.jpg',
 #    'im_full_path': '/home/acp/work/learning_image_processing/tutorials/catch/current_images/spot16.jpg',
 #    'im_full_path': '/home/acp/work/aws/images_of_violations/spot17_Sat Jul 23 21:10:46 2016.jpg',
    # 'im_full_path': '/home/acp/work/aws/cam_images/camera6/snap20160727024451.jpg',
@@ -233,6 +237,8 @@ camera6 = {
     #'im_full_path': '/home/acp/Downloads/spots1617_occ.jpg',
     #'im_full_path': '/home/acp/Downloads/spot22_fd.jpg',
     #'im_full_path': '/home/acp/Downloads/spot17_bad_detection.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot15_empty.jpg',
+    'im_full_path': '/home/acp/Downloads/spot16_fd.jpg',
     'spots': [
         {
             'number': 15,
@@ -250,11 +256,11 @@ camera6 = {
             'vertices': np.array(
                         [[  85,  20],
                          [ 290,  20],
-                         [ 235, 170],
-                         [ 140, 170]]),
-            'base_means': [110,113,113],
-            'base_nEdges': 115,
-            'base_nKeys': 16
+                         [ 235, 195],
+                         [ 140, 195]]),
+            'base_means': [113,115,115],
+            'base_nEdges': 220,
+            'base_nKeys': 21
         },
         {
             'number': 17,
@@ -666,7 +672,27 @@ camera14 = {
 }
 
 
-camera = camera12
+camera15 = {
+    'number': 15,
+    'im_full_path': '/tmp/tmp.jpg',
+    'spots': [
+        {
+            'number': 32,
+            'vertices': np.array(
+                        [[ 410,   0],
+                         [ 690,   0],
+                         [ 640, 330],
+                         [1280, 350],
+                         [1280, 720],
+                         [   0, 720]]),
+            'base_means': [115,118,118],
+            'base_nEdges': 0,
+            'base_nKeys': 0,
+        },
+    ]
+}
+
+camera = camera6
 
 _plot = True
 
