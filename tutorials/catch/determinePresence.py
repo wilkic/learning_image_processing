@@ -7,10 +7,10 @@ def determinePresence( spot ):
     m = np.asarray(spot['means'])
     b = np.asarray(spot['base_means'])
 
-    dMean = m - b
+    dMean = abs(m - b)
 
     meanPresence = np.where( dMean > spot['meanThresh'] )
-    spot['mPresent'] = len( meanPresence ) > 1
+    spot['mPresent'] = len( meanPresence ) > 0
     
     dKeys = spot['nKeys'] - spot['base_nKeys']
     spot['kPresent'] = dKeys > spot['keyThresh']
