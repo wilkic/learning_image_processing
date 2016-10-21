@@ -7,7 +7,8 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'port': 9001,
         'im_ts': time,
         'threshSurf': threshSurf,
-        'edgeLims': edgeLims,       
+        'edgeLims': edgeLims,
+        'nFails': 0,
         'spots': [
             {
                 'number': 1,
@@ -94,6 +95,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 4,
@@ -156,6 +158,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 6,
@@ -242,6 +245,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 9,
@@ -327,6 +331,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 12,
@@ -412,6 +417,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 15,
@@ -523,6 +529,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 18,
@@ -609,6 +616,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 20,
@@ -672,6 +680,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 24,
@@ -759,6 +768,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 27,
@@ -821,6 +831,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 36,
@@ -916,7 +927,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'mean': 0,
                 'meanThresh': 10,
                 'edgeThresh': 100,
-                'keyThresh': 2,
+                'keyThresh': 0,
                 'detectionType': 'ke',
                 'timePresent': 0,
                 'timeOccupied': 0,
@@ -933,6 +944,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 33,
@@ -1095,6 +1107,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 29,
@@ -1183,6 +1196,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       
+        'nFails': 0,
         'spots': [
             {
                 'number': 32,
