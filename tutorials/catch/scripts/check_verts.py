@@ -500,7 +500,8 @@ camera12 = {
     #'im_full_path': '/home/acp/Downloads/spot46_fd.jpg',
     #'im_full_path': '/home/acp/Downloads/46left.jpg',
     #'im_full_path': '/home/acp/Downloads/spot35_bad.jpg',
-    'im_full_path': '/home/acp/Downloads/spot34_baseline.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot34_baseline.jpg',
+    'im_full_path': '/home/acp/Downloads/spot35_taken.jpg',
     'spots': [
         {
             'number': 33,
