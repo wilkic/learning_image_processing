@@ -195,7 +195,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                              [ 105, 224]]),
                 'base_means': [121,122,122],
                 'base_nEdges': 0,
-                'base_nKeys': 5,
+                'base_nKeys': 20,
                 'means': [0,0,0],
                 'sigs': [0,0,0],
                 'maxs': [0,0,0],

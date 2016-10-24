@@ -86,6 +86,11 @@ for c,cam in cams.iteritems():
         si = next(i for i in spots if i['num'] == s['number'])
         si['klim'] = s['keyThresh'] + s['base_nKeys']
         si['elim'] = s['edgeThresh'] + s['base_nEdges']
+        si['mhlim'] = [0,0,0]
+        si['mllim'] = [0,0,0]
+        for i in range(3):
+            si['mhlim'][i] = s['base_means'][i] + s['meanThresh']
+            si['mllim'][i] = s['base_means'][i] - s['meanThresh']
 
     
 c = ['r','g','b']
@@ -108,6 +113,8 @@ for s in spots:
 
     keylim = s['klim']
     edgelim = s['elim']
+    mhlim = s['mhlim']
+    mllim = s['mllim']
     nks = np.asarray( s['nKeys'] )
     nes = np.asarray( s['nEdges'] )
     
@@ -136,6 +143,8 @@ for s in spots:
     for i in range(3):
         m = np.asarray( s['means'][i] )
         plt.plot(t2end[inds],m[inds],c[i])
+        plt.plot(t2end[inds], mhlim[i]*np.ones_like(t2end[inds]) )
+        plt.plot(t2end[inds], mllim[i]*np.ones_like(t2end[inds]) )
     
     #plt.show()
     fname = 'spot' + str(s['num']) + '_means.png'
