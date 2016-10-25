@@ -47,7 +47,6 @@ ip = "108.45.109.111"
 spam = True 
 
 toForce = ['info@goodspeedparking.com',
-           '3474005261@tmomail.net',
            '3102452197@mms.att.net',
            '4438545184@mms.att.net']
 toall = ['info@goodspeedparking.com',
