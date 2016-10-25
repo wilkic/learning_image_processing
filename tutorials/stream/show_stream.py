@@ -1,7 +1,7 @@
 
 import cv2
 
-vcap = cv2.VideoCapture('rtsp://108.45.109.111:561/live0.264')
+vcap = cv2.VideoCapture('rtsp://108.45.109.111:8504/live0.264')
 
 while(1):
 
