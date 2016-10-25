@@ -60,7 +60,6 @@ b, dc, h = cv2.findContours(dull,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 b, dic, h = cv2.findContours(di,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 b, gc, h = cv2.findContours(gb,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
-
 ftc = get_max_contour(fc)
 mtc = get_max_contour(tc)
 mdc = get_max_contour(dc)
