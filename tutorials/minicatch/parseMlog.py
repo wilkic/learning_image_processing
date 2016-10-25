@@ -2,7 +2,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-flogname = '/home/acp/work/aws/mcatch/slog.txt'
+#flogname = '/home/acp/work/aws/mcatch/slog.txt'
+flogname = 'slog.txt'
 
 a = np.loadtxt( flogname )
 

@@ -23,7 +23,7 @@ log_file = 'slog.txt'
 #log_file = '/mnt/data/catch/mcatch/slog.txt'
 
 # Contour area above which, a car is registered
-Slim = 80e3
+Slim = 40e3
 
 ###############################################
 
@@ -50,10 +50,7 @@ for timer in range(int(n_checks)):
     now_occupied = [False, False, False]
 
     # Load test image
-    if timer is 0:
-        fname = 'cam09.bmp'
-    else:
-        fname = 'cam09_now.bmp'
+    fname = 'cam09.bmp'
     #fname = 'cam09.bmp'
     #fname = '/home/acp/work/camera_testing/hosafe/cam9/just_lx.bmp'
     #fname = '/home/acp/work/camera_testing/hosafe/cam9/lx.bmp'
@@ -69,7 +66,8 @@ for timer in range(int(n_checks)):
         fd = frameDelta.copy()
 
         # blur it
-        blur = cv2.GaussianBlur(fd,(5,5),0)
+        #blur = cv2.GaussianBlur(fd,(5,5),0)
+        blur = cv2.bilateralFilter(fd, 11, 17, 17)
 
         # fancy threshold it
         ret,th = cv2.threshold(blur,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -149,8 +147,13 @@ for timer in range(int(n_checks)):
         # If not 3 spots taken, log smaller contours
         while ci < 3:
             # Log the area
+            if np.shape(contour_info)[0] < ci:
+                S = 0
+            else:
+                S = contour_info[ci][2]
+
             with open(log_file,'a+') as sl:
-                sl.write('%f        ' % contour_info[ci][2] )
+                sl.write('%f        ' % S )
             ci += 1
 
         # Go to next line in log
@@ -183,6 +186,7 @@ for timer in range(int(n_checks)):
 
     except Exception, e:
         print e
+        sys.exit()
         bad_count += 1
         if bad_count == 5:
             print "too many failures\n\t%s" % str(e)
