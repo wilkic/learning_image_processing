@@ -44,14 +44,12 @@ violationThresh = 900
 
 ip = "108.45.109.111"
 
-spam = True 
-
 toForce = ['info@goodspeedparking.com',
            '3102452197@mms.att.net',
            '4438545184@mms.att.net']
-toall = ['info@goodspeedparking.com',
+toErr = ['info@goodspeedparking.com',
       '3474005261@tmomail.net']
-to = ['info@goodspeedparking.com']
+toSpam = ['info@goodspeedparking.com']
 
 threshSurf = 400
 edgeLims = [100, 200]
@@ -92,13 +90,13 @@ while True:
     
     try:
 
-        processCameras.processCameras( cameras, dirs, to, spam )
+        processCameras.processCameras( cameras, dirs, toErr, toSpam )
         
         processSpots.write( cameras, spots )
         
-        processApi.processApi( data_dir, spots, monthlies, toall )
+        processApi.processApi( data_dir, spots, monthlies, toErr )
         
-        processSpots.judge( spots, violationThresh, monthlies, toall, toForce, cd, vd, ud )
+        processSpots.judge( spots, violationThresh, monthlies, toErr, toForce, cd, vd, ud )
 
         writeTable.writeTable( spots )
         writeDemo.writeTable( spots )
@@ -116,7 +114,7 @@ while True:
         Traceback:
         %s""" % (time.asctime(),str(e),tb)
         print "%s\n\n%s" % (msg, str(e))
-        notify.send_msg('Error',msg,toall)
+        notify.send_msg('Error',msg,toErr)
         sys.exit()
 
     # Do it all over again, after some rest

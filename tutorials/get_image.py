@@ -4,7 +4,7 @@ import sys
 import time
 from shutil import copyfile
 
-def get_image( cam, wd, to ):
+def get_image( cam, wd ):
     
     # File name of image in working dir while processing
     fname = wd + '/snap.jpg'

@@ -16,13 +16,13 @@ import get_image as gi
 
 ####
 
-def processCameras( cameras, dirs, to, spam ):
+def processCameras( cameras, dirs, to, spam=None ):
     
     for c, camera in cameras.iteritems():
         
         # Write jpeg to image dir and
         # populate camera dict with time info
-        result = gi.get_image( camera, dirs['wd'], to )
+        result = gi.get_image( camera, dirs['wd'] )
         
         if result['success']:
             delta_time = result['delta_time']
@@ -40,10 +40,10 @@ def processCameras( cameras, dirs, to, spam ):
                                            present,
                                            delta_time,
                                            camera['im_ts'] )
-                if res['message'] is not None and spam:
+                if res['message'] is not None and spam is not None:
                     notify.send_msg_with_jpg( res['subject'],
                                               res['message'],
-                                              fname, to )
+                                              fname, spam )
                 
                 # Store all current images
                 sfname = 'spot' + str(spot['number']) + '.jpg'
