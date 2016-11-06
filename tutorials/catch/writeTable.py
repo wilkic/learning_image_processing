@@ -112,7 +112,10 @@ def writeTable( spots ):
         row += '</tr>'
         tabHtml += row
         
-        if spot['paid'] == 1 or spot['violation'] and not spot['monthly']:
+        # Only populate subtable with what's certain cases
+        showMe = spot['paid'] == 1 or spot['violation']
+        dontShowMe = spot['monthly']
+        if showMe and not dontShowMe:
             ptabHtml += row
 
     
