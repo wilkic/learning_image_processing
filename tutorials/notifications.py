@@ -94,7 +94,8 @@ def send_msg( subject, message, recipients ):
     except smtplib.SMTPDataError as e:
         sys.stderr.write("""
         Warning: %s was caught while trying to notify
-        of mean = %f""" % (e,mean))
+        with the following message:
+        %s""" % (e,message))
 
     srvDict['server'].close()
 
