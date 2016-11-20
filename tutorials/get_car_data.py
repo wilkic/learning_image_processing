@@ -20,7 +20,7 @@ import html_ops as ho
 nSpots = 49
 
 # These spots are monthly
-monthlies = [10, 11, 12, 13, 14, 37, 38, 39, 40, 41, 42]
+monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
 
 defaultProperties = {
     'paid': 0,

@@ -63,9 +63,16 @@ def writeTable( spots ):
         # -- Which is NOT what we want to indicate when
         # -- presenting the number of spots available
         occupied = spot['timeOccupied'] > 0
-        n_remaining -= ( occupied or spot['monthly'] ) 
+        deduct = occupied or spot['monthly'] or spot['faultyCamera']
+        n_remaining -= deduct
         
+        # Default row to white
         rcolor = '#FFFFFF'
+
+        # Black out if camera is failed
+        if spot['faultyCamera']:
+            rcolor = '#000000'
+
         if spot['violation']:
             rcolor = '#FF0000"'
         elif spot['failedDetection']:

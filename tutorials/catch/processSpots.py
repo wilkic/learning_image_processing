@@ -31,6 +31,7 @@ def create( nSpots, monthlies, cameras, ip ):
         'occupationEndTime': 0,
         'violation': False,
         'failedDetection': False,
+        'faultyCamera': False,
         'url': '',
     }
 
@@ -65,7 +66,7 @@ def write( cameras, spots ):
             spots[sn]['timeOccupied'] = spot['timeOccupied']
             spots[sn]['occupationStartTime'] = spot['occupationStartTime']
             spots[sn]['occupationEndTime'] = spot['occupationEndTime']
-    
+            spots[sn]['faultyCamera'] = camera['nFails'] > 0
     return
 
 def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
