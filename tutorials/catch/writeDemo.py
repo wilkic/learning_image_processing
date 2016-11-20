@@ -98,7 +98,7 @@ def writeTable( spots ):
     with open(tabFname,'w') as f:
         f.write(tabHtml)
 
-    os.rename(tabFname,"/var/www/html/demotable/index.html")
+    #os.rename(tabFname,"/var/www/html/demotable/index.html")
     #print 'WARNING: number webpage is not going to served site location!'
 
 
