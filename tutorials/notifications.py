@@ -122,8 +122,11 @@ def send_msg_with_jpg( subject, message, fname, recipients  ):
                                     msg.as_string() )
     except smtplib.SMTPDataError as e:
         sys.stderr.write("""
-        Warning: %s was caught while trying to notify
-        of mean = %f""" % (e,mean))
+        Warning: 
+        %s
+        
+        was caught while trying to notify of:
+         %s""" % (e,message))
 
     srvDict['server'].close()
 
