@@ -107,7 +107,7 @@ tfname = 'bpark_table.html'
 fido = open(tfname,'w')
 fido.write(tabHtml)
 fido.close()
-#os.rename("bpark_table.html","/var/www/html/bpark/table.html")
+#os.rename("bpark_table.html","/var/www/html/bpark/table/index.html")
 
 nHtml = """\
         <div>
