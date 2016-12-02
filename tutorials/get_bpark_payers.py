@@ -103,10 +103,7 @@ for spot in spots:
 
 tabHtml += '</table>'
 
-tfname = 'bpark_table.html'
-fido = open(tfname,'w')
-fido.write(tabHtml)
-fido.close()
+ho.write_page( 'bpark_table.html', 'Available Spots', 60, tabHtml )
 #os.rename("bpark_table.html","/var/www/html/bpark/table/index.html")
 
 nHtml = """\
