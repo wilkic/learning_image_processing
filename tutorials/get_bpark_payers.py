@@ -117,7 +117,7 @@ nHtml = """\
         </div>
         """ % n_remaining 
 
-ho.write_page( 'n_pbark_avail.html', 'Available Spots', 300, nHtml )
+ho.write_page( 'n_bpark_avail.html', 'Available Spots', 300, nHtml )
 #os.rename("n_bpark_avail.html","/var/www/html/bpark/n_spots_not_paid/index.html")
 
 
