@@ -79,12 +79,21 @@ tabHtml += ("<tr><td>Space Number</td>"
 n_remaining = nSpots
 
 for spot in spots:
-
+    
     # For now, update remaining number of
     # spots based on the number paid
-    n_remaining -= spots[spot]['paid']
+    pd = spots[spot]['paid']
+    n_remaining -= pd
 
-    row = '<tr>'
+    # Default row to white
+    rcolor = '#FFFFFF'
+
+    # Mark paid spots as green
+    if pd:
+	rcolor = '#00FF00"'
+    
+    rowsty = 'style="background-color:%s"' % rcolor
+    row = '<tr %s>' % rowsty
     spaceCell = '<td>Space ' + str(spot) + '</td>'
     occCell = '<td> ' + str(spots[spot]['occupied']) + '</td>'
     paidCell = '<td> ' + str(spots[spot]['paid']) + '</td>'
