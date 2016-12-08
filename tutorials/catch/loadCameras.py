@@ -1301,6 +1301,117 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
         ]
     }
 
+    camera15 = {
+        'number': 15,
+        'port': 9015,
+        'im_ts': time,
+        'threshSurf': threshSurf,
+        'edgeLims': edgeLims,       
+        'nFails': 0,
+        'spots': [
+            {
+                'number': 39,
+                'vertices': np.array(
+                            [[ 150, 130],
+                             [ 280, 140],
+                             [ 290, 224],
+                             [ 105, 224]]),
+                'base_means': [115,118,118],
+                'base_nEdges': 0,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 100,
+                'keyThresh': 7,
+                'detectionType': 'k',
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 40,
+                'vertices': np.array(
+                            [[ 270,   0],
+                             [ 305,  10],
+                             [ 330,  35],
+                             [ 275,  25]]),
+                'base_means': [150,145,150],
+                'base_nEdges': 34,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 50,
+                'keyThresh': 2,
+                'detectionType': 'e',
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 41,
+                'vertices': np.array(
+                            [[ 205,   0],
+                             [ 250,   0],
+                             [ 255,  25],
+                             [ 190,  20]]),
+                'base_means': [126,125,128],
+                'base_nEdges': 89,
+                'base_nKeys': 1,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 50,
+                'keyThresh': 1,
+                'detectionType': 'e',
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            },
+            {
+                'number': 42,
+                'vertices': np.array(
+                            [[ 162,   0],
+                             [ 190,   0],
+                             [ 180,  20],
+                             [ 160,  20]]),
+                'base_means': [144,142,148],
+                'base_nEdges': 0,
+                'base_nKeys': 0,
+                'means': [0,0,0],
+                'sigs': [0,0,0],
+                'maxs': [0,0,0],
+                'mins': [0,0,0],
+                'mean': 0,
+                'meanThresh': 10,
+                'edgeThresh': 30,
+                'keyThresh': 0,
+                'detectionType': 'e',
+                'timePresent': 0,
+                'timeOccupied': 0,
+                'occupationStartTime': time,
+                'occupationEndTime': time,
+                'occupationThresh': t2occ
+            }
+        ]
+    }
+
     cameras = {1: camera1,
                2: camera2,
                3: camera3,
@@ -1314,6 +1425,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                11: camera11,
                12: camera12,
                13: camera13,
-               14: camera14}
+               14: camera14,
+               15: camera15}
     
     return cameras
