@@ -16,7 +16,7 @@ def try_copy( src, dest ):
         return False
 
 
-def create( nSpots, monthlies, cameras, ip ):
+def create( nSpots, monthlies, handicaps, cameras, ip ):
 
     defaultProperties = {
         'paid': 0,
@@ -32,6 +32,7 @@ def create( nSpots, monthlies, cameras, ip ):
         'violation': False,
         'failedDetection': False,
         'faultyCamera': False,
+        'handicap': False,
         'url': '',
     }
 
@@ -41,6 +42,10 @@ def create( nSpots, monthlies, cameras, ip ):
     for i in monthlies:
         spots[i]['monthly'] = 1
         spots[i]['paid'] = 0
+    
+    # Assign the handis
+    for i in handicaps:
+        spots[i]['handicap'] = 1
     
     # Assign each camera and spot the camera's url
     for c, camera in cameras.iteritems():

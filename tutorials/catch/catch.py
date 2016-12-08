@@ -38,6 +38,7 @@ data_dir = os.getcwd()
 
 nSpots = 49
 monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
+handicaps = [27, 28]
 
 timePresentBeforeOccupied = 60
 violationThresh = 900
@@ -83,7 +84,7 @@ sld, cld, csd = log.setupDirs( data_dir )
 dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd}
 
 # Create the list of spots
-spots = processSpots.create(nSpots,monthlies,cameras,ip)
+spots = processSpots.create(nSpots,monthlies,handicaps,cameras,ip)
 
 #for index in range(0,3):
 while True:

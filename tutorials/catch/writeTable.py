@@ -63,7 +63,10 @@ def writeTable( spots ):
         # -- Which is NOT what we want to indicate when
         # -- presenting the number of spots available
         occupied = spot['timeOccupied'] > 0
-        deduct = occupied or spot['monthly'] or spot['faultyCamera']
+        deduct = occupied or spot['monthly']
+        deduct = deduct or spot['faultyCamera']
+        deduct = deduct or spot['handicap']
+
         n_remaining -= deduct
         
         # Default row to white
@@ -74,13 +77,15 @@ def writeTable( spots ):
             rcolor = '#000000'
 
         if spot['violation']:
-            rcolor = '#FF0000"'
+            rcolor = '#FF0000'
         elif spot['failedDetection']:
-            rcolor = '#FF7F00"'
+            rcolor = '#FF7F00'
         elif spot['monthly']:
-            rcolor = '#0000FF"'
+            rcolor = '#0000FF'
         elif spot['paid']:
-            rcolor = '#00FF00"'
+            rcolor = '#00FF00'
+        elif spot['handicap']:
+            rcolor = '#FFFF00'
 
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
