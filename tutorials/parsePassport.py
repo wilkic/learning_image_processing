@@ -25,7 +25,8 @@ defaultProperties = {
     'occupied': 0,
     'startTime': '',
     'endTime': '',
-    'monthly': 0
+    'monthly': 0,
+    'zone': 0
 }
 
 spots = {prop:defaultProperties.copy() for prop in spotNumbers}
@@ -58,10 +59,12 @@ if resp.status_code != 404:
         spots[ sn ]['paid'] = 1
         spots[ sn ]['startTime'] = str(i['formattedentrytime'])
         spots[ sn ]['endTime'] = str(i['formattedexittime'])
+        spots[ sn ]['zone'] = str(i['zonenumber'])
 
 # Put the data in a table
 tabHtml = '<table border="1">'
 tabHtml += ("<tr><td>Space Number</td>"
+                "<td>Zone</td>"
                 "<td>Paid</td>"
                 "<td>Paid Start Time</td>"
                 "<td>Paid End Time</td>"
@@ -90,11 +93,13 @@ for sn in spotNumbers:
     row = '<tr %s>' % rowsty
 
     spaceCell = '<td>Space ' + str(sn) + '</td>'
+    zoneCell = '<td> ' + str(spot['zone']) + '</td>'
     paidCell = '<td> ' + str(spot['paid']) + '</td>'
     pstCell = '<td> ' + str(spot['startTime']) + '</td>'
     petCell = '<td> ' + str(spot['endTime']) + '</td>'
     mnthCell = '<td> ' + str(spot['monthly']) + '</td>'
     row += spaceCell 
+    row = row + zoneCell
     row = row + paidCell
     row = row + pstCell + petCell
     row += mnthCell
