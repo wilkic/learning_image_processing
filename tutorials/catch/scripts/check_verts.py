@@ -290,7 +290,8 @@ camera6 = {
 camera7 = {
     'number': 7,
     #'im_full_path': '/home/acp/Downloads/cam7.jpg',
-    'im_full_path': '/home/acp/Downloads/spot23_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot23_fd.jpg',
+    'im_full_path': '/home/acp/Downloads/spot23_bad.jpg',
     
     'spots': [
         {
@@ -576,8 +577,9 @@ camera12 = {
 
 camera13 = {
     'number': 13,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera13/snap20160721233213.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera13/snap20160721233213.jpg',
     #'im_full_path': '/home/acp/Downloads/cam13_30present_false31.jpg',
+    'im_full_path': '/home/acp/Downloads/spot30_bad.jpg',
     'spots': [
         {
             'number': 29,
@@ -599,9 +601,9 @@ camera13 = {
                          [ 280,  55],
                          [ 300, 224],
                          [ 115, 224]]),
-            'base_means': [109,113,112],
-            'base_nEdges': 110,
-            'base_nKeys': 3,
+            'base_means': [111,115,115],
+            'base_nEdges': 300,
+            'base_nKeys': 21,
         },
         {
             'number': 31,
@@ -694,7 +696,7 @@ camera15 = {
     ]
 }
 
-camera = camera12
+camera = camera13
 
 _plot = True
 
