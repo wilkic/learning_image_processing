@@ -119,7 +119,11 @@ for s in spots:
     nes = np.asarray( s['nEdges'] )
     
     
-    
+    dname = 'pics'
+    if not os.path.exists(dname):
+        os.makedirs(dname)
+
+
     #plt.subplot( 3,1,i)
     plt.figure()
     plt.plot( t2end[inds], nks[inds] )
@@ -131,6 +135,7 @@ for s in spots:
     
     #plt.show()
     fname = 'spot' + str(s['num']) + '_nkeys.png'
+    fname = os.path.join(dname,fname)
     plt.savefig(fname)
 
     plt.close()
@@ -148,6 +153,7 @@ for s in spots:
     
     #plt.show()
     fname = 'spot' + str(s['num']) + '_means.png'
+    fname = os.path.join(dname,fname)
     plt.savefig(fname)
 
     plt.close()
@@ -163,6 +169,7 @@ for s in spots:
 
     #plt.show()
     fname = 'spot' + str(s['num']) + '_nedges.png'
+    fname = os.path.join(dname,fname)
     plt.savefig(fname)
 
     plt.close()
@@ -188,13 +195,13 @@ for s in sort_spots:
     html += 'Spot ' + ss + ' History'
     html += '</h2>'
     
-    fname = 'spot' + ss + '_nkeys.png'
+    fname = dname + '/spot' + ss + '_nkeys.png'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
 
-    fname = 'spot' + ss + '_means.png'
+    fname = dname + '/spot' + ss + '_means.png'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
     
-    fname = 'spot' + ss + '_nedges.png'
+    fname = dname + '/spot' + ss + '_nedges.png'
     html += '<img src="' + fname + '" style="width:304px;height:228px;">'
 
 

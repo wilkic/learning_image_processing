@@ -333,7 +333,8 @@ camera7 = {
 
 camera8 = {
     'number': 8,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
+    'im_full_path': '/home/acp/Downloads/spot21.jpg',
     'spots': [
         {
             'number': 20,
@@ -357,8 +358,8 @@ camera8 = {
                          [   0, 224],
                          [   0, 130]]),
             'base_means': [105,105,105],
-            'base_nEdges': 0,
-            'base_nKeys': 0,
+            'base_nEdges': 400,
+            'base_nKeys': 21,
         }
     ]
 }
@@ -696,7 +697,7 @@ camera15 = {
     ]
 }
 
-camera = camera13
+camera = camera8
 
 _plot = True
 
