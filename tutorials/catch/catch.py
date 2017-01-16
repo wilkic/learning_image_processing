@@ -41,7 +41,7 @@ monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
 handicaps = [27, 28]
 
 timePresentBeforeOccupied = 60
-violationThresh = 900
+violationThresh = 1200
 
 ip = "108.45.109.111"
 
