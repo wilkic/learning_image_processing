@@ -49,7 +49,7 @@ resp = requests.get(url, auth=(usr,pwd), verify=True)
 if resp.status_code != 404:
     data = resp.json()
     
-    with open('/mnt/data/catch/bpark/bp_pmAPI.log','a') as out:
+    with open('/mnt/data/catch/bpark/get_payer_output/bp_pmAPI.log','a') as out:
         print >> out, dt.datetime.now()
         pp.pprint( data, stream=out )
 
