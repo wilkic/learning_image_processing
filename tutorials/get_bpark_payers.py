@@ -49,7 +49,14 @@ resp = requests.get(url, auth=(usr,pwd), verify=True)
 if resp.status_code != 404:
     data = resp.json()
     
-    with open('/mnt/data/catch/bpark/get_payer_output/bp_pmAPI.log','a') as out:
+    outdir = '/mnt/data/catch/bpark/get_payer_output'
+
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
+    
+    outfile = os.path.join(outdir,'bp_pmAPI.log')
+
+    with open(outfile,'a') as out:
         print >> out, dt.datetime.now()
         pp.pprint( data, stream=out )
 
@@ -113,7 +120,7 @@ for spot in spots:
 tabHtml += '</table>'
 
 ho.write_page( 'bpark_table.html', 'Available Spots', 60, tabHtml )
-#os.rename("bpark_table.html","/var/www/html/bpark/table/index.html")
+os.rename("bpark_table.html","/var/www/html/bpark/table/index.html")
 
 nHtml = """\
         <div>
@@ -124,6 +131,6 @@ nHtml = """\
         """ % n_remaining 
 
 ho.write_page( 'n_bpark_avail.html', 'Available Spots', 300, nHtml )
-#os.rename("n_bpark_avail.html","/var/www/html/bpark/n_spots_not_paid/index.html")
+os.rename("n_bpark_avail.html","/var/www/html/bpark/n_spots_not_paid/index.html")
 
 
