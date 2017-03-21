@@ -91,7 +91,7 @@ while True:
     
     try:
 
-        processCameras.processCameras( cameras, dirs, toErr, toSpam )
+        processCameras.processCameras( cameras, dirs, toErr )
         
         processSpots.write( cameras, spots )
         
