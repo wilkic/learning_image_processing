@@ -35,3 +35,9 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
  * sudo systemctl status isc-dhcp-server
  * cat /var/lib/dhcp/dhcpd.leases
 
+
+ ***
+ But, had no wifi while serving ips.
+ To get it, had to stop above services. Edit /etc/network/int...
+ And then restart ( doesn't make sense )
+
