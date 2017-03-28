@@ -1,0 +1,30 @@
+
+Follow directions on website:
+
+Only note is you need "exit 0" at end of all scripts
+
+
+
+Make boot script:
+
+sudo vim /etc/init.d/BootScriptName
+sudo chmod 755 /etc/init.d/BootScriptName
+
+
+
+Test:
+
+sudo /etc/init.d/BootScriptName start
+
+
+
+Register:
+
+sudo update-rc.d BootScriptName defaults
+
+
+
+If ever need to remove from startup:
+
+sudo update-rc.d -f BootScriptName remove
+
