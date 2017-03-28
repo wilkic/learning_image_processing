@@ -11,30 +11,37 @@ main router:
 <<<
 auto enp1s0f0
 iface enp1s0f0 inet static
-address 192.168.1.2
+address 192.168.2.1
 netmask 255.255.255.0
-broadcast 192.168.1.255
+broadcast 192.168.2.51
 >>>
  * sudo vim /etc/dhcp/dhcpd.conf
 >>>
 # minimal sample /etc/dhcp/dhcpd.conf
-subnet 192.168.1.0 netmask 255.255.255.0 {
+subnet 192.168.2.0 netmask 255.255.255.0 {
   interface enp1s0f0;
-  range 192.168.1.3 192.168.1.50;
+  range 192.168.2.2 192.168.2.50;
   option subnet-mask 255.255.255.0;
-  option broadcast-address 192.168.1.51;
+  option broadcast-address 192.168.2.51;
 }
 <<<
+ * sudo /etc/init.d/networking restart
+  * Maybe you see a popup saying "now connected to enp1s0f0"
+    which just means the device is active
+  * Go ahead and plug in ethernet
  * sudo /etc/init.d/isc-dhcp-server stop
  * sudo /etc/init.d/isc-dhcp-server start
  * sudo /etc/init.d/isc-dhcp-server restart
- * sudo /etc/init.d/networking restart
+ * cat /var/lib/dhcp/dhcpd.leases
+  * Should see the IPs given to connected device
+
+
+# Was playing around with these
+# But they seem to be repeats of what's in init.d
  * sudo systemctl status isc-dhcp-server
  * sudo systemctl stop isc-dhcp-server
  * sudo systemctl start isc-dhcp-server
  * sudo systemctl status isc-dhcp-server
- * cat /var/lib/dhcp/dhcpd.leases
-
 
  ***
  But, had no wifi while serving ips.
