@@ -37,7 +37,7 @@ data_dir = os.getcwd()
 #data_dir = '/mnt/data/catch/'
 
 nSpots = 49
-monthlies = [10, 11, 12, 13, 14, 35, 36, 37, 38, 39, 40, 41, 42]
+monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
 handicaps = [27, 28]
 
 timePresentBeforeOccupied = 60
