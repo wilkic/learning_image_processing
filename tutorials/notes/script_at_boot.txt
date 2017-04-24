@@ -1,5 +1,6 @@
 
 Follow directions on website:
+http://www.stuffaboutcode.com/2012/06/raspberry-pi-run-program-at-start-up.html?m=1
 
 Only note is you need "exit 0" at end of all scripts
 

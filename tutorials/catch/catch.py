@@ -33,8 +33,7 @@ import get_image as gi
 
 sleepytime = 30
 
-data_dir = os.getcwd()
-#data_dir = '/mnt/data/catch/'
+data_dir = '/mnt/data/catch/'
 
 nSpots = 49
 monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
