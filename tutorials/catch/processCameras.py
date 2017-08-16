@@ -61,7 +61,6 @@ def processCameras( cameras, dirs, to, spam=None ):
 
         else:
             camera['nFails'] += 1
-            
             if camera['nFails'] == 5:
                 msg = """
                 %s
@@ -69,6 +68,10 @@ def processCameras( cameras, dirs, to, spam=None ):
                 """ % (time.asctime(),camera['number'])
                 notify.send_msg('Error',msg,to)
                 print msg
+            
+            # Protect against giant seepage
+            if camera['nFails'] > 100:
+                camera['nFails'] = 100
             
 
         # store the current state of the camera
