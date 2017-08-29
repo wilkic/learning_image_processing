@@ -120,7 +120,7 @@ def send_msg_with_jpg( subject, message, fname, recipients  ):
         srvDict['server'].sendmail( srvDict['sender'], 
                                     recipients,
                                     msg.as_string() )
-    except smtplib.SMTPDataError as e:
+    except (smtplib.SMTPDataError, smtplib.SMTPServerDisconnected) as e:
         sys.stderr.write("""
         Warning: 
         %s
