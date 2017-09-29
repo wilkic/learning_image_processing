@@ -95,16 +95,19 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                 vfname = 'spot' + ss + '_' + tss + '.jpg'
                 vfname = os.path.join( vdir, vfname )
                 copied = try_copy( fname, vfname ) 
-                if copied:
-                    send_image = vfname
-                else:
-                    send_image = fname
+                send_image = vfname
+                
                 sub = "Violation"
                 msg = """
                 %s
                 Spot %d in VIOLATION
                 """ % (time.asctime(lt), s)
-                notify.send_msg_with_jpg( sub, msg, send_image, team )
+
+                if copied:
+                    notify.send_msg_with_jpg( sub, msg, send_image, team )
+                else:
+                    notify.send_msg( sub, msg, team )
+
         else:
             spot['violation'] = False
             
@@ -129,17 +132,20 @@ def judge( spots, freeTime, monthlies, to, team, imdir, vdir, udir ):
                         ufname = 'spot' + ss + '_' + pss + '.jpg'
                         ufname = os.path.join( udir, ufname )
                         copied = try_copy( fname, ufname ) 
-                        if copied:
-                            send_image = ufname
-                        else:
-                            send_image = fname
+                        send_image = ufname
+                        
                         sub = "Failed Detection?"
                         msg = """
                         %s
                         Spot %d Detection Failed, or ...
                         Person left spot within pay period
                         """ % (pss, s)
-                        notify.send_msg_with_jpg( sub, msg, send_image, to )
+
+                        if copied:
+                            notify.send_msg_with_jpg( sub, msg, send_image, to )
+                        else:
+                            notify.send_msg( sub, msg, to )
+
                 else:
                     spot['failedDetection'] = False
             else:
