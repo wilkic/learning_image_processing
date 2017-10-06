@@ -71,6 +71,8 @@ def write( cameras, spots ):
             spots[sn]['timeOccupied'] = spot['timeOccupied']
             spots[sn]['occupationStartTime'] = spot['occupationStartTime']
             spots[sn]['occupationEndTime'] = spot['occupationEndTime']
+            if camera['nFails'] > 0:
+                print 'camera%d has failed %d times' % (c,camera['nFails'])
             spots[sn]['faultyCamera'] = camera['nFails'] > 0
     return
 
