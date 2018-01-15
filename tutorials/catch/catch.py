@@ -36,20 +36,17 @@ sleepytime = 30
 data_dir = '/mnt/data/catch/'
 
 nSpots = 49
-monthlies = [10, 11, 12, 13, 14, 36, 37, 38, 39, 40, 41, 42]
+monthlies = [10, 11, 12, 13, 14, 39, 40, 41, 42]
 handicaps = [27, 28]
 
 timePresentBeforeOccupied = 60
 violationThresh = 1200
 
-ip = "108.45.109.111"
+ip = "192.168.1.1"
 
-toForce = ['info@goodspeedparking.com',
-           '3102452197@mms.att.net',
-           '4438545184@mms.att.net']
-toErr = ['info@goodspeedparking.com',
-      '3474005261@tmomail.net']
-toSpam = ['info@goodspeedparking.com']
+toForce = ['test@test.com']
+toErr = ['test@test.com']
+toSpam = ['test@test.com']
 
 threshSurf = 400
 edgeLims = [100, 200]
