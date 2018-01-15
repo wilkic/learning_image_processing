@@ -86,7 +86,7 @@ def writeTable( spots ):
 
         # Black out if camera is failed
         if spot['faultyCamera']:
-            rcolor = '#000000'
+            rcolor = '#808080'
 
         rowsty = 'style="background-color:%s"' % rcolor
         row = '<tr %s>' % rowsty
