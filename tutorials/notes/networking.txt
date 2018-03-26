@@ -48,3 +48,8 @@ subnet 192.168.2.0 netmask 255.255.255.0 {
  To get it, had to stop above services. Edit /etc/network/int...
  And then restart ( doesn't make sense )
 
+
+***
+
+ * Make sure "iface eth0 inet static" is commented out in /etc/network/interfaces
+ * Get an ip address ("iface eth0 inet dhcp")
