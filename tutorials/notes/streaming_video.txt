@@ -1,0 +1,16 @@
+
+With a source stream (like rtsp feed over IP [maybe h.264 encoded]):
+
+1. use ffmpeg to write the stream to a .mp4 file
+2. use this html to show that video file in a page:
+
+
+```html
+
+<video width="560" controls>
+  <source src="videos/myvideo.mp4" type="video/mp4">
+</video>
+
+```
+
+
