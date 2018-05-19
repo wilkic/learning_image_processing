@@ -68,7 +68,7 @@ def processApi( logdir, spots, monthlies, to ):
     global fails
 
     # Get the PM API response
-    url = 'https://api.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
+    url = 'https://nforce.parkmobile.us/nforceapi/parkingrights/zone/3125?format=json'
     usr = 'ws_goodspeedcapi'
     pwd = 'x2warEya'
     
