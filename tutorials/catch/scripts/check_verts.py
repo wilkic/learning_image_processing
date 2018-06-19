@@ -26,43 +26,43 @@ camera1 = {
     #'im_full_path': '/home/acp/Downloads/spot2violation.jpg',
     #'im_full_path': '/home/acp/Downloads/spot3_taken.jpg',
     #'im_full_path': '/home/acp/Downloads/spot1_fv.jpg',
-    'im_full_path': '/home/acp/work/aws/images_of_undetections/spot3_20161007T092135.jpg',
+    #'im_full_path': '/home/acp/work/aws/images_of_undetections/spot3_20161007T092135.jpg',
     #'im_full_path': '/home/acp/work/aws/images_of_undetections/spot1_20161007T214217.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot1.jpg',
 
     'spots': [
         {
             'number': 1,
             'vertices': np.array(
-                        [[   0,  40],
-                         [  18,  40],
-                         [  48, 165],
-                         [  43, 175],
-                         [  27, 155],
-                         [   0,  90]]),
-            'base_means': [127,122,117],
-            'base_nEdges': 0,
+                        [[   127,  392],
+                         [   194,  389],
+                         [   232,  222],
+                         [   169,  242]]),
+            'base_means': [149,144,131],
+            'base_nEdges': 53,
             'base_nKeys': 0,
         },
         {
             'number': 2,
             'vertices': np.array(
-                        [[  95,  20],
-                         [ 285,  20],
-                         [ 230, 215],
-                         [ 115, 190]]),
-            'base_means': [119,120,121],
-            'base_nEdges': 40,
+                        [[   285,  404],
+                         [   534,  400],
+                         [   451,  125],
+                         [   314,  170]]),
+            'base_means': [115,110,110],
+            'base_nEdges': 575,
             'base_nKeys': 2,
         },
         {
             'number': 3,
             'vertices': np.array(
-                        [[ 325,   0],
-                         [ 400,   0],
-                         [ 400, 224],
-                         [ 260, 224]]),
-            'base_means': [117,119,119],
-            'base_nEdges': 362,
+                        [[ 595,   386],
+                         [ 705,   384],
+                         [ 701,   143],
+                         [ 650,    83],
+                         [ 494,    92]]),
+            'base_means': [132,130,129],
+            'base_nEdges': 675,
             'base_nKeys': 1,
         }
     ]
@@ -334,7 +334,8 @@ camera7 = {
 camera8 = {
     'number': 8,
     #'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
-    'im_full_path': '/home/acp/Downloads/spot21.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot21.jpg',
+    'im_full_path': '/home/acp/Downloads/spot21_new.jpg',
     'spots': [
         {
             'number': 20,
@@ -409,7 +410,8 @@ camera9 = {
 
 camera10 = {
     'number': 10,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera10/snap20160707210354.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera10/snap20160707210354.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot27.jpg',
     'spots': [
         {
             'number': 27,
@@ -623,11 +625,12 @@ camera13 = {
 
 camera14 = {
     'number': 14,
-    'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
+    #'im_full_path': '/home/acp/work/aws/cam_images/camera14/snap20160727024454.jpg',
     #'im_full_path': '/home/acp/Downloads/48failed_detect.jpg',
     #'im_full_path': '/home/acp/Downloads/spot38_fn.jpg',
     #'im_full_path': '/home/acp/Downloads/spot47_fd.jpg',
     #'im_full_path': '/home/acp/Downloads/spot48_fd.jpg',
+    'im_full_path': '/home/acp/Downloads/spot32.jpg',
     'spots': [
         {
             'number': 32,
@@ -697,7 +700,7 @@ camera15 = {
     ]
 }
 
-camera = camera8
+camera = camera10
 
 _plot = True
 
@@ -706,18 +709,14 @@ fname = camera['im_full_path']
 im = cv2.imread(fname)
 
 
-surf = cv2.xfeatures2d.SURF_create(400)
-
 edges = cv2.Canny( im, 100, 200 )
 
 if _plot is True:
     #plt.ion()
     imc = np.copy(im)
     imc[:,:,0] = edges
-    fig = plt.figure(figsize=(10,6))
-    plt.imshow(imc)
-    
-    cid = fig.canvas.mpl_connect('button_press_event', onclick)
+
+imcc = np.copy(imc)
 
 for spot in camera['spots']:
     
@@ -725,7 +724,10 @@ for spot in camera['spots']:
 #        continue
     
     verts = spot['vertices']
-    
+    pverts = verts.copy()
+    pverts.astype('int32')
+    cv2.polylines(imcc,[verts],True,(0,255,255))
+
     mask = np.zeros((im.shape[0],im.shape[1]))
 
     imm = np.zeros_like(im).astype('uint8')
@@ -734,22 +736,19 @@ for spot in camera['spots']:
     bMask = mask.astype(bool)
     iMask = mask.astype('uint8')
     
-    kp, des = surf.detectAndCompute( im, iMask)
-    spot['base_nKeys'] = len(kp)
-    
     spotEdges = edges[bMask]
     edgeInds = np.where(spotEdges == 255)
     spot['base_nEdges'] = np.shape(edgeInds)[1]
     
-    if _plot is True:
-        
-        for color in range(0,3):
-            imm[bMask,color] = im[bMask,color]
-        imm[bMask,0] = edges[bMask]
-        ims = np.copy(imm)
-        ims = cv2.drawKeypoints( imm, kp, None, (255,0,0), 4 )
-        sfig = plt.figure(figsize=(10,6))
-        plt.imshow(ims)
+#    if _plot is True:
+#        
+#        for color in range(0,3):
+#            imm[bMask,color] = im[bMask,color]
+#        imm[bMask,0] = edges[bMask]
+#        ims = np.copy(imm)
+#        ims = cv2.drawKeypoints( imm, kp, None, (255,0,0), 4 )
+#        sfig = plt.figure(figsize=(10,6))
+#        plt.imshow(ims)
 
     for color in range(0,3):
     #for color in range(0,1):
@@ -767,18 +766,15 @@ for spot in camera['spots']:
         #spot['base_nEdges_vec'][color] = np.shape(edgeInds)[1]
 
 
-#        if _plot is True:
-#            plt.figure(figsize=(10,6))
-#            plt.imshow(imc)
-#            
-#            imm[bMask] = imc[bMask]
-#            plt.figure(figsize=(10,6))
-#            plt.imshow(imm)
-    
     if _plot is True: 
         plt.show()
 
 if _plot is True:
+    fig = plt.figure(figsize=(10,6))
+    cid = fig.canvas.mpl_connect('button_press_event', onclick)
+    plt.imshow(imcc)
+    plt.show()
+
     plt.figure()
     plt.ioff()
     plt.close()
