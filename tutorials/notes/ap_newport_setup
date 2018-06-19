@@ -1,0 +1,11 @@
+IPCAM10   192.168.1.190   00:fc:0b:ef:53:a3
+switch port02
+cam10
+http://admin:admin@192.168.1.190/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9300/tmpfs/auto.jpg
+
+
+IPCAM01   192.168.1.191   00:fc:a0:58:3a:cd
+switch port05
+http://admin:admin@192.168.1.191/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9301/tmpfs/auto.jpg
