@@ -4,7 +4,8 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
 
     camera1 = {
         'number': 1,
-        'port': 9001,
+        'port': 9301,
+        'new': 1,
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,
@@ -764,7 +765,8 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
 
     camera10 = {
         'number': 10,
-        'port': 9010,
+        'port': 9300,
+        'new': 1,
         'im_ts': time,
         'threshSurf': threshSurf,
         'edgeLims': edgeLims,       

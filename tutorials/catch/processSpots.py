@@ -53,8 +53,14 @@ def create( nSpots, monthlies, handicaps, cameras, ip ):
         for spot in camera['spots']:
             
             sn = spot['number']
-            url = 'http://' + ip + ':' + str(camera['port'])
-            url += '/cgi-bin/getsnapshot.cgi'
+            
+            if 'new' in camera:
+                url = 'http://admin:admin@' + ip + ':' + str(camera['port'])
+                url += '/tmpfs/auto.jpg'
+            else:
+                url = 'http://' + ip + ':' + str(camera['port'])
+                url += '/cgi-bin/getsnapshot.cgi'
+
             camera['url'] = url
             spots[sn]['url'] = url
 
