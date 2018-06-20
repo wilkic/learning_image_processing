@@ -6,6 +6,8 @@ import re
 sys.path.append('..')
 import loadCameras as lc
 
+import ipdb
+
 def get_spot_data(log_dir,plot_spots=None):
     spots = []
 
@@ -22,6 +24,7 @@ def get_spot_data(log_dir,plot_spots=None):
         sn = int( ft[0][4:] )
         
         if not plot_spots is None:
+            # ipdb.set_trace()
             if sn not in plot_spots:
                 continue
 
@@ -71,7 +74,8 @@ def get_spot_data(log_dir,plot_spots=None):
 import matplotlib.pyplot as plt
 import numpy as np
 
-plot_spots = range(1,38+1) + range(43,49+1)
+#plot_spots = range(1,3+1) + range(6,9+1) + range(15,38+1) + range(43,49+1)
+plot_spots = range(1,3+1)
 tmin = -24
 tmax = 0
 
