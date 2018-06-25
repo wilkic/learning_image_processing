@@ -1200,7 +1200,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'occupationStartTime': time,
                 'occupationEndTime': time,
                 'occupationThresh': t2occ
-            }
+            },
             {
                 'number': 32,
                 'vertices': np.array(
