@@ -74,8 +74,8 @@ def get_spot_data(log_dir,plot_spots=None):
 import matplotlib.pyplot as plt
 import numpy as np
 
-#plot_spots = range(1,3+1) + range(6,9+1) + range(15,38+1) + range(43,49+1)
-plot_spots = range(1,3+1)
+plot_spots = range(1,3+1) + range(6,9+1) + range(15,38+1) + range(43,49+1)
+#plot_spots = range(1,3+1)
 tmin = -24
 tmax = 0
 
