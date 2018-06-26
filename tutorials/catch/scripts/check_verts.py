@@ -45,14 +45,12 @@ camera1 = {
         {
             'number': 2,
             'vertices': np.array(
-                        [[   387,    35],
-                         [  1386,    29],
-                         [  1098,   963],
-                         [   597,   790],
-                         [   603,   632],
-                         [   492,   567]]),
-            'base_means': [130,138,137],
-            'base_nEdges': 575,
+                        [[   584,    60],
+                         [  1343,    62],
+                         [  1083,   935],
+                         [   647,   774]]),
+            'base_means': [136,141,140],
+            'base_nEdges': 12000,
             'base_nKeys': 2,
         },
         {
@@ -702,7 +700,7 @@ camera15 = {
     ]
 }
 
-camera = camera14
+camera = camera1
 
 _plot = True
 
