@@ -179,7 +179,7 @@ def loadCameras( time=0, threshSurf=400, edgeLims=[100,200], t2occ=60 ):
                 'meanThresh': 10,
                 'edgeThresh': 100,
                 'keyThresh': 10,
-                'detectionType': 'k',
+                'detectionType': 'e',
                 'timePresent': 0,
                 'timeOccupied': 0,
                 'occupationStartTime': time,
