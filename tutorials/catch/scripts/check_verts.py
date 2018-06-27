@@ -515,8 +515,8 @@ camera12 = {
                          [  535, 1035],
                          [   11, 1060]]),
             'base_means': [204,196,195],
-            'base_nEdges': 646,
-            'base_nKeys': 4,
+            'base_nEdges': 3322,
+            'base_nKeys': 10,
         },
         {
             'number': 34,
@@ -526,7 +526,7 @@ camera12 = {
                          [ 1374, 1041],
                          [  690, 1038]]),
             'base_means': [174,168,168],
-            'base_nEdges': 1667,
+            'base_nEdges': 7459,
             'base_nKeys': 14,
         },
         {
@@ -537,7 +537,7 @@ camera12 = {
                          [ 1894, 1041],
                          [ 1501, 1050]]),
             'base_means': [124,121,126],
-            'base_nEdges': 381,
+            'base_nEdges': 777,
             'base_nKeys': 0,
         },
         {
@@ -547,7 +547,7 @@ camera12 = {
                          [ 1684,  223],
                          [ 1510,  208]]),
             'base_means': [130,123,127],
-            'base_nEdges': 0,
+            'base_nEdges': 100,
             'base_nKeys': 0,
         },
         {
@@ -558,7 +558,7 @@ camera12 = {
                          [ 1399,  192],
                          [ 1191,  180]]),
             'base_means': [102,98,89],
-            'base_nEdges': 37,
+            'base_nEdges': 101,
             'base_nKeys': 0,
         },
         {
@@ -569,7 +569,7 @@ camera12 = {
                          [ 1101,  174],
                          [  888,  174]]),
             'base_means': [107,106,110],
-            'base_nEdges': 3,
+            'base_nEdges': 100,
             'base_nKeys': 0,
         },
     ]
