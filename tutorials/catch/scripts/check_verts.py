@@ -142,20 +142,19 @@ camera3 = {
 
 camera4 = {
     'number': 4,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera4/snap20160706230618.jpg',
+#    'im_full_path': '/home/acp/work/ggp/cam_images/camera4/snap20160706230618.jpg',
 #    'im_full_path': '/home/acp/work/aws/cam_images/camera4/snap20160723023418.jpg',
     #'im_full_path': '/home/acp/Downloads/spot10_fd.jpg',
-    #'im_full_path': '/home/acp/Downloads/spot9_fd.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot9.jpg',
     'spots': [
         {
             'number': 9,
             'vertices': np.array(
-                        [[ 325,  25],
-                         [ 330,  25],
-                         [ 400, 120],
-                         [ 400, 165]]),
+                        [[ 400, 180],
+                         [ 290, 20],
+                         [ 400, 20]]),
             'base_means': [118,120,120],
-            'base_nEdges': 0,
+            'base_nEdges': 450,
             'base_nKeys': 0,
         },
         {
@@ -166,7 +165,7 @@ camera4 = {
                          [ 370, 224],
                          [ 260, 224]]),
             'base_means': [119,122,122],
-            'base_nEdges': 62,
+            'base_nEdges': 0,
             'base_nKeys': 1,
         },
         {
@@ -698,7 +697,7 @@ camera15 = {
     ]
 }
 
-camera = camera12
+camera = camera4
 
 _plot = True
 
