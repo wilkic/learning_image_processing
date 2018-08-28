@@ -334,7 +334,8 @@ camera8 = {
     'number': 8,
     #'im_full_path': '/home/acp/work/aws/cam_images/camera8/snap20160721043347.jpg',
     #'im_full_path': '/home/acp/Downloads/spot21.jpg',
-    'im_full_path': '/home/acp/Downloads/spot21_new.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot21_new.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot20.jpg',
     'spots': [
         {
             'number': 20,
@@ -620,13 +621,13 @@ camera14 = {
         {
             'number': 31,
             'vertices': np.array(
-                        [[  185,  617],
-                         [  637,  654],
-                         [  461, 1041],
-                         [   18, 1050],
-                         [   30,  821]]),
+                        [[    0, 1080],
+                         [   10, 1000],
+                         [  260,  710],
+                         [  570,  750],
+                         [  440, 1080]]),
             'base_means': [150,138,137],
-            'base_nEdges': 1431,
+            'base_nEdges': 6300,
             'base_nKeys': 0,
         },
         {
@@ -634,10 +635,10 @@ camera14 = {
             'vertices': np.array(
                         [[  721,  719],
                          [ 1275,  722],
-                         [ 1337, 1050],
-                         [  618, 1056]]),
+                         [ 1340, 1080],
+                         [  620, 1080]]),
             'base_means': [176,177,181],
-            'base_nEdges': 1376,
+            'base_nEdges': 8220,
             'base_nKeys': 0,
         },
         {
@@ -648,8 +649,8 @@ camera14 = {
                          [ 1454,  260],
                          [ 1213,  260]]),
             'base_means': [121,112,105],
-            'base_nEdges': 0,
-            'base_nKeys': 0,
+            'base_nEdges': 500,
+            'base_nKeys': 20,
         },
         {
             'number': 48,
@@ -660,7 +661,7 @@ camera14 = {
                          [  891,  248]]),
             'base_means': [74,75,74],
             'base_nEdges': 377,
-            'base_nKeys': 2,
+            'base_nKeys': 110,
         },
         {
             'number': 49,
@@ -697,7 +698,7 @@ camera15 = {
     ]
 }
 
-camera = camera1
+camera = camera14
 
 _plot = True
 
