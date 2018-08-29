@@ -515,8 +515,8 @@ camera12 = {
                          [  535, 1035],
                          [   11, 1060]]),
             'base_means': [150,150,150],
-            'base_nEdges': 3322,
-            'base_nKeys': 10,
+            'base_nEdges': 2500,
+            'base_nKeys': 160,
         },
         {
             'number': 34,
@@ -698,7 +698,7 @@ camera15 = {
     ]
 }
 
-camera = camera14
+camera = camera12
 
 _plot = True
 
