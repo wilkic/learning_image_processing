@@ -17,7 +17,8 @@ def determinePresence( spot ):
         print "spot['number'] = %d" % spot['number']
         print "m = "
         print(m)
-        print "dMean = %d" % dMean
+        print "dMean = "
+        print(dMean)
     
     dKeys = spot['nKeys'] - spot['base_nKeys']
     spot['kPresent'] = dKeys > spot['keyThresh']
