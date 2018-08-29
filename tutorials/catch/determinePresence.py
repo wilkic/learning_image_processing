@@ -39,7 +39,7 @@ def determinePresence( spot ):
         
         for dt in sdt[1:]:
             if dt in detection_types:
-                if dt in detection_types:
+                if no_operator_specified:
                     expr += '&'
                 else:
                     no_operator_specified = True
