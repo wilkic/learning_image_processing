@@ -1,5 +1,6 @@
 
 import numpy as np
+import sys
 
 ####
 def determinePresence( spot ):
@@ -18,11 +19,44 @@ def determinePresence( spot ):
     dEdges = spot['nEdges'] - spot['base_nEdges']
     spot['ePresent'] = dEdges > spot['edgeThresh']
     
-    # All criteria must be met
+    # Can have more than one criteria
+
+    # Check the first one
     present = True
-    for s in spot['detectionType']:
-        pstr = s + 'Present'
-        present = present and spot[pstr]
+    sdt = spot['detectionType']
+    dt = sdt[0]
+    pstr = dt + 'Present'
+    present = present and spot[pstr]
+    
+    # Check remaining ones if there
+    l = len(sdt)
+    if l > 1:
+        detection_types = ['m','k','e']
+        expr_types = ['&','|']
+
+        expr = 'present=present'
+        no_operator_specified = True
+        
+        for dt in sdt[1:]:
+            if dt in detection_types:
+                if dt in detection_types:
+                    expr += '&'
+                else:
+                    no_operator_specified = True
+                pstr = dt + 'Present'
+                expr = expr + "spot['" + pstr + "']"
+
+            elif dt in expr_types:
+                expr += dt
+                no_operator_specified = False
+
+            else:
+                msg = "Unknown type: %s" % dt
+                print msg
+                sys.exit()
+
+        exec(expr)
+
     
     return present
 
