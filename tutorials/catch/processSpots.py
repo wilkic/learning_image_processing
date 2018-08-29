@@ -80,7 +80,7 @@ def write( cameras, spots ):
             if camera['nFails'] == 99:
                 print 'camera%d has failed > 99 times' % (c)
                 print 'WILL NO LONGER BE REPORTING FAILURES!!!'
-            else if camera['nFails'] > 0 and camera['nFails'] is not 100:
+            elif camera['nFails'] > 0 and camera['nFails'] is not 100:
                 print 'camera%d has failed %d times' % (c,camera['nFails'])
             spots[sn]['faultyCamera'] = camera['nFails'] > 0
     return
