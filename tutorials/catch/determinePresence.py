@@ -11,14 +11,7 @@ def determinePresence( spot ):
     dMean = abs(m - b)
 
     meanPresence = np.where( dMean > spot['meanThresh'] )
-    spot['mPresent'] = len( meanPresence ) > 0
-    np.set_printoptions(threshold=np.nan)
-    if spot['mPresent']:
-        print "spot['number'] = %d" % spot['number']
-        print "m = "
-        print(m)
-        print "dMean = "
-        print(dMean)
+    spot['mPresent'] = len( meanPresence[0] ) > 0
     
     dKeys = spot['nKeys'] - spot['base_nKeys']
     spot['kPresent'] = dKeys > spot['keyThresh']
