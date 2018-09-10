@@ -32,3 +32,8 @@ http://admin:admin@192.168.1.194/tmpfs/auto.jpg
 http://admin:admin@108.45.109.111:9304/tmpfs/auto.jpg
 
 
+IPCAM11 192.168.1.196   00:fc:f4:df:26:3f
+cam11
+switch port04
+http://admin:admin@192.168.1.196/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9305/tmpfs/auto.jpg
