@@ -84,7 +84,7 @@ def writeTable( spots ):
         elif spot['handicap']:
             rcolor = '#FFFF00'
 
-        # Black out if camera is failed
+        # Gray out if camera is failed
         if spot['faultyCamera']:
             rcolor = '#808080'
 
