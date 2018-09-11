@@ -153,9 +153,9 @@ camera4 = {
                         [[ 400, 180],
                          [ 290, 20],
                          [ 400, 20]]),
-            'base_means': [118,120,120],
+            'base_means': [130,130,130],
             'base_nEdges': 450,
-            'base_nKeys': 0,
+            'base_nKeys': 3,
         },
         {
             'number': 10,
