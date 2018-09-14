@@ -466,8 +466,8 @@ camera11 = {
                          [ 1260,  600],
                          [ 1400, 1080],
                          [  665, 1080]]),
-            'base_means': [105,105,105],
-            'base_nEdges': 1500,
+            'base_means': [180,180,180],
+            'base_nEdges': 2500,
             'base_nKeys': 100,
         },
         {
@@ -478,9 +478,9 @@ camera11 = {
                          [ 1790, 610],
                          [ 1920, 765],
                          [ 1920, 1080]]),
-            'base_means': [110,113,112],
-            'base_nEdges': 104,
-            'base_nKeys': 0,
+            'base_means': [120,120,120],
+            'base_nEdges': 300,
+            'base_nKeys': 20,
         },
         {
             'number': 43,
@@ -489,9 +489,9 @@ camera11 = {
                          [ 1070,    0],
                          [ 1130,  140],
                          [  860,  130]]),
-            'base_means': [90,90,90],
-            'base_nEdges': 215,
-            'base_nKeys': 15,
+            'base_means': [180,180,180],
+            'base_nEdges': 800,
+            'base_nKeys': 40,
         },
     ]
 }
