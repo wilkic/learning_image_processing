@@ -101,7 +101,8 @@ camera2 = {
 
 camera3 = {
     'number': 3,
-    'im_full_path': '/home/acp/work/ggp/cam_images/camera3/snap20160705224324.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot6.jpg',
+    #'im_full_path': '/home/acp/work/ggp/cam_images/camera3/snap20160705224324.jpg',
     'spots': [
         {
             'number': 6,
@@ -237,7 +238,8 @@ camera6 = {
     #'im_full_path': '/home/acp/Downloads/spot22_fd.jpg',
     #'im_full_path': '/home/acp/Downloads/spot17_bad_detection.jpg',
     #'im_full_path': '/home/acp/Downloads/spot15_empty.jpg',
-    'im_full_path': '/home/acp/Downloads/spot16_fd.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot16_fd.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot22.jpg',
     'spots': [
         {
             'number': 15,
@@ -346,8 +348,8 @@ camera8 = {
                          [ 110, 220],
                          [   0, 220]]),
             'base_means': [110,110,110],
-            'base_nEdges': 1000,
-            'base_nKeys': 3,
+            'base_nEdges': 250,
+            'base_nKeys': 25,
         },
         {
             'number': 21,
@@ -367,7 +369,8 @@ camera8 = {
 camera9 = {
     'number': 9,
     #'im_full_path': '/home/acp/work/aws/cam_images/camera9/snap20160721043347.jpg',
-    'im_full_path': '/home/acp/Downloads/spot26_taken.jpg',
+    #'im_full_path': '/home/acp/Downloads/spot26_taken.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot25.jpg',
     'spots': [
         {
             'number': 24,
@@ -443,15 +446,15 @@ camera11 = {
     'im_full_path': '/home/acp/work/aws/cam_images/camera11/snap20160721043348.jpg',
     #'im_full_path': '/home/acp/work/aws/cam_images/camera11/snap20160721043348.jpg',
     #'im_full_path': '/home/acp/Downloads/spot38_violation.jpg',
+    'im_full_path': '/home/c/work/aws/current_images/spot37.jpg',
     'spots': [
         {
             'number': 36,
             'vertices': np.array(
-                        [[  50,  75],
-                         [ 105,  75],
-                         [  50, 224],
-                         [   0, 224],
-                         [   0, 155]]),
+                        [[  260,  570],
+                         [  650,  575],
+                         [  510, 1080],
+                         [    0, 1080]]),
             'base_means': [114,116,115],
             'base_nEdges': 92,
             'base_nKeys': 1,
@@ -459,22 +462,22 @@ camera11 = {
         {
             'number': 37,
             'vertices': np.array(
-                        [[ 140,  75],
-                         [ 245,  75],
-                         [ 300, 224],
-                         [ 120, 224]]),
-            'base_means': [140,142,141],
-            'base_nEdges': 109,
-            'base_nKeys': 2,
+                        [[  740,  600],
+                         [ 1260,  600],
+                         [ 1400, 1080],
+                         [  665, 1080]]),
+            'base_means': [105,105,105],
+            'base_nEdges': 1500,
+            'base_nKeys': 100,
         },
         {
             'number': 38,
             'vertices': np.array(
-                        [[ 305,  90],
-                         [ 350,  85],
-                         [ 400, 145],
-                         [ 400, 224],
-                         [ 355, 224]]),
+                        [[ 1590, 1080],
+                         [ 1420, 610],
+                         [ 1790, 610],
+                         [ 1920, 765],
+                         [ 1920, 1080]]),
             'base_means': [110,113,112],
             'base_nEdges': 104,
             'base_nKeys': 0,
@@ -482,13 +485,13 @@ camera11 = {
         {
             'number': 43,
             'vertices': np.array(
-                        [[ 168,   2],
-                         [ 200,   2],
-                         [ 223,  30],
-                         [ 159,  30]]),
-            'base_means': [152,144,143],
-            'base_nEdges': 72,
-            'base_nKeys': 2,
+                        [[  900,    0],
+                         [ 1070,    0],
+                         [ 1130,  140],
+                         [  860,  130]]),
+            'base_means': [90,90,90],
+            'base_nEdges': 215,
+            'base_nKeys': 15,
         },
     ]
 }
@@ -697,7 +700,7 @@ camera15 = {
     ]
 }
 
-camera = camera12
+camera = camera11
 
 _plot = True
 
