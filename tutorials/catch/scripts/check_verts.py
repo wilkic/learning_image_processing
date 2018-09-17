@@ -38,9 +38,9 @@ camera1 = {
                          [  1470,  190],
                          [  1675,  190],
                          [  1920,  540]]),
-            'base_means': [143,147,147],
-            'base_nEdges': 440,
-            'base_nKeys': 0,
+            'base_means': [130,130,130],
+            'base_nEdges': 900,
+            'base_nKeys': 20,
         },
         {
             'number': 2,
@@ -49,9 +49,9 @@ camera1 = {
                          [   705,   120],
                          [  1220,   150],
                          [  1630,  1080]]),
-            'base_means': [136,141,140],
-            'base_nEdges': 12000,
-            'base_nKeys': 2,
+            'base_means': [140,140,140],
+            'base_nEdges': 8000,
+            'base_nKeys': 250,
         },
         {
             'number': 3,
@@ -61,9 +61,9 @@ camera1 = {
                          [  590,   100],
                          [  630,  1080],
                          [    0,  1080]]),
-            'base_means': [75,78,71],
-            'base_nEdges': 4670,
-            'base_nKeys': 1,
+            'base_means': [120,120,120],
+            'base_nEdges': 6000,
+            'base_nKeys': 300,
         }
     ]
 }
@@ -112,9 +112,9 @@ camera3 = {
                          [ 400,  40],
                          [ 400, 224],
                          [ 340, 224]]),
-            'base_means': [101,102,101],
-            'base_nEdges': 0,
-            'base_nKeys': 0,
+            'base_means': [100,100,100],
+            'base_nEdges': 50,
+            'base_nKeys': 10,
         },
         {
             'number': 7,
@@ -123,9 +123,9 @@ camera3 = {
                          [ 265,   0],
                          [ 310, 224],
                          [ 105, 224]]),
-            'base_means': [121,122,122],
-            'base_nEdges': 0,
-            'base_nKeys': 5,
+            'base_means': [120,120,120],
+            'base_nEdges': 400,
+            'base_nKeys': 40,
         },
         {
             'number': 8,
@@ -259,9 +259,9 @@ camera6 = {
                          [ 290,  20],
                          [ 235, 195],
                          [ 140, 195]]),
-            'base_means': [113,115,115],
+            'base_means': [120,120,120],
             'base_nEdges': 220,
-            'base_nKeys': 21
+            'base_nKeys': 27
         },
         {
             'number': 17,
@@ -451,12 +451,13 @@ camera11 = {
         {
             'number': 36,
             'vertices': np.array(
-                        [[  260,  570],
-                         [  650,  575],
-                         [  510, 1080],
+                        [[    0,  880],
+                         [  200,  580],
+                         [  525,  580],
+                         [  360, 1080],
                          [    0, 1080]]),
-            'base_means': [114,116,115],
-            'base_nEdges': 92,
+            'base_means': [140,140,140],
+            'base_nEdges': 680,
             'base_nKeys': 1,
         },
         {
