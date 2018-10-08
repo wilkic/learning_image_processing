@@ -549,9 +549,9 @@ camera12 = {
                         [[ 1523,  127],
                          [ 1684,  223],
                          [ 1510,  208]]),
-            'base_means': [130,123,127],
-            'base_nEdges': 100,
-            'base_nKeys': 0,
+            'base_means': [180,180,180],
+            'base_nEdges': 0,
+            'base_nKeys': 2,
         },
         {
             'number': 45,
