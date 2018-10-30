@@ -20,7 +20,7 @@ imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 frameDelta = cv2.absdiff( imgray, bimgray )
 
 plt.figure()
-plt.imshow(frameDelta)
+plt.imshow(frameDelta,'gray')
 plt.show()
 import sys
 sys.exit()
