@@ -1,18 +1,34 @@
 
 
-Camera 1
-00:fc:01:fd:a6:61
+host cam_01 {
+    option host-name "Camera01";
+    hardward ethernet 00:fc:01:fd:a6:61;
+    fixed-address 10.10.110.101
+}
 
-Camera 2
-00:fc:53:2a:4b:43
+host cam_02 {
+    option host-name "Camera02";
+    hardward ethernet 00:fc:53:2a:4b:43;
+    fixed-address 10.10.110.102
+}
 
-Camera 3
-00:fc:63:13:46:d1
+host cam_03 {
+    option host-name "Camera03";
+    hardward ethernet 00:fc:63:13:46:d1;
+    fixed-address 10.10.110.103
+}
 
-Camera 4
-00:fc:2d:13:b0:16
+host cam_04 {
+    option host-name "Camera04";
+    hardward ethernet 00:fc:2d:13:b0:16;
+    fixed-address 10.10.110.104
+}
 
-Camera 5
-00:fc:17:9d:18:4b
+host cam_05 {
+    option host-name "Camera05";
+    hardward ethernet 00:fc:17:9d:18:4b;
+    fixed-address 10.10.110.105
+}
+
 
 
