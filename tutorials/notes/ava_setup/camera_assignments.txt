@@ -53,3 +53,27 @@ host cam_09 {
     hardware ethernet 00:fc:18:d6:68:1b;
     fixed-address 10.10.110.109;
 }
+
+host cam_10 {
+    option host-name "Camera10";
+    hardware ethernet 00:fc:21:80:82:9a;
+    fixed-address 10.10.110.110;
+}
+
+host cam_11 {
+    option host-name "Camera11";
+    hardware ethernet 00:fc:38:c9:b9:43;
+    fixed-address 10.10.110.111;
+}
+
+host cam_12 {
+    option host-name "Camera12";
+    hardware ethernet 00:fc:dc:6d:22:21;
+    fixed-address 10.10.110.112;
+}
+
+host cam_13 {
+    option host-name "Camera13";
+    hardware ethernet 00:fc:e2:17:a1:91;
+    fixed-address 10.10.110.113;
+}

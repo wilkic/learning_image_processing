@@ -7,6 +7,7 @@ http://admin:admin@108.45.109.111:9300/tmpfs/auto.jpg
 
 IPCAM01   192.168.1.191   00:fc:a0:58:3a:cd
 switch port05
+cam1
 http://admin:admin@192.168.1.191/tmpfs/auto.jpg
 http://admin:admin@108.45.109.111:9301/tmpfs/auto.jpg
 
@@ -37,3 +38,20 @@ cam11
 switch port04
 http://admin:admin@192.168.1.196/tmpfs/auto.jpg
 http://admin:admin@108.45.109.111:9305/tmpfs/auto.jpg
+
+
+IPCAM3 192.168.1.205 00:fc:4e:c1:e4:ef
+cam3
+switch port13
+http://admin:admin@192.168.1.205/tmpfs/auto.jpg
+
+IPCAM4 192.168.1.206     00:fc:f1:93:c4:7c
+cam4
+switch port19
+http://admin:admin@192.168.1.206/tmpfs/auto.jpg
+
+IPCAM7 192.168.1.207     00:fc:13:78:7f:25
+cam7
+switch port15
+http://admin:admin@192.168.1.207/tmpfs/auto.jpg
+
