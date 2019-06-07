@@ -1,0 +1,25 @@
+Don't know macs of
+
+cam2: port 9002, 192.168.1.165:80
+
+cams 3/4 are listed in ap_newport_setup
+
+cams 5/6 don't work
+
+cam 7 is listed in ap_newport_setup
+
+
+cam 8: port 9008, 192.168.1.254:80
+
+cam 9: port 9009, 192.168.1.161:80
+
+
+cams 10/11/12 are listed in ap_newport_setup
+
+cam 13: port 9013
+MAC e0:62:90:dc:83:bd
+IP 192.168.1.157
+
+cam 14 is listed in ap_newport_setup
+
+

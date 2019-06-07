@@ -1,6 +1,7 @@
 #0 - Enable ssh
  * sudo raspi-config
  * -> advanced -> ssh -> enable
+ * OR MAYBE -> Interfacing Options -> ssh -> enable
  * sudo raspi-config
  * -> change password
  * WRITE IT DOWN
@@ -83,6 +84,15 @@ INTERFACES="eth0"
 #9 - Install cameras
  * Get their ip addrs
   * cat /var/lib/dhcp/dhcpd.leases
+ * OR
+  * set their ip addrs in /etc/dhcpd.conf
+   * example:
+host cam_01 {
+    option host-name "Camera01";
+    hardware ethernet 00:fc:01:fd:a6:61;
+    fixed-address 10.10.110.101;
+}
+
 
 
 #10 - If using a specific DNS

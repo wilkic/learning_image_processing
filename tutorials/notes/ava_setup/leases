@@ -1,0 +1,408 @@
+# The format of this file is documented in the dhcpd.leases(5) manual page.
+# This lease file was written by isc-dhcp-4.3.1
+
+lease 10.10.110.6 {
+  starts 2 2018/10/30 17:02:29;
+  ends 2 2018/10/30 17:04:29;
+  tstp 2 2018/10/30 17:04:29;
+  cltt 2 2018/10/30 17:02:29;
+  binding state free;
+  hardware ethernet e0:ac:cb:63:bb:cc;
+  uid "\001\340\254\313c\273\314";
+  client-hostname "Tierneys-Air";
+}
+lease 10.10.110.8 {
+  starts 2 2018/10/30 18:26:42;
+  ends 2 2018/10/30 18:28:42;
+  tstp 2 2018/10/30 18:28:42;
+  cltt 2 2018/10/30 18:26:42;
+  binding state free;
+  hardware ethernet b8:d7:af:00:fb:b1;
+  uid "\001\270\327\257\000\373\261";
+  client-hostname "Galaxy-S8";
+}
+lease 10.10.110.7 {
+  starts 2 2018/10/30 18:50:50;
+  ends 2 2018/10/30 18:52:50;
+  tstp 2 2018/10/30 18:52:50;
+  cltt 2 2018/10/30 18:50:50;
+  binding state free;
+  hardware ethernet ac:37:43:46:a6:28;
+  uid "\001\2547CF\246(";
+}
+lease 10.10.110.10 {
+  starts 2 2018/10/30 20:42:33;
+  ends 2 2018/10/30 20:44:33;
+  tstp 2 2018/10/30 20:44:33;
+  cltt 2 2018/10/30 20:42:33;
+  binding state free;
+  hardware ethernet 30:3a:64:52:ed:1a;
+  uid "\0010:dR\355\032";
+  client-hostname "DESKTOP-T8INKNH";
+}
+lease 10.10.110.12 {
+  starts 2 2018/10/30 21:51:46;
+  ends 2 2018/10/30 21:53:46;
+  tstp 2 2018/10/30 21:53:46;
+  cltt 2 2018/10/30 21:51:46;
+  binding state free;
+  hardware ethernet 68:a8:6d:25:32:f0;
+  uid "\001h\250m%2\360";
+  client-hostname "DJSlickicksMBP2";
+}
+lease 10.10.110.15 {
+  starts 2 2018/10/30 22:10:36;
+  ends 2 2018/10/30 22:12:36;
+  tstp 2 2018/10/30 22:12:36;
+  cltt 2 2018/10/30 22:10:36;
+  binding state free;
+  hardware ethernet f0:0f:ec:20:1f:d7;
+  uid "\001\360\017\354 \037\327";
+  client-hostname "HUAWEI_P20-c878f3d81a5445";
+}
+lease 10.10.110.17 {
+  starts 2 2018/10/30 22:18:15;
+  ends 2 2018/10/30 22:20:15;
+  tstp 2 2018/10/30 22:20:15;
+  cltt 2 2018/10/30 22:18:15;
+  binding state free;
+  hardware ethernet 8c:f5:a3:4d:db:f9;
+  uid "\001\214\365\243M\333\371";
+  client-hostname "Galaxy-S7";
+}
+lease 10.10.110.18 {
+  starts 2 2018/10/30 22:27:58;
+  ends 2 2018/10/30 22:29:58;
+  tstp 2 2018/10/30 22:29:58;
+  cltt 2 2018/10/30 22:27:58;
+  binding state free;
+  hardware ethernet 24:f0:94:a1:6f:54;
+  uid "\001$\360\224\241oT";
+  client-hostname "SaurabhesiPhone";
+}
+lease 10.10.110.9 {
+  starts 2 2018/10/30 22:30:20;
+  ends 2 2018/10/30 22:32:20;
+  tstp 2 2018/10/30 22:32:20;
+  cltt 2 2018/10/30 22:30:20;
+  binding state free;
+  hardware ethernet 64:a2:f9:02:b4:6f;
+  uid "\001d\242\371\002\264o";
+  client-hostname "OnePlus_6";
+}
+lease 10.10.110.16 {
+  starts 2 2018/10/30 22:35:11;
+  ends 2 2018/10/30 22:37:11;
+  tstp 2 2018/10/30 22:37:11;
+  cltt 2 2018/10/30 22:35:11;
+  binding state free;
+  hardware ethernet b8:53:ac:d3:90:18;
+  uid "\001\270S\254\323\220\030";
+  client-hostname "iPhone";
+}
+lease 10.10.110.19 {
+  starts 2 2018/10/30 22:49:17;
+  ends 2 2018/10/30 22:51:17;
+  tstp 2 2018/10/30 22:51:17;
+  cltt 2 2018/10/30 22:49:17;
+  binding state free;
+  hardware ethernet 4c:66:41:e0:6b:3f;
+  uid "\001LfA\340k?";
+  client-hostname "SAMSUNG-SM-G930V";
+}
+lease 10.10.110.20 {
+  starts 2 2018/10/30 23:00:05;
+  ends 2 2018/10/30 23:02:05;
+  tstp 2 2018/10/30 23:02:05;
+  cltt 2 2018/10/30 23:00:05;
+  binding state free;
+  hardware ethernet 8c:45:00:9a:8f:35;
+  uid "\001\214E\000\232\2175";
+  client-hostname "Galaxy-S9";
+}
+lease 10.10.110.21 {
+  starts 2 2018/10/30 23:04:12;
+  ends 2 2018/10/30 23:06:12;
+  tstp 2 2018/10/30 23:06:12;
+  cltt 2 2018/10/30 23:04:12;
+  binding state free;
+  hardware ethernet 64:b0:a6:a6:da:77;
+  uid "\001d\260\246\246\332w";
+  client-hostname "iPhone";
+}
+lease 10.10.110.23 {
+  starts 2 2018/10/30 23:08:51;
+  ends 2 2018/10/30 23:10:51;
+  tstp 2 2018/10/30 23:10:51;
+  cltt 2 2018/10/30 23:08:51;
+  binding state free;
+  hardware ethernet a0:d7:95:6c:b5:95;
+  uid "\001\240\327\225l\265\225";
+  client-hostname "Avas-iPhone";
+}
+lease 10.10.110.24 {
+  starts 2 2018/10/30 23:11:38;
+  ends 2 2018/10/30 23:13:38;
+  tstp 2 2018/10/30 23:13:38;
+  cltt 2 2018/10/30 23:11:38;
+  binding state free;
+  hardware ethernet 34:7c:25:7a:6a:f1;
+  uid "\0014|%zj\361";
+  client-hostname "Samirs-iPhone-8";
+}
+lease 10.10.110.25 {
+  starts 2 2018/10/30 23:20:36;
+  ends 2 2018/10/30 23:22:36;
+  tstp 2 2018/10/30 23:22:36;
+  cltt 2 2018/10/30 23:20:36;
+  binding state free;
+  hardware ethernet 2c:0e:3d:be:3f:de;
+  uid "\001,\016=\276?\336";
+  client-hostname "SAMSUNG-SM-G930V";
+}
+lease 10.10.110.27 {
+  starts 2 2018/10/30 23:38:09;
+  ends 2 2018/10/30 23:40:09;
+  tstp 2 2018/10/30 23:40:09;
+  cltt 2 2018/10/30 23:38:09;
+  binding state free;
+  hardware ethernet dc:ef:ca:36:95:47;
+  uid "\001\334\357\3126\225G";
+  client-hostname "SAMSUNG-SM-G920V";
+}
+lease 10.10.110.22 {
+  starts 2 2018/10/30 23:49:45;
+  ends 2 2018/10/30 23:51:45;
+  tstp 2 2018/10/30 23:51:45;
+  cltt 2 2018/10/30 23:49:45;
+  binding state free;
+  hardware ethernet 18:f1:d8:86:5b:a2;
+  uid "\001\030\361\330\206[\242";
+  client-hostname "AlexandasiPhone";
+}
+lease 10.10.110.28 {
+  starts 2 2018/10/30 23:52:23;
+  ends 2 2018/10/30 23:54:23;
+  tstp 2 2018/10/30 23:54:23;
+  cltt 2 2018/10/30 23:52:23;
+  binding state free;
+  hardware ethernet 00:56:cd:2a:25:e5;
+  uid "\001\000V\315*%\345";
+  client-hostname "iPhone";
+}
+lease 10.10.110.29 {
+  starts 2 2018/10/30 23:54:21;
+  ends 2 2018/10/30 23:56:21;
+  tstp 2 2018/10/30 23:56:21;
+  cltt 2 2018/10/30 23:54:21;
+  binding state free;
+  hardware ethernet 54:33:cb:a1:57:c0;
+  uid "\001T3\313\241W\300";
+  client-hostname "Im-Not-Short";
+}
+lease 10.10.110.30 {
+  starts 3 2018/10/31 00:01:43;
+  ends 3 2018/10/31 00:03:43;
+  tstp 3 2018/10/31 00:03:43;
+  cltt 3 2018/10/31 00:01:43;
+  binding state free;
+  hardware ethernet a0:cc:2b:c6:91:32;
+  uid "\001\240\314+\306\2212";
+  client-hostname "SAMSUNG-SM-G955U";
+}
+lease 10.10.110.14 {
+  starts 3 2018/10/31 00:17:30;
+  ends 3 2018/10/31 00:19:30;
+  tstp 3 2018/10/31 00:19:30;
+  cltt 3 2018/10/31 00:17:30;
+  binding state free;
+  hardware ethernet a0:cc:2b:c2:73:ce;
+  uid "\001\240\314+\302s\316";
+  client-hostname "Galaxy-S8";
+}
+lease 10.10.110.13 {
+  starts 3 2018/10/31 00:34:30;
+  ends 3 2018/10/31 00:36:30;
+  tstp 3 2018/10/31 00:36:30;
+  cltt 3 2018/10/31 00:34:30;
+  binding state free;
+  hardware ethernet 40:4e:36:7f:96:cb;
+  uid "\001@N6\177\226\313";
+}
+lease 10.10.110.31 {
+  starts 3 2018/10/31 00:39:51;
+  ends 3 2018/10/31 00:41:51;
+  tstp 3 2018/10/31 00:41:51;
+  cltt 3 2018/10/31 00:39:51;
+  binding state free;
+  hardware ethernet fc:d8:48:72:71:97;
+  uid "\001\374\330Hrq\227";
+  client-hostname "AlexasiPodTouch";
+}
+lease 10.10.110.26 {
+  starts 3 2018/10/31 01:17:39;
+  ends 3 2018/10/31 01:19:39;
+  tstp 3 2018/10/31 01:19:39;
+  cltt 3 2018/10/31 01:17:39;
+  binding state free;
+  hardware ethernet cc:95:d7:60:13:f7;
+  uid "\001\314\225\327`\023\367";
+}
+lease 10.10.110.33 {
+  starts 3 2018/10/31 02:08:39;
+  ends 3 2018/10/31 02:10:39;
+  tstp 3 2018/10/31 02:10:39;
+  cltt 3 2018/10/31 02:08:39;
+  binding state free;
+  hardware ethernet 5c:f9:38:ac:82:2c;
+  uid "\001\\\3718\254\202,";
+  client-hostname "Michaels-Air";
+}
+lease 10.10.110.32 {
+  starts 3 2018/10/31 02:08:44;
+  ends 3 2018/10/31 02:10:44;
+  tstp 3 2018/10/31 02:10:44;
+  cltt 3 2018/10/31 02:08:44;
+  binding state free;
+  hardware ethernet 40:4e:36:d0:b3:11;
+  uid "\001@N6\320\263\021";
+  client-hostname "Pyxis";
+}
+lease 10.10.110.35 {
+  starts 3 2018/10/31 03:06:33;
+  ends 3 2018/10/31 03:08:33;
+  tstp 3 2018/10/31 03:08:33;
+  cltt 3 2018/10/31 03:06:33;
+  binding state free;
+  hardware ethernet a4:08:ea:7f:b2:2c;
+  uid "\001\244\010\352\177\262,";
+  client-hostname "SAMSUNG-SM-G891A";
+}
+lease 10.10.110.36 {
+  starts 3 2018/10/31 03:25:12;
+  ends 3 2018/10/31 03:27:12;
+  tstp 3 2018/10/31 03:27:12;
+  cltt 3 2018/10/31 03:25:12;
+  binding state free;
+  hardware ethernet b4:f7:a1:c1:ab:36;
+  uid "\001\264\367\241\301\2536";
+}
+lease 10.10.110.37 {
+  starts 3 2018/10/31 03:46:43;
+  ends 3 2018/10/31 03:48:43;
+  tstp 3 2018/10/31 03:48:43;
+  cltt 3 2018/10/31 03:46:43;
+  binding state free;
+  hardware ethernet b8:c1:11:ca:8b:f0;
+  uid "\001\270\301\021\312\213\360";
+  client-hostname "AndrewPnsiPhone";
+}
+lease 10.10.110.38 {
+  starts 3 2018/10/31 08:56:46;
+  ends 3 2018/10/31 08:58:46;
+  tstp 3 2018/10/31 08:58:46;
+  cltt 3 2018/10/31 08:56:46;
+  binding state free;
+  hardware ethernet a0:99:9b:06:27:9b;
+  uid "\001\240\231\233\006'\233";
+  client-hostname "Emmas-MBP-6";
+}
+lease 10.10.110.39 {
+  starts 3 2018/10/31 10:36:22;
+  ends 3 2018/10/31 10:38:22;
+  tstp 3 2018/10/31 10:38:22;
+  cltt 3 2018/10/31 10:36:22;
+  binding state free;
+  hardware ethernet ac:5f:3e:be:c3:cf;
+  uid "\001\254_>\276\303\317";
+  client-hostname "Samsung-Galaxy-S7";
+}
+lease 10.10.110.40 {
+  starts 3 2018/10/31 11:23:17;
+  ends 3 2018/10/31 11:25:17;
+  tstp 3 2018/10/31 11:25:17;
+  cltt 3 2018/10/31 11:23:17;
+  binding state free;
+  hardware ethernet 40:98:ad:ee:e6:45;
+  uid "\001@\230\255\356\346E";
+  client-hostname "KatheripleWatch";
+}
+lease 10.10.110.11 {
+  starts 3 2018/10/31 11:29:45;
+  ends 3 2018/10/31 11:31:45;
+  tstp 3 2018/10/31 11:31:45;
+  cltt 3 2018/10/31 11:29:45;
+  binding state free;
+  hardware ethernet 2c:0e:3d:7e:e8:a6;
+  uid "\001,\016=~\350\246";
+  client-hostname "Galaxy-S7";
+}
+lease 10.10.110.41 {
+  starts 3 2018/10/31 11:51:46;
+  ends 3 2018/10/31 11:53:46;
+  tstp 3 2018/10/31 11:53:46;
+  cltt 3 2018/10/31 11:51:46;
+  binding state free;
+  hardware ethernet 08:d4:6a:e3:15:fb;
+  uid "\001\010\324j\343\025\373";
+  client-hostname "android-aa0c7b5120527e8e";
+}
+lease 10.10.110.42 {
+  starts 3 2018/10/31 13:05:32;
+  ends 3 2018/10/31 13:07:32;
+  tstp 3 2018/10/31 13:07:32;
+  cltt 3 2018/10/31 13:05:32;
+  binding state free;
+  hardware ethernet b8:41:a4:ec:c4:1b;
+  uid "\001\270A\244\354\304\033";
+  client-hostname "BobyPrahsiPhone";
+}
+lease 10.10.110.43 {
+  starts 3 2018/10/31 13:10:55;
+  ends 3 2018/10/31 13:12:55;
+  tstp 3 2018/10/31 13:12:55;
+  cltt 3 2018/10/31 13:10:55;
+  binding state free;
+  hardware ethernet b8:d7:af:9e:ed:43;
+  uid "\001\270\327\257\236\355C";
+  client-hostname "Galaxy-S8";
+}
+lease 10.10.110.34 {
+  starts 3 2018/10/31 13:12:26;
+  ends 3 2018/10/31 13:14:26;
+  tstp 3 2018/10/31 13:14:26;
+  cltt 3 2018/10/31 13:12:26;
+  binding state free;
+  hardware ethernet 54:26:96:dd:29:19;
+  uid "\001T&\226\335)\031";
+  client-hostname "Michaels-MBP-10";
+}
+lease 10.10.110.4 {
+  starts 3 2018/10/31 13:17:09;
+  ends 3 2018/10/31 13:27:09;
+  tstp 3 2018/10/31 13:27:09;
+  cltt 3 2018/10/31 13:17:09;
+  binding state free;
+  hardware ethernet e0:62:90:cf:ca:53;
+  uid "\001\340b\220\317\312S";
+}
+lease 10.10.110.5 {
+  starts 3 2018/10/31 14:17:10;
+  ends 3 2018/10/31 14:19:10;
+  cltt 3 2018/10/31 14:17:10;
+  binding state free;
+  hardware ethernet b8:27:eb:0e:fe:46;
+  uid "\001\270'\353\016\376F";
+  client-hostname "raspberrypi";
+}
+lease 10.10.110.2 {
+  starts 3 2018/10/31 14:08:41;
+  ends 3 2018/10/31 14:18:41;
+  tstp 3 2018/10/31 14:18:41;
+  cltt 3 2018/10/31 14:08:41;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 10:dd:b1:af:cd:7e;
+  client-hostname "elcaf";
+}

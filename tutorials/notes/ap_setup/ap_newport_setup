@@ -1,0 +1,61 @@
+
+IPCAM1   192.168.1.191   00:fc:a0:58:3a:cd
+switch port05
+cam1
+http://admin:admin@192.168.1.191/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9301/tmpfs/auto.jpg
+
+
+IPCAM3 192.168.1.205 00:fc:4e:c1:e4:ef
+cam3
+switch port13
+http://admin:admin@192.168.1.205/tmpfs/auto.jpg
+
+IPCAM4 192.168.1.206     00:fc:f1:93:c4:7c
+cam4
+switch port19
+http://admin:admin@192.168.1.206/tmpfs/auto.jpg
+
+IPCAM7 192.168.1.207     00:fc:13:78:7f:25
+cam7
+switch port15
+http://admin:admin@192.168.1.207/tmpfs/auto.jpg
+
+
+IPCAM10   192.168.1.190   00:fc:0b:ef:53:a3
+switch port02
+cam10
+http://admin:admin@192.168.1.190/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9300/tmpfs/auto.jpg
+
+IPCAM11 192.168.1.196   00:fc:f4:df:26:3f
+cam11
+switch port04
+http://admin:admin@192.168.1.196/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9305/tmpfs/auto.jpg
+
+IPCAM12   192.168.1.193   00:fc:06:b5:5f:3b
+cam12
+switch port08 
+http://admin:admin@192.168.1.193/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9303/tmpfs/auto.jpg
+
+
+IPCAM14   192.168.1.192   00:fc:45:bb:4b:87
+cam14
+switch port09 
+http://admin:admin@192.168.1.192/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9302/tmpfs/auto.jpg
+
+
+
+IPCAM15   192.168.1.194   00:fc:35:1b:e3:24
+cam15
+switch port07
+http://admin:admin@192.168.1.194/tmpfs/auto.jpg
+http://admin:admin@108.45.109.111:9304/tmpfs/auto.jpg
+
+
+
+
+
