@@ -9,10 +9,7 @@ ip_base='10.10.110.1'
 n_cams=15
 
 # New cams have different url for accessing image
-new=(1 10 12 14 15)
-
-# 3,4,5,6,7,11 don't work
-# 2, 8, 9, 13 are old
+new=(1 10 11 12 14 15)
 
 
 ##############
@@ -26,13 +23,16 @@ for (( i=1; i<$n_cams+1; i++ )); do
     echo "$ip"
     ips+=($ip)
     
-    # Assume it's an old url
-    url='http://'$ip'/cgi-bin/getsnapshot.cgi'
 
     # Check if new, change url accordingly
     for j in ${new[@]}; do
+    
+        # Assume it's an old url
+        url='http://'$ip'/cgi-bin/getsnapshot.cgi'
+        
         if [ $i == $j ]; then
             url='http://admin:admin@'$ip'/tmpfs/auto.jpg'
+            break
         fi
     done
 

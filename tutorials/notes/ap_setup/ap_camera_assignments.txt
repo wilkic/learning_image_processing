@@ -1,9 +1,6 @@
 Need MAC addrs:
-cam2
-cam5
-cam6
-cam8
-cam9
+cam5 .. dead - zip cars
+cam6 .. dead
 
 host cam_01 {
     option host-name "Camera01";
@@ -13,7 +10,7 @@ host cam_01 {
 
 host cam_02 {
     option host-name "Camera02";
-    hardware ethernet ;
+    hardware ethernet e0:62:90:ec:dd:b3;
     fixed-address 10.10.110.102;
 }
 
@@ -50,13 +47,13 @@ host cam_07 {
 
 host cam_08 {
     option host-name "Camera08";
-    hardware ethernet ;
+    hardware ethernet e0:62:90:33:0d:71;
     fixed-address 10.10.110.108;
 }
 
 host cam_09 {
     option host-name "Camera09";
-    hardware ethernet ;
+    hardware ethernet e0:62:90:83:4b:2c;
     fixed-address 10.10.110.109;
 }
 

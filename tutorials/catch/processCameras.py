@@ -15,14 +15,40 @@ import notifications as notify
 import get_image as gi
 
 ####
+def useImage( camera, imDir ):
+    
+    # set image filename
+    fname = imDir + 'cam' + camera['number'] + '.jpg';
+    
+    # if file is there... we're good
+    # TODO... need to check that file is current
+    success = os.path.exists(fname)
+
+    # get current time
+    ts = time.time()
+    
+    # get time since last image
+    delta_time = ts - cam['im_ts']
+
+    # set timestamp for current image
+    cam['im_ts'] = ts
+
+    result = {'success': success,
+              'fname': fname,
+              'delta_time': delta_time}
+    
+    return result
 
 def processCameras( cameras, dirs, to, spam=None ):
     
     for c, camera in cameras.iteritems():
         
-        # Write jpeg to image dir and
-        # populate camera dict with time info
-        result = gi.get_image( camera, dirs['wd'] )
+        ## Write jpeg to image dir and
+        ## populate camera dict with time info
+        #result = gi.get_image( camera, dirs['wd'] )
+        
+        # Use images already popped into server
+        result = useImage( camera, dirs['pd'] )
         
         if result['success']:
             delta_time = result['delta_time']
