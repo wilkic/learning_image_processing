@@ -81,7 +81,7 @@ if not os.path.exists(pd):
 
 # Put spot logs in their own dir
 sld, cld, csd = log.setupDirs( data_dir )
-dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd,'pd',pd}
+dirs = {'sld':sld,'cld':cld,'csd':csd,'wd':wd,'cd':cd,'pd':pd}
 
 # Create the list of spots
 spots = processSpots.create(nSpots,monthlies,handicaps,cameras,ip)
