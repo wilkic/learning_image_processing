@@ -28,10 +28,10 @@ def useImage( camera, imDir ):
     ts = time.time()
     
     # get time since last image
-    delta_time = ts - cam['im_ts']
+    delta_time = ts - camera['im_ts']
 
     # set timestamp for current image
-    cam['im_ts'] = ts
+    camera['im_ts'] = ts
 
     result = {'success': success,
               'fname': fname,
