@@ -18,7 +18,7 @@ import get_image as gi
 def useImage( camera, imDir ):
     
     # set image filename
-    fname = imDir + 'cam' + str(camera['number']) + '.jpg';
+    fname = imDir + '/cam' + str(camera['number']) + '.jpg';
     
     # if file is there... we're good
     # TODO... need to check that file is current
