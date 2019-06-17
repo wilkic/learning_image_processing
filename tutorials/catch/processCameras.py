@@ -50,12 +50,20 @@ def processCameras( cameras, dirs, to, spam=None ):
         # Use images already popped into server
         result = useImage( camera, dirs['pd'] )
         
+        existantFailure = False
+
         if result['success']:
             delta_time = result['delta_time']
             fname = result['fname']
             
             # Process image
-            ai.analyzeImage( fname, camera ) 
+            aiSuccess = ai.analyzeImage( fname, camera )
+
+            if ~aiSuccess:
+                existantFailure = True
+                break
+
+                
 
             # Judging
             for spot in camera['spots']:
@@ -86,6 +94,9 @@ def processCameras( cameras, dirs, to, spam=None ):
             os.remove(fname)
 
         else:
+            existantFailure = True
+
+        if existantFailure:
             camera['nFails'] += 1
             if camera['nFails'] == 5:
                 msg = """
