@@ -53,7 +53,7 @@ host cam_08 {
 
 host cam_09 {
     option host-name "Camera09";
-    hardware ethernet 00:56:c6:a0:2c:a8;
+    hardware ethernet e0:62:90:83:4b:2c;
     fixed-address 10.10.110.109;
 }
 
