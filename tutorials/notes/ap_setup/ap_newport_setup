@@ -22,6 +22,11 @@ cam4
 switch port19
 http://admin:admin@192.168.1.206/tmpfs/auto.jpg
 
+IPCAM6     00:41:a6:22:4a:63
+cam6
+switch ???
+http://admin:admin@192.168.1.206/tmpfs/auto.jpg
+
 IPCAM7 192.168.1.207     00:fc:13:78:7f:25
 cam7
 switch port15
@@ -32,7 +37,7 @@ cam8
 switch port11
 http://admin:admin@192.168.1.
 
-IPCAM9 192.168.1.     e0:62:90:83:4b:2c
+IPCAM9 192.168.1.   e0:62:90:83:4b:2c
 cam9
 switch port14
 http://admin:admin@192.168.1.
@@ -43,7 +48,7 @@ cam10
 http://admin:admin@192.168.1.190/tmpfs/auto.jpg
 http://admin:admin@108.45.109.111:9300/tmpfs/auto.jpg
 
-IPCAM11 192.168.1.196   00:fc:f4:df:26:3f
+IPCAM11  00:d7:c2:f9:55:f0
 cam11
 switch port04
 http://admin:admin@192.168.1.196/tmpfs/auto.jpg
