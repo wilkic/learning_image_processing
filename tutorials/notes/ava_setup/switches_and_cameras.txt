@@ -1,0 +1,9 @@
+switch2
+
+port 7
+cam14
+
+
+port 8
+cam15
+

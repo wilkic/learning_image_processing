@@ -77,3 +77,15 @@ host cam_13 {
     hardware ethernet 00:fc:e2:17:a1:91;
     fixed-address 10.10.110.113;
 }
+
+host cam_14 {
+    option host-name "Camera14";
+    hardware ethernet 00:fc:5d:17:c2:08;
+    fixed-address 10.10.110.114;
+}
+
+host cam_15 {
+    option host-name "Camera15";
+    hardware ethernet 00:56:c6:a0:2c:a8;
+    fixed-address 10.10.110.115;
+}

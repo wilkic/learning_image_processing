@@ -1,0 +1,6 @@
+
+
+ # Grabing frames from stream with ffmpeg
+ffmpeg -r 25 -y -i rtsp://192.168.1.2:554/live0.264 -updatefirst 1 -r 2 cam.bmp
+
+
