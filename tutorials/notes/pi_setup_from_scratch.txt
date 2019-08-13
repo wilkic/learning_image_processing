@@ -1,0 +1,118 @@
+#0 - Enable ssh
+ * sudo raspi-config
+ * -> advanced -> ssh -> enable
+ * OR MAYBE -> Interfacing Options -> ssh -> enable
+ * sudo raspi-config
+ * -> change password
+ * WRITE IT DOWN
+
+
+#1 - Connect directly to pi over ethernet
+
+ * connect raspberry pi to laptop with Ethernet.
+ * Go the edit connection setting.
+ * Navigate to ipv4 option. Select method : shared to other computer.
+  * ensure connection is enabled
+ * Then open command prompt and type command >"cat /var/lib/misc/dnsmasq.leases". You will get raspberry pi Ip from that.
+ * then open command prompt and type: ssh pi@"ip of raspberry pi"
+
+
+#2 - Install vim - vi is unbearable
+
+
+#4 - Install isc-dhcp-server
+
+
+#3 - Set a static ip
+ * vim /etc/network/interfaces
+{{{
+<<<
+iface eth0 inet manual
+<<<
+>>>
+auto eth0
+
+iface eth0 inet static
+ address 10.10.110.1
+ netmask 255.255.255.0
+ broadcast 10.10.110.255
+ gateway 10.10.110.254
+>>>
+}}}
+
+
+
+#4 - Configure dhcp server
+ * sudo vim /etc/dhcp/dhcpd.conf
+>>>
+subnet 10.10.110.0 netmask 255.255.255.0 {
+  interface eth0;
+  range 10.10.110.2 10.10.110.50;
+  option subnet-mask 255.255.255.0;
+  option broadcast-address 10.10.110.51;
+}
+<<<
+
+
+#5 - Test
+ * pi:
+  * sudo service isc-dhcp-server restart
+ * laptop:
+  * disable laptop ethernet connection
+  * Go the edit connection setting.
+  * Navigate to ipv4 option. Select method : dhcp
+  * enable ethernet connection
+
+#6 - Test Reboot
+ * sudo reboot
+ * ssh into pi once you've got an ip
+
+#7 - Needed ?
+ * sudo vim /etc/default/isc-dhcp-server
+<<<
+INTERFACES=""
+===
+INTERFACES="eth0"
+>>>
+ * test reboot again
+
+
+#8 - Move over scripts and update as needed
+ * e.g. cam_pass.sh
+
+
+#9 - Install cameras
+ * Get their ip addrs
+  * cat /var/lib/dhcp/dhcpd.leases
+ * OR
+  * set their ip addrs in /etc/dhcpd.conf
+   * example:
+host cam_01 {
+    option host-name "Camera01";
+    hardware ethernet 00:fc:01:fd:a6:61;
+    fixed-address 10.10.110.101;
+}
+
+
+
+#10 - If using a specific DNS
+ * vim /etc/resolvconf.conf
+{{{
+# Configuration for resolvconf(8)
+# See resolvconf.conf(5) for details
+
+resolv_conf=/etc/resolv.conf
+# If you run a local name server, you should uncomment the below line and
+# configure your subscribers configuration files below.
+#name_servers=127.0.0.1
+name_servers=10.10.110.254
+
+# Mirror the Debian package defaults for the below resolvers
+# so that resolvconf integrates seemlessly.
+dnsmasq_resolv=/var/run/dnsmasq/resolv.conf
+pdnsd_conf=/etc/pdnsd.conf
+unbound_conf=/var/cache/unbound/resolvconf_resolvers.conf
+}}}
+  * change name_servers to the desired local DNS address
+
+
