@@ -59,7 +59,7 @@ def processCameras( cameras, dirs, to, spam=None ):
             # Process image
             aiSuccess = ai.analyzeImage( fname, camera )
 
-            if ~aiSuccess:
+            if not aiSuccess:
                 existantFailure = True
                 break
 
