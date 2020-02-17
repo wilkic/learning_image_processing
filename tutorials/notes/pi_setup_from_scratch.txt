@@ -1,4 +1,33 @@
-#0 - Enable ssh
+
+#-2 - Buy a pi and a 32 gb SD card, download OS for card:
+ http://downloads.raspberrypi.org/raspbian/images/
+ * Buster for pi4
+ http://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/
+ * Stretch for pi3
+ http://downloads.raspberrypi.org/raspbian/images/raspbian-2019-04-09/
+
+
+
+#-1 - Write image to SD card:
+{{{
+sudo dd bs=4M if=2019-04-08-raspbian-stretch.img of=/dev/sdb1 conv=fsync
+}}}
+ * change .img to unzipped image file
+ * change /dev/sdb1 to wherever sd card is
+  * should NOT be mounted
+  * can find with this:
+{{{
+sudo fdisk -l
+}}}
+
+
+#0 - Plug in SD to pi, boot normally and connect to internet (eth or wifi)
+
+
+#1 - Install vim - vi is unbearable
+
+
+#2 - Enable ssh
  * sudo raspi-config
  * -> advanced -> ssh -> enable
  * OR MAYBE -> Interfacing Options -> ssh -> enable
@@ -7,7 +36,7 @@
  * WRITE IT DOWN
 
 
-#1 - Connect directly to pi over ethernet
+#3 - Connect directly to pi over ethernet
 
  * connect raspberry pi to laptop with Ethernet.
  * Go the edit connection setting.
@@ -17,13 +46,13 @@
  * then open command prompt and type: ssh pi@"ip of raspberry pi"
 
 
-#2 - Install vim - vi is unbearable
-
-
 #4 - Install isc-dhcp-server
 
 
-#3 - Set a static ip
+#5 - Set a static ip
+
+Old pi instructions:
+
  * vim /etc/network/interfaces
 {{{
 <<<
@@ -40,9 +69,24 @@ iface eth0 inet static
 >>>
 }}}
 
+Old pi vs new pi details:
+https://raspberrypi.stackexchange.com/questions/39785/differences-between-etc-dhcpcd-conf-and-etc-network-interfaces
+
+New pi instructions:
+
+Attempt1:
+
+add this to /etc/dhcpcd.conf:
+{{{
+interface eth0
+static ip_address=10.10.110.1
+static routers=10.10.110.1
+static domain_name_servers=10.10.110.254
+}}}
 
 
-#4 - Configure dhcp server
+
+#6 - Configure dhcp server
  * sudo vim /etc/dhcp/dhcpd.conf
 >>>
 subnet 10.10.110.0 netmask 255.255.255.0 {
@@ -54,7 +98,7 @@ subnet 10.10.110.0 netmask 255.255.255.0 {
 <<<
 
 
-#5 - Test
+#7 - Test
  * pi:
   * sudo service isc-dhcp-server restart
  * laptop:
@@ -63,11 +107,11 @@ subnet 10.10.110.0 netmask 255.255.255.0 {
   * Navigate to ipv4 option. Select method : dhcp
   * enable ethernet connection
 
-#6 - Test Reboot
+#8 - Test Reboot
  * sudo reboot
  * ssh into pi once you've got an ip
 
-#7 - Needed ?
+#9 - Needed ?
  * sudo vim /etc/default/isc-dhcp-server
 <<<
 INTERFACES=""
@@ -77,11 +121,11 @@ INTERFACES="eth0"
  * test reboot again
 
 
-#8 - Move over scripts and update as needed
+#10 - Move over scripts and update as needed
  * e.g. cam_pass.sh
 
 
-#9 - Install cameras
+#11 - Install cameras
  * Get their ip addrs
   * cat /var/lib/dhcp/dhcpd.leases
  * OR
@@ -95,7 +139,7 @@ host cam_01 {
 
 
 
-#10 - If using a specific DNS
+#12 - If using a specific DNS
  * vim /etc/resolvconf.conf
 {{{
 # Configuration for resolvconf(8)
