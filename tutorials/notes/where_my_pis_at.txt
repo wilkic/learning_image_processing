@@ -1,0 +1,9 @@
+
+# To get to NoMa
+$ ubuntu@ip-172-31-4-181:~$ ssh pi@96.231.174.109
+
+
+# To get to AP
+$ ssh pi@108.45.109.111
+
+
