@@ -23,6 +23,7 @@ sudo fdisk -l
 
 #0 - Plug in SD to pi, boot normally and connect to internet (eth or wifi)
 
+#0.5 - apt update, apt upgrade
 
 #1 - Install vim - vi is unbearable
 
@@ -35,8 +36,9 @@ sudo fdisk -l
  * -> change password
  * WRITE IT DOWN
 
+#3 - Install isc-dhcp-server
 
-#3 - Connect directly to pi over ethernet
+#4 - Connect directly to pi over ethernet
 
  * connect raspberry pi to laptop with Ethernet.
  * Go the edit connection setting.
@@ -44,9 +46,6 @@ sudo fdisk -l
   * ensure connection is enabled
  * Then open command prompt and type command >"cat /var/lib/misc/dnsmasq.leases". You will get raspberry pi Ip from that.
  * then open command prompt and type: ssh pi@"ip of raspberry pi"
-
-
-#4 - Install isc-dhcp-server
 
 
 #5 - Set a static ip
@@ -84,6 +83,15 @@ static routers=10.10.110.1
 static domain_name_servers=10.10.110.254
 }}}
 
+Attempt2:
+
+add this to /etc/dhcpcd.conf:
+{{{
+interface eth0
+static ip_address=10.10.110.1
+static domain_name_servers=10.10.110.254
+}}}
+
 
 
 #6 - Configure dhcp server
@@ -93,25 +101,11 @@ subnet 10.10.110.0 netmask 255.255.255.0 {
   interface eth0;
   range 10.10.110.2 10.10.110.50;
   option subnet-mask 255.255.255.0;
-  option broadcast-address 10.10.110.51;
+  option broadcast-address 10.10.110.255;
 }
 <<<
 
-
-#7 - Test
- * pi:
-  * sudo service isc-dhcp-server restart
- * laptop:
-  * disable laptop ethernet connection
-  * Go the edit connection setting.
-  * Navigate to ipv4 option. Select method : dhcp
-  * enable ethernet connection
-
-#8 - Test Reboot
- * sudo reboot
- * ssh into pi once you've got an ip
-
-#9 - Needed ?
+#7 - Needed ?
  * sudo vim /etc/default/isc-dhcp-server
 <<<
 INTERFACES=""
@@ -120,6 +114,29 @@ INTERFACES="eth0"
 >>>
  * test reboot again
 
+
+
+#8 - Test
+ * pi:
+  * sudo service isc-dhcp-server restart
+ * laptop:
+  * disable laptop ethernet connection
+  * Go the edit connection setting.
+  * Navigate to ipv4 option. Select method : dhcp
+  * enable ethernet connection
+
+#9 - Test Reboot
+ * sudo reboot
+ * ssh into pi once you've got an ip
+
+#9.5 - add laptop as static ip
+ * vim /etc/dhcpd.conf
+
+host ccw_laptop {
+    option host-name "ccw";
+    hardware ethernet 10:dd:b1:af:cd:7e;
+    fixed-address 10.10.110.200;
+}
 
 #10 - Move over scripts and update as needed
  * e.g. cam_pass.sh
