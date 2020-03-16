@@ -105,14 +105,13 @@ subnet 10.10.110.0 netmask 255.255.255.0 {
 }
 <<<
 
-#7 - Needed ?
+#7 - Set the interface through which to send out IPs
  * sudo vim /etc/default/isc-dhcp-server
 <<<
 INTERFACES=""
 ===
 INTERFACES="eth0"
 >>>
- * test reboot again
 
 
 
