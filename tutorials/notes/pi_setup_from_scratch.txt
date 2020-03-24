@@ -107,12 +107,10 @@ subnet 10.10.110.0 netmask 255.255.255.0 {
 
 #7 - Set the interface through which to send out IPs
  * sudo vim /etc/default/isc-dhcp-server
-<<<
-INTERFACES=""
-===
-INTERFACES="eth0"
 >>>
-
+INTERFACESv4="eth0"
+#INTERFACESv6=""
+<<<
 
 
 #8 - Test
@@ -124,7 +122,19 @@ INTERFACES="eth0"
   * Navigate to ipv4 option. Select method : dhcp
   * enable ethernet connection
 
-#9 - Test Reboot
+
+#9 - Enable isc-dhcp-server to start at boot
+ * add a delay, and start isc-dhcp-server in rc.local
+   (at end, before the "exit 0"
+>>>
+sleep 60
+/etc/init.d/isc-dhcp-server start
+<<<
+ * Might be needed, why not just do it:
+$ sudo systemctl enable isc-dhcp-server
+
+
+#9.5 - Test Reboot
  * sudo reboot
  * ssh into pi once you've got an ip
 
@@ -138,14 +148,20 @@ host ccw_laptop {
 }
 
 #10 - Move over scripts and update as needed
- * e.g. cam_pass.sh
+ * cam_passes.sh needs at least the right camera numbers
+  * make sure it's got a while loop
+ * for camrunscript.sh, set up a cronjob to run it every N mins:
+$ crontab -e
+>>>
+*/N * * * * /home/pi/remote_cam_pass/camrunscript.sh
+<<<
 
 
 #11 - Install cameras
  * Get their ip addrs
   * cat /var/lib/dhcp/dhcpd.leases
  * OR
-  * set their ip addrs in /etc/dhcpd.conf
+  * set their ip addrs in /etc/dhcp/dhcpd.conf
    * example:
 host cam_01 {
     option host-name "Camera01";
