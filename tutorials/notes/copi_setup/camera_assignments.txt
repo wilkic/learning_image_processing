@@ -152,11 +152,11 @@ host cam_25 {
 }
 
 
-host cam_02 {
-    option host-name "Camera02";
-    hardware ethernet ;
-    fixed-address 10.10.110.102;
-}
+#host cam_02 {
+#    option host-name "Camera02";
+#    hardware ethernet ;
+#    fixed-address 10.10.110.102;
+#}
 
 
 
