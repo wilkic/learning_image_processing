@@ -1,4 +1,7 @@
 
+# To get to CoPi
+$ ubuntu@ip-172-31-4-181:~$ ssh pi@72.66.86.20
+
 # To get to NoMa
 $ ubuntu@ip-172-31-4-181:~$ ssh pi@96.231.174.109
 
