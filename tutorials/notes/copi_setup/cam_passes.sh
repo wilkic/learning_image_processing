@@ -2,7 +2,7 @@
 
 DATETIME=`date +%Y%m%d%H%M%S`
 
-dest=':http://18.214.141.78/mnt/data/copi/images_and_timestamps/.'
+dest='ubuntu@18.214.141.78:/mnt/data/copi/images_and_timestamps/.'
 
 LOCALDIR='/home/pi/remote_cam_upload/outputs/'
 
