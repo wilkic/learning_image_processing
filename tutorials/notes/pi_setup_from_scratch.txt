@@ -90,6 +90,7 @@ add this to /etc/dhcpcd.conf:
 interface eth0
 static ip_address=10.10.110.1
 static domain_name_servers=10.10.110.254
+static routers=10.10.110.254
 }}}
 
 
