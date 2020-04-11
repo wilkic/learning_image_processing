@@ -9,7 +9,7 @@ with open( ffname, 'a+' ) as out:
         mout  = "host cam_%d {\n" % i
         mout += '    option hostname "Camera%d";\n' %i
         mout += '    hardware ethernet ;\n'
-        mout += '    fixed-address 10.10.110.1%d";\n' %i
+        mout += '    fixed-address 10.10.110.1%d;\n' %i
         mout += '}\n'
 
         print >> out, mout
