@@ -8,7 +8,7 @@ LOCALDIR='/home/pi/remote_cam_upload/outputs/'
 
 # All cam ips start at 101 and go up from there
 ip_base='10.10.110.1'
-n_cams=25
+n_cams=54
 
 ##############
 
