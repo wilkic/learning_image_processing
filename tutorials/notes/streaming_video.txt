@@ -13,4 +13,5 @@ With a source stream (like rtsp feed over IP [maybe h.264 encoded]):
 
 ```
 
-
+newer hosafe's (e.g. H2MD6PA):
+rtsp://{ip-addr}/11

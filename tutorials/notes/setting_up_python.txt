@@ -28,4 +28,7 @@ pip install matplotlib==1.5.3
 pip install opencv-python
 
 
+### For running check_verts
+pip install pypi
+sudo apt install python-tk
 
