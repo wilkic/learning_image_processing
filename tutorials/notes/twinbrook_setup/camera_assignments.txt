@@ -491,6 +491,66 @@ host cam_82 {
     fixed-address 10.10.110.182;
 }
 
+host cam_83 {
+    option host-name "Camera83";
+    hardware ethernet 00:0a:70:3a:4c:21;
+    fixed-address 10.10.110.183;
+}
+
+host cam_84 {
+    option host-name "Camera84";
+    hardware ethernet 00:f1:f3:35:ac:5c;
+    fixed-address 10.10.110.184;
+}
+
+host cam_85 {
+    option host-name "Camera85";
+    hardware ethernet 00:ae:56:1e:2e:26;
+    fixed-address 10.10.110.185;
+}
+
+host cam_86 {
+    option host-name "Camera86";
+    hardware ethernet 00:17:1e:38:18:fe;
+    fixed-address 10.10.110.186;
+}
+
+host cam_87 {
+    option host-name "Camera87";
+    hardware ethernet 00:7d:84:01:8b:7a;
+    fixed-address 10.10.110.187;
+}
+
+host cam_88 {
+    option host-name "Camera88";
+    hardware ethernet 00:8f:2d:f7:ae:97;
+    fixed-address 10.10.110.188;
+}
+
+host cam_89 {
+    option host-name "Camera89";
+    hardware ethernet 00:0a:98:6c:a5:dc;
+    fixed-address 10.10.110.189;
+}
+
+host cam_90 {
+    option host-name "Camera90";
+    hardware ethernet 00:f3:ff:e7:32:02;
+    fixed-address 10.10.110.190;
+}
+
+host cam_91 {
+    option host-name "Camera91";
+    hardware ethernet 00:dd:2f:ef:d8:3e;
+    fixed-address 10.10.110.191;
+}
+
+host cam_92 {
+    option host-name "Camera92";
+    hardware ethernet 00:c9:0f:26:d9:45;
+    fixed-address 10.10.110.192;
+}
+
 host cam_02 {
     option host-name "Camera02";
     hardware ethernet ;
