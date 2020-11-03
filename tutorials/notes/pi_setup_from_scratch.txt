@@ -113,6 +113,9 @@ INTERFACESv4="eth0"
 #INTERFACESv6=""
 <<<
 
+#7.5 - force ip address (in case you haven't connected over ethernet)
+ * sudo ifconfig eth0 10.10.110.1
+
 
 #8 - Test
  * pi:
@@ -125,7 +128,7 @@ INTERFACESv4="eth0"
 
 
 #9 - Enable isc-dhcp-server to start at boot
- * add a delay, and start isc-dhcp-server in rc.local
+ * add a delay, and start isc-dhcp-server in /etc/rc.local
    (at end, before the "exit 0"
 >>>
 sleep 60
@@ -140,7 +143,7 @@ $ sudo systemctl enable isc-dhcp-server
  * ssh into pi once you've got an ip
 
 #9.5 - add laptop as static ip
- * vim /etc/dhcpd.conf
+ * vim /etc/dhcp/dhcpd.conf
 
 host ccw_laptop {
     option host-name "ccw";
