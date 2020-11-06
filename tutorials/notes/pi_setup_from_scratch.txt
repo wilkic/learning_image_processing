@@ -131,7 +131,8 @@ INTERFACESv4="eth0"
  * add a delay, and start isc-dhcp-server in /etc/rc.local
    (at end, before the "exit 0"
 >>>
-sleep 60
+ifconfig eth0 10.10.110.1
+#sleep 60
 /etc/init.d/isc-dhcp-server start
 <<<
  * Might be needed, why not just do it:
