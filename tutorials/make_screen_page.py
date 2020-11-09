@@ -1,11 +1,24 @@
 
 fname = 'screen.html'
-fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/copi_setup/'
+#fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/copi_setup/'
+fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/twinbrook_setup/'
 
 ffname = fdir + fname
 
+header = '''
+<meta http-equiv="refresh" content="300" />
+<html>
+<body>
+
+<h2>Current Status</h2>
+
+'''
+
 with open( ffname, 'a+' ) as out:
-    for i in range(26,55):
+    
+    print >> out, header
+
+    for i in range(1,89):
 	mout =  '<h3>Camera %d</h3>\n' % i
 	mout += '<img src="imgs/cam%d.jpg" alt="cam%d" style="width:400px;height:224px;">\n' % (i,i)
 	mout += '<p></p>\n'
