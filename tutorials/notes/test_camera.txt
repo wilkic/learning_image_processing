@@ -1,0 +1,11 @@
+Connect directly to cam over ethernet
+
+ * connect cam to laptop with Ethernet
+ * Go the edit connection setting.
+ * Navigate to ipv4 option. Select method : shared to other computer.
+  * ensure connection is enabled
+ * Then open command prompt and type command >"cat /var/lib/misc/dnsmasq.leases". You will get cam IP and MAC from that
+ * put $IP into browser to check it works
+ * then open command prompt and type:
+  * wget http://admin:admin@$IP/tmpfs/auto.jpg -O tmp.jpg
+

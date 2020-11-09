@@ -1,0 +1,11 @@
+
+Internet Setup:
+  - Router MAC Address: 44:A5:6E:7D:16:FB
+
+LAN Setup:
+  - LAN TCP/IP Setup
+  - IP: 10.20.110.254
+    - Same as 'domain_name_servers' and 'routers' in dhcp server
+      /etc/dhcpcd.conf
+
+
