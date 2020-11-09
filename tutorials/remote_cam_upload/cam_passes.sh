@@ -2,15 +2,17 @@
 
 DATETIME=`date +%Y%m%d%H%M%S`
 
-dest='ubuntu@ec2-54-172-171-223.compute-1.amazonaws.com:/mnt/data/catch/images_and_timestamps/.'
+dest='ubuntu@18.214.141.78:/mnt/data/catch/images_and_timestamps/.'
 
 # All cam ips start at 101 and go up from there
 ip_base='10.10.110.1'
-n_cams=15
+n_cams=88
 
 # New cams have different url for accessing image
-new=(1 10 11 12 14 15)
+new=( $(seq 1 $n_cams) )
 
+Nsecs2wait=5
+Ntries=2
 
 ##############
 
@@ -38,7 +40,7 @@ for (( i=1; i<$n_cams+1; i++ )); do
 
     echo "Fetching snap from $ip"
     echo "... $url"
-    wget $url -O cam$i.jpg
+    wget -T $Nsecs2wait -t $Ntries $url -O cam$i.jpg
     
     DATE=`date +%F`
     TIME=`date +%T`
