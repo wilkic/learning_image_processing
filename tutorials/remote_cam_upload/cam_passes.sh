@@ -14,6 +14,10 @@ new=( $(seq 1 $n_cams) )
 Nsecs2wait=5
 Ntries=2
 
+pdir='/home/pi/gsp'
+kdir=$pdir'/aws'
+cdir=$pdir'/cams'
+
 ##############
 
 sp="  "
@@ -40,15 +44,14 @@ for (( i=1; i<$n_cams+1; i++ )); do
 
     echo "Fetching snap from $ip"
     echo "... $url"
-    wget -T $Nsecs2wait -t $Ntries $url -O cam$i.jpg
+    wget -T $Nsecs2wait -t $Ntries $url -O $cdir/cam$i.jpg
     
     DATE=`date +%F`
     TIME=`date +%T`
     ss="let text$i = '"
-    echo $ss$DATE$sp$TIME$es > ts$i.js
+    echo $ss$DATE$sp$TIME$es > $cdir/ts$i.js
     
-    scp -i "ggp1.pem" cam$i.jpg ts$i.js $dest
-
+    scp -i "$kdir/ggp1.pem" $cdir/cam$i.jpg $cdir/ts$i.js $dest
 
 done
 
