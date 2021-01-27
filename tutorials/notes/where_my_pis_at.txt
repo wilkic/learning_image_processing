@@ -1,6 +1,7 @@
 
 # To get to NY
-$ ubuntu@ip-172-31-4-181:~$ ssh pi@96.57.92.171
+#$ ubuntu@ip-172-31-4-181:~$ ssh pi@96.57.92.171
+$ ubuntu@ip-172-31-4-181:~$ ssh pi@96.56.52.94
 
 # To get to CoPi
 $ ssh pi@72.66.86.20
