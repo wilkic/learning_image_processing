@@ -563,10 +563,10 @@ host cam_94 {
     fixed-address 10.10.110.194;
 }
 
-host cam_02 {
-    option host-name "Camera02";
+host cam_95 {
+    option host-name "Camera95";
     hardware ethernet 00:1b:b2:af:00:8e;
-    fixed-address 10.10.110.102;
+    fixed-address 10.10.110.195;
 }
 
 host cam_96 {

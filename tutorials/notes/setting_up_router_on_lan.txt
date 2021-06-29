@@ -1,11 +1,16 @@
 
-Internet Setup:
-  - Router MAC Address: 44:A5:6E:7D:16:FB
+Setup Port Forwarding:
+  
+
+Internet Setup (write down LAN MAC Address):
+  - Main Twinbrook Router MAC Address: 44:A5:6E:7D:16:FB
+  - Second Twinbrook Router MAC Address: 9C:C9:EB:60:84:0A
 
 LAN Setup:
   - LAN TCP/IP Setup
-  - IP: 10.20.110.254
-    - Same as 'domain_name_servers' and 'routers' in dhcp server
+    - Set IP: 10.20.110.254
+    - Same as 'domain_name_servers' and 'routers' in dhcp server on PI
       /etc/dhcpcd.conf
+    - Turn off "Use Router as DHCP Server"
 
 

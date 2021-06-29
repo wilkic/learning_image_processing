@@ -1,7 +1,8 @@
 
 fname = 'screen.html'
 #fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/copi_setup/'
-fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/twinbrook_setup/'
+#fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/twinbrook_setup/'
+fdir = '/home/c/gsp/learning_image_processing/tutorials/notes/gantry_setup/'
 
 ffname = fdir + fname
 
@@ -18,7 +19,7 @@ with open( ffname, 'a+' ) as out:
     
     print >> out, header
 
-    for i in range(1,89):
+    for i in range(86,100):
 	mout =  '<h3>Camera %d</h3>\n' % i
 	mout += '<img src="imgs/cam%d.jpg" alt="cam%d" style="width:400px;height:224px;">\n' % (i,i)
 	mout += '<p></p>\n'
